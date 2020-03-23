@@ -1,6 +1,6 @@
 class Pantry {
-  constructor (ingredient, amount) {
-    this.ingredient = ingredient;
+  constructor (ingredientsData, amount) {
+    this.ingredient = ingredientsData.id;
     this.amount = amount;
   }
   checkIngredients() {
@@ -12,7 +12,7 @@ class Pantry {
     //loop through user.pantry and user.recipe(?) and return difference of what they have vs needed
   }
   removeIngredients() {
-    //removes ingredient and amount from recipe cooked 
+    //removes ingredient and amount from recipe cooked
   }
 }
 
