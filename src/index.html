@@ -1,15 +1,138 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Whats Cookin</title>
-  </head>
-  <body>
-    <h1>Whats Cookin</h1>
+<html lang="en" dir="ltr">
 
-    <script type="text/javascript" src="../data/users.js"></script>
-    <script type="text/javascript" src="../data/recipes.js"></script>
-    <script type="text/javascript" src="../data/ingredients.js"></script>
-    <script type="text/javascript" src="./scripts.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <title>Whats Cookin</title>
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,200,300,400,700,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul class="nav">
+        <li>
+          <button type="button" name="button" class="favorite-recipes-btn">My Favorite Recipes</button>
+        </li>
+        <li>
+          <button type="button" name="button" class="cook-recipes-btn">My Recipes to Cook</button>
+        </li>
+        <li>
+          <div class="search-wrapper">
+            <button type="submit" name="button" class="search-all-btn">
+              <ion-icon name="search-outline"></ion-icon>
+            </button>
+            <input type="search" name="search" class="search-input" id="search-img">
+          </div>
+        </li>
+      </ul>
+    </nav>
+    <h1>What’s Cookin’?</h1>
+  </header>
+  <main>
+    <section class="main-page">
+      <h2>Select your Favorite Recipe!</h2>
+      <ul class="recipe-container">
+        <li class="recipe-card">
+          <img src="../img/background.jpg" class="card-img" alt="recipe picture">
+          <p class="card-title">Loaded Chocolate Chip Pudding Cookie Cups</p>
+          <div class="card-icons">
+            <ion-icon name="heart-outline" class="card-icon"></ion-icon>
+            <ion-icon name="checkmark-outline" class="card-icon"></ion-icon>
+          </div>
+        </li>
+        <li class="recipe-card">
+          <img src="../img/background.jpg" class="card-img" alt="recipe picture">
+          <p class="card-title">Loaded Chocolate Chip Pudding Cookie Cups</p>
+          <div class="card-icons">
+            <ion-icon name="heart-outline" class="card-icon"></ion-icon>
+            <ion-icon name="checkmark-outline" class="card-icon"></ion-icon>
+          </div>
+        </li>
+        <li class="recipe-card">
+          <img src="../img/background.jpg" class="card-img" alt="recipe picture">
+          <p class="card-title">Loaded Chocolate Chip Pudding Cookie Cups</p>
+          <div class="card-icons">
+            <ion-icon name="heart-outline" class="card-icon"></ion-icon>
+            <ion-icon name="checkmark-outline" class="card-icon"></ion-icon>
+          </div>
+        </li>
+        <li class="recipe-card">
+          <img src="../img/background.jpg" class="card-img" alt="recipe picture">
+          <p class="card-title">Loaded Chocolate Chip Pudding Cookie Cups</p>
+          <div class="card-icons">
+            <ion-icon name="heart-outline" class="card-icon"></ion-icon>
+            <ion-icon name="checkmark-outline" class="card-icon"></ion-icon>
+          </div>
+        </li>
+        <li class="recipe-card">
+          <img src="../img/background.jpg" class="card-img" alt="recipe picture">
+          <p class="card-title">Loaded Chocolate Chip Pudding Cookie Cups</p>
+          <div class="card-icons">
+            <ion-icon name="heart-outline" class="card-icon"></ion-icon>
+            <ion-icon name="checkmark-outline" class="card-icon"></ion-icon>
+          </div>
+        </li>
+        <li class="recipe-card">
+          <img src="../img/background.jpg" class="card-img" alt="recipe picture">
+          <p class="card-title">Loaded Chocolate Chip Pudding Cookie Cups</p>
+          <div class="card-icons">
+            <ion-icon name="heart-outline" class="card-icon"></ion-icon>
+            <ion-icon name="checkmark-outline" class="card-icon"></ion-icon>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+
+    <section class="recipe-page hidden">
+      <h2 class="recipe-title">Loaded Chocolate Chip Pudding Cookie Cups</h2>
+      <div class="recipe-icons">
+        <ion-icon name="heart-outline" class="recipe-icon"></ion-icon>
+        <ion-icon name="checkmark-outline" class="recipe-icon"></ion-icon>
+      </div>
+      <h3>Ingredients:</h3>
+      <ul class="ingredients">
+        <li class="ingredient">1 tsp. baking soda</li>
+        <li class="ingredient">1 tsp. kosher salt</li>
+        <li class="ingredient">1/4 tsp. cinnamon</li>
+        <li class="ingredient">1 1/2 c. chocolate chips</li>
+        <li class="ingredient">3 oz. chopped chocolate</li>
+        <li class="ingredient">Flaky sea salt, for topping</li>
+      </ul>
+      <img class="recipe-img" src="https://spoonacular.com/recipeImages/412309-556x370.jpeg" alt="recipe picture">
+    </section>
+  </main>
+
+  <footer>
+    <p class="footer">Copyright &copy 2020 What's Cookin'. All rights reserved.</p>
+  </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script type="text/javascript" src="../data/users.js"></script>
+  <script type="text/javascript" src="../data/recipes.js"></script>
+  <script type="text/javascript" src="../data/ingredients.js"></script>
+  <script type="text/javascript" src="./scripts.js"></script>
+  <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+</body>
+
 </html>
