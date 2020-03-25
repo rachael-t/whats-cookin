@@ -25,8 +25,10 @@ function buttonClick(e) {
     if (e.target.classList.contains('card-img') || e.target.classList.contains('card-title')) {
         openRecipe(e);
     };
-    // Come back to main 
-
+    // Come back to main
+    if (e.target.classList.contains('return-btn')) {
+      returnToMainPage();
+    }
     // Add to My Favourite (heart)
 
     // Add to cook (checkmark)
@@ -48,7 +50,6 @@ function getRecipe(recipeData) {
 }
 
 function displayRecipe(recipeCard) {
-    debugger
     recipeContainer.insertAdjacentHTML('afterbegin', `
         <li class="recipe-card" id="${recipeCard.id}">
           <img src="${recipeCard.image}" class="card-img" alt="recipe picture" id="${recipeCard.id}">
@@ -88,18 +89,65 @@ function getTagImg(tag) {
 function openRecipe(e) {
     mainPage.classList.add('hidden');
     recipePage.classList.remove('hidden');
-    displayOpenedRecipe(e)
+    getRecipeInfo(e);
 }
 
-function displayOpenedRecipe(e) {
+function getRecipeInfo(e) {
+  let recipeId = parseInt(e.target.getAttribute('id'));
+  let fullRecipeInfo = recipeData.find(recipe => recipe.id === recipeId);
+  displayFullRecipe(fullRecipeInfo);
+}
 
+function displayFullRecipe(fullRecipeInfo) {
+  recipePage.insertAdjacentHTML('beforeend', `
+    <button type="button" name="button" class="return-btn"><ion-icon name="close-outline" class="return-btn"></ion-icon></button>
+    <h2 class="recipe-title">${fullRecipeInfo.name}</h2>
+    <div class="recipe-icons">
+      <ion-icon name="heart-outline" class="recipe-icon" id="${fullRecipeInfo.id}"></ion-icon>
+      <ion-icon name="checkmark-outline" class="recipe-icon" id="${fullRecipeInfo.id}"></ion-icon>
+    </div>
+    <h3>Ingredients:</h3>
+    <ul class="ingredients">
+    </ul>
+    <div class="instructions-list"></div>
+    <img class="recipe-img" src="${fullRecipeInfo.image}" alt="recipe picture">
+  `);
+  displayRecipeIngredients(fullRecipeInfo);
+  displayRecipeInstructions(fullRecipeInfo);
+}
+
+function displayRecipeIngredients(fullRecipeInfo) {
+  let ingredientList = document.querySelector('.ingredients');
+  fullRecipeInfo.ingredients.forEach(ingredient => {
+    let ingredientName = getIngredientInfo(ingredient);
+    ingredientList.insertAdjacentHTML('afterbegin', `
+    <li class="ingredient">${ingredient.quantity.amount} ${ingredient.quantity.unit} ${ingredientName.name}</li>
+    `)
+  })
+}
+
+function getIngredientInfo(ingredient) {
+  return ingredientsData.find(e => e.id === ingredient.id)
+}
+
+function displayRecipeInstructions(fullRecipeInfo) {
+  let instructionList = document.querySelector('.instructions-list');
+  fullRecipeInfo.instructions.forEach(instruction => {
+    instructionList.insertAdjacentHTML('beforeBegin', `
+    <p class="cooking-instructions">Step ${instruction.number}</p>
+    <p>${instruction.instruction}</p>
+    `)
+  })
+}
+
+function returnToMainPage() {
+  mainPage.classList.remove('hidden');
+  recipePage.classList.add('hidden');
+  recipePage.innerHTML = ' ';
 }
 
 //FOR RECIPES
-// getInstructions() {
-//   //returning the instruction array when invoked
-//   //don't use this method - just use recipes.instructions
-// }
+
 // filterByTag(tag) {
 //   //take in tag, loop through if that argument tag strictly matches a tag in the this.tags array, then return recipe
 // }
