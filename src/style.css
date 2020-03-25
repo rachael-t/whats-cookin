@@ -4,7 +4,7 @@
 :root {
     --background-white: #fff;
     --background-light: #f8f8f8;
-    --background-medium: #cccccc;
+    --background-medium: #f0f0f0;
     --background-dark: #212121;
     --font-light: #fff;
     --font-dark: #212121;
@@ -90,12 +90,14 @@ input {
     border-radius: 0 5px 5px 0;
 }
 
-.search-all-btn {
+.search-all-btn,
+.login-btn {
     border-radius: 5px 0 0 5px;
     background-color: var(--background-light);
 }
 
-.search-wrapper {
+.search-wrapper,
+.login-wrapper {
     display: flex;
     opacity: .8;
 }
@@ -112,7 +114,8 @@ button:hover {
 h2 {
     text-align: center;
     font-size: 200%;
-    margin-top: 50px;
+    margin-top: 30px;
+    font-weight: 300;
 }
 
 h2:after {
@@ -122,6 +125,31 @@ h2:after {
     background-color: var(--accent);
     margin: 10px auto 50px auto;
     width: 120px;
+}
+
+/* ----- Category Container ----- */
+.category-container {
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    background-color: var(--background-medium);
+}
+
+.category-card {
+    margin: 0 10px;
+    cursor: pointer;
+    filter: opacity(.8);
+}
+
+.category-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.category-name {
+    text-align: center;
+    font-weight: 300;
 }
 
 /* ----- Recipe Gallery ----- */
@@ -164,7 +192,8 @@ h2:after {
     padding: 0 15px 15px 15px;
 }
 
-.recipe-card:hover {
+.recipe-card:hover,
+.category-card:hover {
     filter: opacity(1);
     transition: filter .3s;
 }
