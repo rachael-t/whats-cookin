@@ -19,11 +19,20 @@
           <button type="button" name="button" class="cook-recipes-btn">My Recipes to Cook</button>
         </li>
         <li>
-          <div class="search-wrapper">
+          <div class="login-wrapper">
             <button type="submit" name="button" class="search-all-btn">
               <ion-icon name="search-outline"></ion-icon>
             </button>
-            <input type="search" name="search" class="search-input" id="search-img">
+            <input type="search" name="search" class="search-input" placeholder="Search all Recipes">
+          </div>
+        </li>
+        <li>
+          <div class="search-wrapper">
+            <button type="submit" name="button" class="login-btn">
+              <ion-icon name="person-outline">
+                </<ion-icon>
+            </button>
+            <input type="search" name="search" class="login-input" placeholder="Enter Your Name">
           </div>
         </li>
       </ul>
@@ -31,62 +40,43 @@
     <h1>What’s Cookin’?</h1>
   </header>
   <main>
-    <section class="main-page">
-      <h2>Select your Favorite Recipe!</h2>
+    <section class="main-page hidden">
+      <ul class="category-container">
+        <li class="category-card">
+          <img src="../img/background.jpg" class="category-img" alt="recipe picture">
+          <p class="category-name">Chocolate</p>
+        </li>
+        <li class="category-card">
+          <img src="../img/background.jpg" class="category-img" alt="recipe picture">
+          <p class="category-name">Chocolate</p>
+        </li>
+        <li class="category-card">
+          <img src="../img/background.jpg" class="category-img" alt="recipe picture">
+          <p class="category-name">Chocolate</p>
+        </li>
+        <li class="category-card">
+          <img src="../img/background.jpg" class="category-img" alt="recipe picture">
+          <p class="category-name">Chocolate</p>
+        </li>
+        <li class="category-card">
+          <img src="../img/background.jpg" class="category-img" alt="recipe picture">
+          <p class="category-name">Chocolate</p>
+        </li>
+        <li class="category-card">
+          <img src="../img/background.jpg" class="category-img" alt="recipe picture">
+          <p class="category-name">Chocolate</p>
+        </li>
+        <li class="category-card">
+          <img src="../img/background.jpg" class="category-img" alt="recipe picture">
+          <p class="category-name">Chocolate</p>
+        </li>
+      </ul>
+      <h2>Welcome back, Name! Select your Favorite Recipe!</h2>
       <ul class="recipe-container">
-        <li class="recipe-card">
-          <img src="../img/background.jpg" class="card-img" alt="recipe picture">
-          <p class="card-title">Loaded Chocolate Chip Pudding Cookie Cups</p>
-          <div class="card-icons">
-            <ion-icon name="heart-outline" class="card-icon"></ion-icon>
-            <ion-icon name="checkmark-outline" class="card-icon"></ion-icon>
-          </div>
-        </li>
-        <li class="recipe-card">
-          <img src="../img/background.jpg" class="card-img" alt="recipe picture">
-          <p class="card-title">Loaded Chocolate Chip Pudding Cookie Cups</p>
-          <div class="card-icons">
-            <ion-icon name="heart-outline" class="card-icon"></ion-icon>
-            <ion-icon name="checkmark-outline" class="card-icon"></ion-icon>
-          </div>
-        </li>
-        <li class="recipe-card">
-          <img src="../img/background.jpg" class="card-img" alt="recipe picture">
-          <p class="card-title">Loaded Chocolate Chip Pudding Cookie Cups</p>
-          <div class="card-icons">
-            <ion-icon name="heart-outline" class="card-icon"></ion-icon>
-            <ion-icon name="checkmark-outline" class="card-icon"></ion-icon>
-          </div>
-        </li>
-        <li class="recipe-card">
-          <img src="../img/background.jpg" class="card-img" alt="recipe picture">
-          <p class="card-title">Loaded Chocolate Chip Pudding Cookie Cups</p>
-          <div class="card-icons">
-            <ion-icon name="heart-outline" class="card-icon"></ion-icon>
-            <ion-icon name="checkmark-outline" class="card-icon"></ion-icon>
-          </div>
-        </li>
-        <li class="recipe-card">
-          <img src="../img/background.jpg" class="card-img" alt="recipe picture">
-          <p class="card-title">Loaded Chocolate Chip Pudding Cookie Cups</p>
-          <div class="card-icons">
-            <ion-icon name="heart-outline" class="card-icon"></ion-icon>
-            <ion-icon name="checkmark-outline" class="card-icon"></ion-icon>
-          </div>
-        </li>
-        <li class="recipe-card">
-          <img src="../img/background.jpg" class="card-img" alt="recipe picture">
-          <p class="card-title">Loaded Chocolate Chip Pudding Cookie Cups</p>
-          <div class="card-icons">
-            <ion-icon name="heart-outline" class="card-icon"></ion-icon>
-            <ion-icon name="checkmark-outline" class="card-icon"></ion-icon>
-          </div>
-        </li>
       </ul>
     </section>
 
-
-    <section class="recipe-page hidden">
+    <section class="recipe-page">
       <h2 class="recipe-title">Loaded Chocolate Chip Pudding Cookie Cups</h2>
       <div class="recipe-icons">
         <ion-icon name="heart-outline" class="recipe-icon"></ion-icon>
@@ -109,28 +99,13 @@
     <p class="footer">Copyright &copy 2020 What's Cookin'. All rights reserved.</p>
   </footer>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   <script type="text/javascript" src="../data/users.js"></script>
   <script type="text/javascript" src="../data/recipes.js"></script>
   <script type="text/javascript" src="../data/ingredients.js"></script>
+  <script type="text/javascript" src="./Recipes.js"></script>
+  <script type="text/javascript" src="./Users.js"></script>
+  <script type="text/javascript" src="./Pantry.js"></script>
+  <script type="text/javascript" src="./Ingredients.js"></script>
   <script type="text/javascript" src="./scripts.js"></script>
   <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
 </body>
