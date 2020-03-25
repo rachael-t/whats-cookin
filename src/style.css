@@ -4,7 +4,7 @@
 :root {
     --background-white: #fff;
     --background-light: #f8f8f8;
-    --background-medium: #cccccc;
+    --background-medium: #f0f0f0;
     --background-dark: #212121;
     --font-light: #fff;
     --font-dark: #212121;
@@ -14,7 +14,6 @@
 /* -------------------------------------------- */
 /* ----- Basic Setup ----- */
 /* -------------------------------------------- */
-
 * {
     margin: 0;
     padding: 0;
@@ -40,13 +39,14 @@ ul {
 /* ----- Header ----- */
 /* -------------------------------------------- */
 h1 {
+    position: relative;
+    top: 25%;
     font-weight: 100;
     text-transform: uppercase;
     text-align: center;
-    font-size: 500%;
+    font-size: 600%;
     word-spacing: 10px;
     color: var(--font-light);
-    margin-top: 80px;
 }
 
 header {
@@ -90,12 +90,14 @@ input {
     border-radius: 0 5px 5px 0;
 }
 
-.search-all-btn {
+.search-all-btn,
+.login-btn {
     border-radius: 5px 0 0 5px;
     background-color: var(--background-light);
 }
 
-.search-wrapper {
+.search-wrapper,
+.login-wrapper {
     display: flex;
     opacity: .8;
 }
@@ -112,7 +114,8 @@ button:hover {
 h2 {
     text-align: center;
     font-size: 200%;
-    margin-top: 50px;
+    margin-top: 30px;
+    font-weight: 300;
 }
 
 h2:after {
@@ -122,6 +125,32 @@ h2:after {
     background-color: var(--accent);
     margin: 10px auto 50px auto;
     width: 120px;
+}
+
+/* ----- Category Container ----- */
+.category-container {
+    padding: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: var(--background-medium);
+}
+
+.category-card {
+    padding: 10px;
+    cursor: pointer;
+    filter: opacity(.8);
+}
+
+.category-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.category-name {
+    text-align: center;
+    font-weight: 400;
 }
 
 /* ----- Recipe Gallery ----- */
@@ -164,7 +193,8 @@ h2:after {
     padding: 0 15px 15px 15px;
 }
 
-.recipe-card:hover {
+.recipe-card:hover,
+.category-card:hover {
     filter: opacity(1);
     transition: filter .3s;
 }
@@ -177,6 +207,12 @@ h2:after {
 /* -------------------------------------------- */
 /* ----- Recipe Page ----- */
 /* -------------------------------------------- */
+.return-btn {
+    display: block;
+    margin: 0 auto;
+    font-size: 400%;
+}
+
 .recipe-title {
     font-weight: 300;
 }
@@ -194,11 +230,17 @@ h3 {
     font-size: 140%;
 }
 
+.cooking-instructions {
+    width: 40%;
+    font-size: 140%;
+    margin: 0 auto;
+}
+
 .recipe-img {
+    padding: 50px;
     display: block;
     margin: 0 auto;
     position: relative;
-    padding-bottom: 50px;
 }
 
 .recipe-icons {
@@ -231,8 +273,6 @@ footer {
     text-align: center;
     padding-top: 40px;
 }
-
-
 
 /* -------------------------------------------- */
 /* ----- DOM ----- */

@@ -1,9 +1,7 @@
-const recipeData = [
-  {
+const recipeData = [{
     "id": 595736,
-    "image": "https://spoonacular.com/recipeImages/595736-556x370.jpg",
-    "ingredients": [
-      {
+    "image": "https://images.unsplash.com/photo-1541781622821-8af65b6b449f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80",
+    "ingredients": [{
         "id": 20081,
         "quantity": {
           "amount": 1.5,
@@ -81,8 +79,7 @@ const recipeData = [
         }
       }
     ],
-    "instructions": [
-      {
+    "instructions": [{
         "instruction": "In a large mixing bowl, whisk together the dry ingredients (flour, pudding mix, soda and salt). Set aside.In a large mixing bowl of a stand mixer, cream butter for 30 seconds. Gradually add granulated sugar and brown sugar and cream until light and fluffy.",
         "number": 1
       },
@@ -120,8 +117,7 @@ const recipeData = [
   {
     "id": 678353,
     "image": "https://spoonacular.com/recipeImages/678353-556x370.jpg",
-    "ingredients": [
-      {
+    "ingredients": [{
         "id": 1009016,
         "quantity": {
           "amount": 1.5,
@@ -206,12 +202,10 @@ const recipeData = [
         }
       }
     ],
-    "instructions": [
-      {
-        "instruction": "Season the pork chops with salt and pepper and grill or pan fry over medium high heat until cooked, about 3-5 minutes per side. (If grilling, baste the chops in the maple dijon apple cider sauce as you grill.)Meanwhile, mix the remaining ingredients except the apple slices, bring to a simmer and cook until the sauce thickens, about 2-5 minutes.Grill or saute the apple slices until just tender but still crisp.Toss the pork chops and apple slices in the maple dijon apple cider sauce and enjoy!",
-        "number": 1
-      }
-    ],
+    "instructions": [{
+      "instruction": "Season the pork chops with salt and pepper and grill or pan fry over medium high heat until cooked, about 3-5 minutes per side. (If grilling, baste the chops in the maple dijon apple cider sauce as you grill.)Meanwhile, mix the remaining ingredients except the apple slices, bring to a simmer and cook until the sauce thickens, about 2-5 minutes.Grill or saute the apple slices until just tender but still crisp.Toss the pork chops and apple slices in the maple dijon apple cider sauce and enjoy!",
+      "number": 1
+    }],
     "name": "Maple Dijon Apple Cider Grilled Pork Chops",
     "tags": [
       "lunch",
@@ -223,8 +217,7 @@ const recipeData = [
   {
     "id": 412309,
     "image": "https://spoonacular.com/recipeImages/412309-556x370.jpeg",
-    "ingredients": [
-      {
+    "ingredients": [{
         "id": 1002030,
         "quantity": {
           "amount": 4,
@@ -316,12 +309,10 @@ const recipeData = [
         }
       }
     ],
-    "instructions": [
-      {
-        "instruction": "Mix the hot sauce, butter, mango habanero sauce, brown sugar, chili powder, garlic powder, onion powder, black pepper, cayenne pepper and seasoning salt in a bowl. Stir vigorously until completely combined.",
-        "number": 1
-      }
-    ],
+    "instructions": [{
+      "instruction": "Mix the hot sauce, butter, mango habanero sauce, brown sugar, chili powder, garlic powder, onion powder, black pepper, cayenne pepper and seasoning salt in a bowl. Stir vigorously until completely combined.",
+      "number": 1
+    }],
     "name": "Dirty Steve's Original Wing Sauce",
     "tags": [
       "sauce"
@@ -330,8 +321,7 @@ const recipeData = [
   {
     "id": 741603,
     "image": "https://spoonacular.com/recipeImages/741603-556x370.jpeg",
-    "ingredients": [
-      {
+    "ingredients": [{
         "id": 20081,
         "quantity": {
           "amount": 1,
@@ -416,8 +406,7 @@ const recipeData = [
         }
       }
     ],
-    "instructions": [
-      {
+    "instructions": [{
         "instruction": "Watch how to make this recipe.",
         "number": 1
       },
@@ -454,8 +443,7 @@ const recipeData = [
   {
     "id": 562334,
     "image": "https://spoonacular.com/recipeImages/562334-556x370.jpg",
-    "ingredients": [
-      {
+    "ingredients": [{
         "id": 2048,
         "quantity": {
           "amount": 2,
@@ -568,8 +556,7 @@ const recipeData = [
         }
       }
     ],
-    "instructions": [
-      {
+    "instructions": [{
         "instruction": "Grease or spray oil a 9\u00d75 inch loaf pan.Preheat oven to 170 \u2013 200\u00b0F (lowest possible).",
         "number": 1
       },
@@ -616,8 +603,7 @@ const recipeData = [
   {
     "id": 507921,
     "image": "https://spoonacular.com/recipeImages/507921-556x370.jpg",
-    "ingredients": [
-      {
+    "ingredients": [{
         "id": 18371,
         "quantity": {
           "amount": 1,
@@ -688,8 +674,7 @@ const recipeData = [
         }
       }
     ],
-    "instructions": [
-      {
+    "instructions": [{
         "instruction": "To make the Cupcakes: Preheat oven to 350 degrees. Line 12 cupcake tins with paper holders.",
         "number": 1
       },
@@ -710,8 +695,7 @@ const recipeData = [
   {
     "id": 721146,
     "image": "https://spoonacular.com/recipeImages/721146-556x370.jpg",
-    "ingredients": [
-      {
+    "ingredients": [{
         "id": 12061,
         "quantity": {
           "amount": 0.5,
@@ -796,8 +780,7 @@ const recipeData = [
         }
       }
     ],
-    "instructions": [
-      {
+    "instructions": [{
         "instruction": "Preheat the oven to 325 degrees F.Coarsely chop the almonds and pecans.",
         "number": 1
       },
@@ -830,8 +813,7 @@ const recipeData = [
   {
     "id": 541288,
     "image": "https://spoonacular.com/recipeImages/541288-556x370.jpg",
-    "ingredients": [
-      {
+    "ingredients": [{
         "id": 20081,
         "quantity": {
           "amount": 160,
@@ -881,8 +863,7 @@ const recipeData = [
         }
       }
     ],
-    "instructions": [
-      {
+    "instructions": [{
         "instruction": "Cut the butter into small cubes and keep them refrigerated until ready to use (I cut on parchment paper and wrap up the butter for easy transfer.).In the food processor, combine the flour, almond meal, sugar, and salt. If you don\u2019t have a food processor, you can simply use a bowl to mix all the ingredients.If you want your sesame seeds to be fine texture, add them now. If you prefer to keep the original shape of sesame seeds, add them with egg yolk later on.Take out the butter from the refrigerator and mix together. If you use a regular bowl to mix, use a dough/pastry blender to combine the butter into the dry ingredients.Lastly add egg yolk.If the food processor is small (like mine) and it doesn\u2019t look like it\u2019s mixed completely, take it out and mix well with a silicone spatula.Form the dough into a ball and cut in half.",
         "number": 1
       },
@@ -920,8 +901,7 @@ const recipeData = [
   {
     "id": 779583,
     "image": "https://spoonacular.com/recipeImages/779583-556x370.jpg",
-    "ingredients": [
-      {
+    "ingredients": [{
         "id": 19334,
         "quantity": {
           "amount": 1,
@@ -1020,8 +1000,7 @@ const recipeData = [
         }
       }
     ],
-    "instructions": [
-      {
+    "instructions": [{
         "instruction": "Prepare the chicken: In a large bowl, whisk together the brown sugar, ginger, oil, soy sauce, Sriracha and peanut butter.",
         "number": 1
       },
@@ -1065,8 +1044,7 @@ const recipeData = [
   {
     "id": 550940,
     "image": "https://spoonacular.com/recipeImages/550940-556x370.jpg",
-    "ingredients": [
-      {
+    "ingredients": [{
         "id": 11135,
         "quantity": {
           "amount": 1,
@@ -1158,8 +1136,7 @@ const recipeData = [
         }
       }
     ],
-    "instructions": [
-      {
+    "instructions": [{
         "instruction": "Preheat the oven to 375FCook and peel the hard boiled eggs according to your favourite method.",
         "number": 1
       },
@@ -1187,8 +1164,7 @@ const recipeData = [
   {
     "id": 583502,
     "image": "https://spoonacular.com/recipeImages/583502-556x370.jpg",
-    "ingredients": [
-      {
+    "ingredients": [{
         "id": 6150,
         "quantity": {
           "amount": 1,
@@ -1259,8 +1235,7 @@ const recipeData = [
         }
       }
     ],
-    "instructions": [
-      {
+    "instructions": [{
         "instruction": "Combine 1 cup chicken broth, 1 cup BBQ sauce, 3 tbsp liquid smoke, 2 tbsp Worcestershire sauce, 3 pressed garlic cloves, 2 tbsp brown sugar and stir to combine.Generously sprinkle the pork roast with salt, pepper and paprika.Rub the seasoning into the pork shoulder.Chop 1 large onion and place it into the bottom of the slow cooker.",
         "number": 1
       },
@@ -1292,8 +1267,7 @@ const recipeData = [
   {
     "id": 543687,
     "image": "https://spoonacular.com/recipeImages/543687-556x370.jpg",
-    "ingredients": [
-      {
+    "ingredients": [{
         "id": 93607,
         "quantity": {
           "amount": 1,
@@ -1357,12 +1331,10 @@ const recipeData = [
         }
       }
     ],
-    "instructions": [
-      {
-        "instruction": "Add all ingredients to a blender (except graham crackers if using). Cover and blend until well pureed then serve topped with crushed graham crackers if desired.*The banana is mostly what gives this smoothie it's sweetness, so I recommend using one that is speckled (not mushy though).Recipe Source: Cooking Classy",
-        "number": 1
-      }
-    ],
+    "instructions": [{
+      "instruction": "Add all ingredients to a blender (except graham crackers if using). Cover and blend until well pureed then serve topped with crushed graham crackers if desired.*The banana is mostly what gives this smoothie it's sweetness, so I recommend using one that is speckled (not mushy though).Recipe Source: Cooking Classy",
+      "number": 1
+    }],
     "name": "Pumpkin Cheesecake Breakfast Smoothie",
     "tags": [
       "morning meal",
@@ -1373,8 +1345,7 @@ const recipeData = [
   {
     "id": 516904,
     "image": "https://spoonacular.com/recipeImages/516904-556x370.jpg",
-    "ingredients": [
-      {
+    "ingredients": [{
         "id": 9016,
         "quantity": {
           "amount": 3,
@@ -1452,8 +1423,7 @@ const recipeData = [
         }
       }
     ],
-    "instructions": [
-      {
+    "instructions": [{
         "instruction": "Prepare apple filling: Melt butter over medium heat in 12- inch skillet.",
         "number": 1
       },
@@ -1494,8 +1464,7 @@ const recipeData = [
   {
     "id": 988243,
     "image": "https://spoonacular.com/recipeImages/988243-556x370.jpg",
-    "ingredients": [
-      {
+    "ingredients": [{
         "id": 1002030,
         "quantity": {
           "amount": 0.25,
@@ -1552,8 +1521,7 @@ const recipeData = [
         }
       }
     ],
-    "instructions": [
-      {
+    "instructions": [{
         "instruction": "Melt butter to a large skillet over medium heat. As the butter melts, it will begin to foam as it transitions from a bright, lemon-yellow color to golden and then finally to a nutty-brown color. As the butter just begins to turn nutty-brown from golden, reduce your heat to medium-low and carefully toss in your garlic and onion. Cook until the onion just begins to become tender and then add in your shrimp. Stirring frequently, cook until the shrimp turn pink and lose their translucence.",
         "number": 1
       },
@@ -1577,8 +1545,7 @@ const recipeData = [
   {
     "id": 724018,
     "image": "https://spoonacular.com/recipeImages/724018-556x370.jpg",
-    "ingredients": [
-      {
+    "ingredients": [{
         "id": 11007,
         "quantity": {
           "amount": 2,
@@ -1670,8 +1637,7 @@ const recipeData = [
         }
       }
     ],
-    "instructions": [
-      {
+    "instructions": [{
         "instruction": "Cut off the crust from 6 slices of bread. Chop the centers and put into a food processor. Pulse until you have coarse breadcrumbs. You should have about 3 cups.",
         "number": 1
       },
@@ -1694,8 +1660,7 @@ const recipeData = [
   {
     "id": 623855,
     "image": "https://spoonacular.com/recipeImages/623855-556x370.jpg",
-    "ingredients": [
-      {
+    "ingredients": [{
         "id": 18372,
         "quantity": {
           "amount": 1,
@@ -1787,8 +1752,7 @@ const recipeData = [
         }
       }
     ],
-    "instructions": [
-      {
+    "instructions": [{
         "instruction": "Preheat oven to 350FLine a baking sheet with parchment, set aside.In bowl of stand mixer cream butter and peanut butter together until smooth.",
         "number": 1
       },
@@ -1841,8 +1805,7 @@ const recipeData = [
   {
     "id": 793584,
     "image": "https://spoonacular.com/recipeImages/793584-556x370.jpg",
-    "ingredients": [
-      {
+    "ingredients": [{
         "id": 11143,
         "quantity": {
           "amount": 0.5,
@@ -1934,8 +1897,7 @@ const recipeData = [
         }
       }
     ],
-    "instructions": [
-      {
+    "instructions": [{
         "instruction": "Place potatoes in a large saucepan and add water to cover by 1 inch. Bring to boil over medium-high heat.",
         "number": 1
       },
@@ -1968,8 +1930,7 @@ const recipeData = [
   {
     "id": 607805,
     "image": "https://spoonacular.com/recipeImages/607805-556x370.jpg",
-    "ingredients": [
-      {
+    "ingredients": [{
         "id": 10211821,
         "quantity": {
           "amount": 3,
@@ -2033,8 +1994,7 @@ const recipeData = [
         }
       }
     ],
-    "instructions": [
-      {
+    "instructions": [{
         "instruction": "Cut tops off peppers; remove and discard seeds.",
         "number": 1
       },
@@ -2063,8 +2023,7 @@ const recipeData = [
   {
     "id": 763858,
     "image": "https://spoonacular.com/recipeImages/763858-556x370.jpg",
-    "ingredients": [
-      {
+    "ingredients": [{
         "id": 10120129,
         "quantity": {
           "amount": 2,
@@ -2156,8 +2115,7 @@ const recipeData = [
         }
       }
     ],
-    "instructions": [
-      {
+    "instructions": [{
         "instruction": "Whisk flours together with  teaspoon instant yeast in a large mixing bowl with a tight-fitting lid (like this one), and then stir in the oats. Stir the water and milk together, then pour the liquids into the dry ingredients, stirring to create a loose, shaggy dough. Cover the mixing bowl tightly, and allow the dough to rest at room temperature at least eight and up to twelve hours.Dump the dough into the basin of a stand mixer (like this one), and then beat in the butter, honey, salt, and the remaining 2 tablespoons yeast. Continue beating all the ingredients together until they form a smooth dough, and then turn it out on a well-floured surface. Knead by hand for ten to fifteen minutes, incorporating about 1 cups additional flour, until the dough becomes smooth and elastic.Oil a large mixing bowl, and transfer the dough to the bowl. Cover tightly, and allow the dough to rise until doubled in volume.",
         "number": 1
       },
@@ -2191,8 +2149,7 @@ const recipeData = [
   {
     "id": 618332,
     "image": "https://spoonacular.com/recipeImages/618332-556x370.jpg",
-    "ingredients": [
-      {
+    "ingredients": [{
         "id": 19912,
         "quantity": {
           "amount": 168,
@@ -2263,8 +2220,7 @@ const recipeData = [
         }
       }
     ],
-    "instructions": [
-      {
+    "instructions": [{
         "instruction": "In a medium bowl, whisk together the flour, baking powder, cornstarch, cinnamon, and salt. In a separate bowl, whisk together the butter, pumpkin, and vanilla. Stir in the agave.",
         "number": 1
       },
@@ -2285,8 +2241,7 @@ const recipeData = [
   {
     "id": 231951,
     "image": "https://spoonacular.com/recipeImages/231951-556x370.jpg",
-    "ingredients": [
-      {
+    "ingredients": [{
         "id": 20027,
         "quantity": {
           "amount": 2,
@@ -2336,8 +2291,7 @@ const recipeData = [
         }
       }
     ],
-    "instructions": [
-      {
+    "instructions": [{
         "instruction": "Whisk together brown sugar, cornstarch, and 1/4 teaspoon salt in a heavy medium saucepan, then whisk in milk and cream. Bring to a boil over medium heat, whisking frequently, then boil, whisking, 1 minute.",
         "number": 1
       },
@@ -2358,8 +2312,7 @@ const recipeData = [
   {
     "id": 880108,
     "image": "https://spoonacular.com/recipeImages/880108-556x370.jpg",
-    "ingredients": [
-      {
+    "ingredients": [{
         "id": 11206,
         "quantity": {
           "amount": 1,
@@ -2416,8 +2369,7 @@ const recipeData = [
         }
       }
     ],
-    "instructions": [
-      {
+    "instructions": [{
         "instruction": "Rinse the quinoa under cool running water.",
         "number": 1
       },
@@ -2442,8 +2394,7 @@ const recipeData = [
   {
     "id": 602311,
     "image": "https://spoonacular.com/recipeImages/602311-556x370.jpg",
-    "ingredients": [
-      {
+    "ingredients": [{
         "id": 14242,
         "quantity": {
           "amount": 0.6666666666666666,
@@ -2493,8 +2444,7 @@ const recipeData = [
         }
       }
     ],
-    "instructions": [
-      {
+    "instructions": [{
         "instruction": "Lightly spray the mold with non-stick spray and wipe excess off with a paper towel. Don\u2019t overdo it or the residue will affect the taste of the jello.",
         "number": 1
       },
@@ -2528,8 +2478,7 @@ const recipeData = [
   {
     "id": 670408,
     "image": "https://spoonacular.com/recipeImages/670408-556x370.jpg",
-    "ingredients": [
-      {
+    "ingredients": [{
         "id": 93828,
         "quantity": {
           "amount": 0.5,
@@ -2614,8 +2563,7 @@ const recipeData = [
         }
       }
     ],
-    "instructions": [
-      {
+    "instructions": [{
         "instruction": "Preheat oven to 350 degrees F. First, remove the mushroom stems by pushing each one toward you, then away from you. It will pop right out. (Save them to add to another recipe.) Swish and rub the mushroom tops in a large bowl of cold water to get them clean. Then, lay them open side down on a kitchen towel to dry.While the mushrooms dry, mix together the cream cheese, spinach, artichoke hearts, parmesan, garlic powder, 1/2 tsp. kosher salt, and red pepper flakes.In a small bowl, stir together olive oil, 1/4 tsp. salt, and Italian seasoning. Use a basting brush or your fingers to lightly rub the outside of the mushrooms with the oil mixture.",
         "number": 1
       },
@@ -2638,8 +2586,7 @@ const recipeData = [
   {
     "id": 325208,
     "image": "https://spoonacular.com/recipeImages/325208-556x370.jpeg",
-    "ingredients": [
-      {
+    "ingredients": [{
         "id": 1002030,
         "quantity": {
           "amount": 0.25,
@@ -2752,8 +2699,7 @@ const recipeData = [
         }
       }
     ],
-    "instructions": [
-      {
+    "instructions": [{
         "instruction": "Watch how to make this recipe.",
         "number": 1
       },
@@ -2829,8 +2775,7 @@ const recipeData = [
   {
     "id": 542778,
     "image": "https://spoonacular.com/recipeImages/542778-556x370.jpg",
-    "ingredients": [
-      {
+    "ingredients": [{
         "id": 1123,
         "quantity": {
           "amount": 2,
@@ -2908,8 +2853,7 @@ const recipeData = [
         }
       }
     ],
-    "instructions": [
-      {
+    "instructions": [{
         "instruction": "Preheat the oven to 375\u00b0F then prepare a large casserole dish (I used a 1 quart dish) by greasing with Earth Balance, butter or non-stick cooking spray.Warm the olive oil over medium heat in a saut\u00e9 pan and cook the shallot and garlic for a few minutes, until fragrant.Using a strainer and a paper towel, press the excess water out from the defrosted spinach then add it to the pan.",
         "number": 1
       },
@@ -2941,8 +2885,7 @@ const recipeData = [
   {
     "id": 698701,
     "image": "https://spoonacular.com/recipeImages/698701-556x370.jpg",
-    "ingredients": [
-      {
+    "ingredients": [{
         "id": 10014623,
         "quantity": {
           "amount": 1,
@@ -2992,8 +2935,7 @@ const recipeData = [
         }
       }
     ],
-    "instructions": [
-      {
+    "instructions": [{
         "instruction": "To prepare berry layer: Preheat oven to 375F. Coat six 8-ounce souffl cups with cooking spray.",
         "number": 1
       },
@@ -3014,8 +2956,7 @@ const recipeData = [
   {
     "id": 515021,
     "image": "https://spoonacular.com/recipeImages/515021-556x370.jpg",
-    "ingredients": [
-      {
+    "ingredients": [{
         "id": 9040,
         "quantity": {
           "amount": 4,
@@ -3100,8 +3041,7 @@ const recipeData = [
         }
       }
     ],
-    "instructions": [
-      {
+    "instructions": [{
         "instruction": "Grease a 9\u00d713 pan.",
         "number": 1
       },
@@ -3135,8 +3075,7 @@ const recipeData = [
   {
     "id": 999044,
     "image": "https://spoonacular.com/recipeImages/999044-556x370.jpg",
-    "ingredients": [
-      {
+    "ingredients": [{
         "id": 9037,
         "quantity": {
           "amount": 1,
@@ -3200,8 +3139,7 @@ const recipeData = [
         }
       }
     ],
-    "instructions": [
-      {
+    "instructions": [{
         "instruction": "Working in a couple of batches, roughly chop the chickpeas and place in a bowl.",
         "number": 1
       },
@@ -3234,8 +3172,7 @@ const recipeData = [
   {
     "id": 798070,
     "image": "https://spoonacular.com/recipeImages/798070-556x370.jpg",
-    "ingredients": [
-      {
+    "ingredients": [{
         "id": 18371,
         "quantity": {
           "amount": 1,
@@ -3299,8 +3236,7 @@ const recipeData = [
         }
       }
     ],
-    "instructions": [
-      {
+    "instructions": [{
         "instruction": "Melt butter and brush some of the butter around the slow cooker.Using a stand mixer, combine flour, 1-cup sugar, baking powder, and salt. Then, add milk and remaining melted cooled butter, mixing just until dry ingredients are moistened.",
         "number": 1
       },
@@ -3317,8 +3253,7 @@ const recipeData = [
   {
     "id": 574317,
     "image": "https://spoonacular.com/recipeImages/574317-556x370.jpg",
-    "ingredients": [
-      {
+    "ingredients": [{
         "id": 20081,
         "quantity": {
           "amount": 2.5,
@@ -3431,8 +3366,7 @@ const recipeData = [
         }
       }
     ],
-    "instructions": [
-      {
+    "instructions": [{
         "instruction": "In a large mixing bowl, add 1 cup warm water, 1 pack rapid or quick yeast, 1 t sugar 1/2 t salt and 1 T olive oil.",
         "number": 1
       },
@@ -3490,8 +3424,7 @@ const recipeData = [
   {
     "id": 673337,
     "image": "https://spoonacular.com/recipeImages/673337-556x370.jpg",
-    "ingredients": [
-      {
+    "ingredients": [{
         "id": 98998,
         "quantity": {
           "amount": 12,
@@ -3541,12 +3474,10 @@ const recipeData = [
         }
       }
     ],
-    "instructions": [
-      {
-        "instruction": "Pour mixture into prepared pan, using your hands press to flatten. Set aside for 1-2 hours to set.In a separate bowl, combine powdered sugar with milk and stir to combine. Using a spoon, drizzle glaze on top of cereal bars and dust with colored sugar or sprinkles.",
-        "number": 1
-      }
-    ],
+    "instructions": [{
+      "instruction": "Pour mixture into prepared pan, using your hands press to flatten. Set aside for 1-2 hours to set.In a separate bowl, combine powdered sugar with milk and stir to combine. Using a spoon, drizzle glaze on top of cereal bars and dust with colored sugar or sprinkles.",
+      "number": 1
+    }],
     "name": "Cereal Marshmallow Bars",
     "tags": [
       "side dish"
@@ -3555,8 +3486,7 @@ const recipeData = [
   {
     "id": 764184,
     "image": "https://spoonacular.com/recipeImages/764184-556x370.jpg",
-    "ingredients": [
-      {
+    "ingredients": [{
         "id": 1123,
         "quantity": {
           "amount": 6,
@@ -3599,8 +3529,7 @@ const recipeData = [
         }
       }
     ],
-    "instructions": [
-      {
+    "instructions": [{
         "instruction": "To hard-boil the eggs, place the raw eggs at the bottom of a large pot.",
         "number": 1
       },
@@ -3625,8 +3554,7 @@ const recipeData = [
   {
     "id": 206402,
     "image": "https://spoonacular.com/recipeImages/206402-556x370.jpg",
-    "ingredients": [
-      {
+    "ingredients": [{
         "id": 1017,
         "quantity": {
           "amount": 16,
@@ -3690,8 +3618,7 @@ const recipeData = [
         }
       }
     ],
-    "instructions": [
-      {
+    "instructions": [{
         "instruction": "Whisk together evaporated milk, pudding mix, and zest in a bowl for 2 minutes or until mixture is thickened.",
         "number": 1
       },
@@ -3720,8 +3647,7 @@ const recipeData = [
   {
     "id": 446577,
     "image": "https://spoonacular.com/recipeImages/446577-556x370.jpg",
-    "ingredients": [
-      {
+    "ingredients": [{
         "id": 10123,
         "quantity": {
           "amount": 6,
@@ -3771,8 +3697,7 @@ const recipeData = [
         }
       }
     ],
-    "instructions": [
-      {
+    "instructions": [{
         "instruction": "Place bacon in a large, deep skillet. Cook over medium high heat until the fat begins to render. Stir in onions and garlic; let cook for 1 minute. Stir in beans and water.",
         "number": 1
       },
@@ -3789,8 +3714,7 @@ const recipeData = [
   {
     "id": 576906,
     "image": "https://spoonacular.com/recipeImages/576906-556x370.jpg",
-    "ingredients": [
-      {
+    "ingredients": [{
         "id": 11959,
         "quantity": {
           "amount": 2,
@@ -3868,8 +3792,7 @@ const recipeData = [
         }
       }
     ],
-    "instructions": [
-      {
+    "instructions": [{
         "instruction": "In a medium bowl add the pear juice and vinegar. While whisking, slowly stream in the olive oil. Scrape the leaves off of two sprigs of thyme and add in the black pepper.",
         "number": 1
       },
@@ -3894,8 +3817,7 @@ const recipeData = [
   {
     "id": 504218,
     "image": "https://spoonacular.com/recipeImages/504218-556x370.jpg",
-    "ingredients": [
-      {
+    "ingredients": [{
         "id": 10011693,
         "quantity": {
           "amount": 2,
@@ -3966,8 +3888,7 @@ const recipeData = [
         }
       }
     ],
-    "instructions": [
-      {
+    "instructions": [{
         "instruction": "Chop all the veggies.",
         "number": 1
       },
@@ -3996,8 +3917,7 @@ const recipeData = [
   {
     "id": 445196,
     "image": "https://spoonacular.com/recipeImages/445196-556x370.jpg",
-    "ingredients": [
-      {
+    "ingredients": [{
         "id": 6150,
         "quantity": {
           "amount": 0.5,
@@ -4061,8 +3981,7 @@ const recipeData = [
         }
       }
     ],
-    "instructions": [
-      {
+    "instructions": [{
         "instruction": "In a nonstick skillet coated with cooking spray, saute onion and green pepper for 3-4 minutes or until crisp-tender.",
         "number": 1
       },
@@ -4090,8 +4009,7 @@ const recipeData = [
   {
     "id": 759534,
     "image": "https://spoonacular.com/recipeImages/759534-556x370.jpg",
-    "ingredients": [
-      {
+    "ingredients": [{
         "id": 19334,
         "quantity": {
           "amount": 0.5,
@@ -4169,8 +4087,7 @@ const recipeData = [
         }
       }
     ],
-    "instructions": [
-      {
+    "instructions": [{
         "instruction": "Preheat oven to 450\u00b0F.",
         "number": 1
       },
@@ -4211,8 +4128,7 @@ const recipeData = [
   {
     "id": 588893,
     "image": "https://spoonacular.com/recipeImages/588893-556x370.jpg",
-    "ingredients": [
-      {
+    "ingredients": [{
         "id": 11457,
         "quantity": {
           "amount": 2,
@@ -4283,8 +4199,7 @@ const recipeData = [
         }
       }
     ],
-    "instructions": [
-      {
+    "instructions": [{
         "instruction": "In a medium sized pot combine the farro with the 5 cups of water and 2 teaspoons salt. Bring to a boil, then lower to a simmer and cook for about 25 minutes for semi-pearled farro and 50 minutes for whole farro. The farro is done when the grains are tender and all the water has been absorbed. Set aside.While the farro is cooking, combine the shiitake mushrooms with 1 cup of boiling water.",
         "number": 1
       },
@@ -4316,8 +4231,7 @@ const recipeData = [
   {
     "id": 615581,
     "image": "https://spoonacular.com/recipeImages/615581-556x370.jpg",
-    "ingredients": [
-      {
+    "ingredients": [{
         "id": 2069,
         "quantity": {
           "amount": 0.5,
@@ -4416,8 +4330,7 @@ const recipeData = [
         }
       }
     ],
-    "instructions": [
-      {
+    "instructions": [{
         "instruction": "In a bowl, whisk together the mayo, chili sauce and sriracha, then set it aside until ready to use.Toss the shrimp with the cornstarch until evenly coated.",
         "number": 1
       },
@@ -4445,8 +4358,7 @@ const recipeData = [
   {
     "id": 764810,
     "image": "https://spoonacular.com/recipeImages/764810-556x370.jpg",
-    "ingredients": [
-      {
+    "ingredients": [{
         "id": 1002030,
         "quantity": {
           "amount": 0.25,
@@ -4510,8 +4422,7 @@ const recipeData = [
         }
       }
     ],
-    "instructions": [
-      {
+    "instructions": [{
         "instruction": "Preheat the oven to 350F.Spray baking sheets with cooking spray or spread a thin layer of olive oil over them.",
         "number": 1
       },
@@ -4549,8 +4460,7 @@ const recipeData = [
   {
     "id": 799732,
     "image": "https://spoonacular.com/recipeImages/799732-556x370.jpg",
-    "ingredients": [
-      {
+    "ingredients": [{
         "id": 10011250,
         "quantity": {
           "amount": 4,
@@ -4628,8 +4538,7 @@ const recipeData = [
         }
       }
     ],
-    "instructions": [
-      {
+    "instructions": [{
         "instruction": "In a large bowl, mix the first six ingredients. Stir in  chicken, celery and onion. Refrigerate, covered, at least 1 hour.",
         "number": 1
       },
@@ -4650,8 +4559,7 @@ const recipeData = [
   {
     "id": 621213,
     "image": "https://spoonacular.com/recipeImages/621213-556x370.jpg",
-    "ingredients": [
-      {
+    "ingredients": [{
         "id": 10123,
         "quantity": {
           "amount": 14,
@@ -4743,8 +4651,7 @@ const recipeData = [
         }
       }
     ],
-    "instructions": [
-      {
+    "instructions": [{
         "instruction": "Saute onion in 1 tbsp. Olive Oil for a few minutes until soft.",
         "number": 1
       },
@@ -4788,8 +4695,7 @@ const recipeData = [
   {
     "id": 611858,
     "image": "https://spoonacular.com/recipeImages/611858-556x370.jpg",
-    "ingredients": [
-      {
+    "ingredients": [{
         "id": 18371,
         "quantity": {
           "amount": 0.5,
@@ -4860,8 +4766,7 @@ const recipeData = [
         }
       }
     ],
-    "instructions": [
-      {
+    "instructions": [{
         "instruction": "Preheat oven to 350F. Line a 8x8-inch baking pan with foil and spray with non-stick cooking spray.In a medium bowl, whisk together the flour, baking powder, baking soda, and salt.In the bowl of a stand mixer fitted with the paddle attachment or in a large bowl with an electric mixer, combine the melted butter and brown sugar.",
         "number": 1
       },
@@ -4894,8 +4799,7 @@ const recipeData = [
   {
     "id": 991136,
     "image": "https://spoonacular.com/recipeImages/991136-556x370.jpg",
-    "ingredients": [
-      {
+    "ingredients": [{
         "id": 1001,
         "quantity": {
           "amount": 0.25,
@@ -4938,8 +4842,7 @@ const recipeData = [
         }
       }
     ],
-    "instructions": [
-      {
+    "instructions": [{
         "instruction": "Place chicken in a 3-qt. slow cooker. Toss with 2 tablespoons hot sauce and pepper; cook, covered, on low until tender, 3-4 hours.",
         "number": 1
       },
@@ -4963,8 +4866,7 @@ const recipeData = [
   {
     "id": 583738,
     "image": "https://spoonacular.com/recipeImages/583738-556x370.jpg",
-    "ingredients": [
-      {
+    "ingredients": [{
         "id": 18372,
         "quantity": {
           "amount": 0.75,
@@ -5035,8 +4937,7 @@ const recipeData = [
         }
       }
     ],
-    "instructions": [
-      {
+    "instructions": [{
         "instruction": "Preheat oven to 350\u00b0F. Line two baking sheets with parchment paper.",
         "number": 1
       },
@@ -5070,8 +4971,7 @@ const recipeData = [
   {
     "id": 601216,
     "image": "https://spoonacular.com/recipeImages/601216-556x370.jpg",
-    "ingredients": [
-      {
+    "ingredients": [{
         "id": 1041009,
         "quantity": {
           "amount": 2,
@@ -5114,8 +5014,7 @@ const recipeData = [
         }
       }
     ],
-    "instructions": [
-      {
+    "instructions": [{
         "instruction": "Saute the zucchini in the olive oil on high heat. Season generously with salt and pepper. Stir and leave alone for a little while, so you get a little bit of texture from the browning on the zucchini.While you\u2019re sauteing, toast the flatbread in the oven at 400 degrees.When the zucchini is soft and just slightly browned, remove from the heat. Take the flatbread out of the oven and spread the zucchini on the flatbread.Top with the fresh tomatoes, cheese, and fresh basil.",
         "number": 1
       },
@@ -5132,8 +5031,7 @@ const recipeData = [
   {
     "id": 226562,
     "image": "https://spoonacular.com/recipeImages/226562-556x370.jpg",
-    "ingredients": [
-      {
+    "ingredients": [{
         "id": 9019,
         "quantity": {
           "amount": 2,
@@ -5260,8 +5158,7 @@ const recipeData = [
         }
       }
     ],
-    "instructions": [
-      {
+    "instructions": [{
         "instruction": "Wash the lentils and place into a pot along with the vegetable broth. Bring to a boil, then reduce heat to medium-low and simmer, for about 40 minutes.",
         "number": 1
       },
@@ -5306,8 +5203,7 @@ const recipeData = [
   {
     "id": 605132,
     "image": "https://spoonacular.com/recipeImages/605132-556x370.jpg",
-    "ingredients": [
-      {
+    "ingredients": [{
         "id": 1001,
         "quantity": {
           "amount": 2,
@@ -5357,8 +5253,7 @@ const recipeData = [
         }
       }
     ],
-    "instructions": [
-      {
+    "instructions": [{
         "instruction": "In a heavy saucepan, stir together the milk and 1/4 cup of sugar. Bring to a boil over medium heat.",
         "number": 1
       },
@@ -5381,3 +5276,7 @@ const recipeData = [
     ]
   }
 ];
+
+if (typeof module !== 'undefined') {
+  module.exports = recipeData;
+}
