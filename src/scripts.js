@@ -26,7 +26,9 @@ function buttonClick(e) {
         openRecipe(e);
     };
     // Come back to main
-
+    if (e.target.classList.contains('return-btn')) {
+      returnToMainPage();
+    }
     // Add to My Favourite (heart)
 
     // Add to cook (checkmark)
@@ -98,11 +100,11 @@ function getRecipeInfo(e) {
 
 function displayFullRecipe(fullRecipeInfo) {
   recipePage.insertAdjacentHTML('beforeend', `
-    <button type="button" name="button" class="return-btn"><ion-icon name="close-outline"></ion-icon></button>
+    <button type="button" name="button" class="return-btn"><ion-icon name="close-outline" class="return-btn"></ion-icon></button>
     <h2 class="recipe-title">${fullRecipeInfo.name}</h2>
     <div class="recipe-icons">
-      <ion-icon name="heart-outline" class="recipe-icon"></ion-icon>
-      <ion-icon name="checkmark-outline" class="recipe-icon"></ion-icon>
+      <ion-icon name="heart-outline" class="recipe-icon" id="${fullRecipeInfo.id}"></ion-icon>
+      <ion-icon name="checkmark-outline" class="recipe-icon" id="${fullRecipeInfo.id}"></ion-icon>
     </div>
     <h3>Ingredients:</h3>
     <ul class="ingredients">
@@ -110,20 +112,25 @@ function displayFullRecipe(fullRecipeInfo) {
     <div class="instructions-list"></div>
     <img class="recipe-img" src="${fullRecipeInfo.image}" alt="recipe picture">
   `);
-  getRecipeIngredients(fullRecipeInfo);
-  getRecipeInstructions(fullRecipeInfo);
+  displayRecipeIngredients(fullRecipeInfo);
+  displayRecipeInstructions(fullRecipeInfo);
 }
 
-function getRecipeIngredients(fullRecipeInfo) {
+function displayRecipeIngredients(fullRecipeInfo) {
   let ingredientList = document.querySelector('.ingredients');
   fullRecipeInfo.ingredients.forEach(ingredient => {
+    let ingredientName = getIngredientInfo(ingredient);
     ingredientList.insertAdjacentHTML('afterbegin', `
-    <li class="ingredient">${ingredient.quantity.amount} ${ingredient.quantity.unit} ${ingredient.id}</li>
+    <li class="ingredient">${ingredient.quantity.amount} ${ingredient.quantity.unit} ${ingredientName.name}</li>
     `)
   })
 }
 
-function getRecipeInstructions(fullRecipeInfo) {
+function getIngredientInfo(ingredient) {
+  return ingredientsData.find(e => e.id === ingredient.id)
+}
+
+function displayRecipeInstructions(fullRecipeInfo) {
   let instructionList = document.querySelector('.instructions-list');
   fullRecipeInfo.instructions.forEach(instruction => {
     instructionList.insertAdjacentHTML('beforeBegin', `
@@ -133,11 +140,14 @@ function getRecipeInstructions(fullRecipeInfo) {
   })
 }
 
+function returnToMainPage() {
+  mainPage.classList.remove('hidden');
+  recipePage.classList.add('hidden');
+  recipePage.innerHTML = ' ';
+}
+
 //FOR RECIPES
-// getInstructions() {
-//   //returning the instruction array when invoked
-//   //don't use this method - just use recipes.instructions
-// }
+
 // filterByTag(tag) {
 //   //take in tag, loop through if that argument tag strictly matches a tag in the this.tags array, then return recipe
 // }
