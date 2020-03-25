@@ -25,7 +25,7 @@ function buttonClick(e) {
     if (e.target.classList.contains('card-img') || e.target.classList.contains('card-title')) {
         openRecipe(e);
     };
-    // Come back to main 
+    // Come back to main
 
     // Add to My Favourite (heart)
 
@@ -48,7 +48,6 @@ function getRecipe(recipeData) {
 }
 
 function displayRecipe(recipeCard) {
-    debugger
     recipeContainer.insertAdjacentHTML('afterbegin', `
         <li class="recipe-card" id="${recipeCard.id}">
           <img src="${recipeCard.image}" class="card-img" alt="recipe picture" id="${recipeCard.id}">
@@ -88,11 +87,50 @@ function getTagImg(tag) {
 function openRecipe(e) {
     mainPage.classList.add('hidden');
     recipePage.classList.remove('hidden');
-    displayOpenedRecipe(e)
+    getRecipeInfo(e);
 }
 
-function displayOpenedRecipe(e) {
+function getRecipeInfo(e) {
+  let recipeId = parseInt(e.target.getAttribute('id'));
+  let fullRecipeInfo = recipeData.find(recipe => recipe.id === recipeId);
+  displayFullRecipe(fullRecipeInfo);
+}
 
+function displayFullRecipe(fullRecipeInfo) {
+  recipePage.insertAdjacentHTML('beforeend', `
+    <button type="button" name="button" class="return-btn"><ion-icon name="close-outline"></ion-icon></button>
+    <h2 class="recipe-title">${fullRecipeInfo.name}</h2>
+    <div class="recipe-icons">
+      <ion-icon name="heart-outline" class="recipe-icon"></ion-icon>
+      <ion-icon name="checkmark-outline" class="recipe-icon"></ion-icon>
+    </div>
+    <h3>Ingredients:</h3>
+    <ul class="ingredients">
+    </ul>
+    <div class="instructions-list"></div>
+    <img class="recipe-img" src="${fullRecipeInfo.image}" alt="recipe picture">
+  `);
+  getRecipeIngredients(fullRecipeInfo);
+  getRecipeInstructions(fullRecipeInfo);
+}
+
+function getRecipeIngredients(fullRecipeInfo) {
+  let ingredientList = document.querySelector('.ingredients');
+  fullRecipeInfo.ingredients.forEach(ingredient => {
+    ingredientList.insertAdjacentHTML('afterbegin', `
+    <li class="ingredient">${ingredient.quantity.amount} ${ingredient.quantity.unit} ${ingredient.id}</li>
+    `)
+  })
+}
+
+function getRecipeInstructions(fullRecipeInfo) {
+  let instructionList = document.querySelector('.instructions-list');
+  fullRecipeInfo.instructions.forEach(instruction => {
+    instructionList.insertAdjacentHTML('beforeBegin', `
+    <p class="cooking-instructions">Step ${instruction.number}</p>
+    <p>${instruction.instruction}</p>
+    `)
+  })
 }
 
 //FOR RECIPES
