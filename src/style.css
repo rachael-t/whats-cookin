@@ -14,7 +14,6 @@
 /* -------------------------------------------- */
 /* ----- Basic Setup ----- */
 /* -------------------------------------------- */
-
 * {
     margin: 0;
     padding: 0;
@@ -40,13 +39,14 @@ ul {
 /* ----- Header ----- */
 /* -------------------------------------------- */
 h1 {
+    position: relative;
+    top: 25%;
     font-weight: 100;
     text-transform: uppercase;
     text-align: center;
-    font-size: 500%;
+    font-size: 600%;
     word-spacing: 10px;
     color: var(--font-light);
-    margin-top: 80px;
 }
 
 header {
@@ -131,12 +131,13 @@ h2:after {
 .category-container {
     padding: 15px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     background-color: var(--background-medium);
 }
 
 .category-card {
-    margin: 0 10px;
+    padding: 10px;
     cursor: pointer;
     filter: opacity(.8);
 }
@@ -149,7 +150,7 @@ h2:after {
 
 .category-name {
     text-align: center;
-    font-weight: 300;
+    font-weight: 400;
 }
 
 /* ----- Recipe Gallery ----- */
@@ -206,6 +207,12 @@ h2:after {
 /* -------------------------------------------- */
 /* ----- Recipe Page ----- */
 /* -------------------------------------------- */
+.return-btn {
+    display: block;
+    margin: 0 auto;
+    font-size: 400%;
+}
+
 .recipe-title {
     font-weight: 300;
 }
@@ -223,11 +230,17 @@ h3 {
     font-size: 140%;
 }
 
+.cooking-instructions {
+    width: 40%;
+    font-size: 140%;
+    margin: 0 auto;
+}
+
 .recipe-img {
+    padding: 50px;
     display: block;
     margin: 0 auto;
     position: relative;
-    padding-bottom: 50px;
 }
 
 .recipe-icons {
@@ -260,8 +273,6 @@ footer {
     text-align: center;
     padding-top: 40px;
 }
-
-
 
 /* -------------------------------------------- */
 /* ----- DOM ----- */
