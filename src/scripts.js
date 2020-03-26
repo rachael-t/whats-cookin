@@ -160,9 +160,15 @@ function filterByTag(e) {
 
 function searchRecipes(e) {
   let ingredientSearched = getIngredientId(searchInput.value)
-  let filteredRecipes = recipeData.filter(recipe => recipe.ingredients.id === ingredientSearched);
+  let filteredRecipes = [];
+  recipeData.filter(recipe => {
+    recipe.ingredients.forEach(ingredient => {
+       if (ingredient.id === ingredientSearched) {
+         filteredRecipes.push(recipe)
+       }
+     })
+   });
   recipeContainer.innerHTML = ' ';
-  console.log(filteredRecipes);
   displayFilteredRecipe(filteredRecipes);
 }
 
