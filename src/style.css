@@ -113,8 +113,8 @@ button:hover {
 /* -------------------------------------------- */
 h2 {
     text-align: center;
-    font-size: 200%;
-    margin-top: 30px;
+    font-size: 300%;
+    margin-top: 50px;
     font-weight: 300;
 }
 
@@ -184,6 +184,7 @@ h2:after {
 
 .card-img {
     width: 100%;
+    height: 200px;
 }
 
 .card-icons {
@@ -210,7 +211,13 @@ h2:after {
 .return-btn {
     display: block;
     margin: 0 auto;
-    font-size: 400%;
+    font-size: 200%;
+}
+
+.recipe-page {
+    margin: 0 auto;
+    width: 50%;
+    text-align: center;
 }
 
 .recipe-title {
@@ -218,7 +225,7 @@ h2:after {
 }
 
 h3 {
-    font-size: 200%;
+    font-size: 300%;
     text-align: center;
     font-weight: 300;
     color: var(--accent);
@@ -226,21 +233,35 @@ h3 {
 
 .ingredients {
     text-align: center;
-    padding-bottom: 50px;
-    font-size: 140%;
+    padding-bottom: 30px;
 }
 
-.cooking-instructions {
-    width: 40%;
-    font-size: 140%;
-    margin: 0 auto;
+.ingredient-name,
+.recipe-cost,
+.cooking-step {
+    padding-top: 20px;
+    font-weight: 300;
+    font-size: 150%;
+}
+
+.recipe-cost {
+    padding: 0;
+}
+
+.ingredient-item {
+    color: var(--accent);
+    font-weight: 400;
+}
+
+.ingredient-cost,
+.cooking-instruction {
+    font-size: 120%;
 }
 
 .recipe-img {
-    padding: 50px;
+    padding: 50px 0;
+    width: 100%;
     display: block;
-    margin: 0 auto;
-    position: relative;
 }
 
 .recipe-icons {
