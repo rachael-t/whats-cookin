@@ -5,6 +5,7 @@ const recipeContainer = document.querySelector('.recipe-container');
 const tagsContainer = document.querySelector('.category-container');
 const mainPage = document.querySelector('.main-page');
 const recipePage = document.querySelector('.recipe-page');
+const searchInput = document.querySelector('.search-input');
 let users = [];
 
 window.addEventListener('load', pageLoad);
@@ -18,9 +19,13 @@ function buttonClick(e) {
     // Filter My recipes to Cook
 
     // Search all recipes
-
+    if (e.target.closest('.search-all-btn')) {
+      searchRecipes(e);
+    }
     // Filter by tag, display recipes
-
+    if (e.target.classList.contains('category-tag')) {
+      filterByTag(e);
+    }
     // Open one recipe
     if (e.target.classList.contains('card-img') || e.target.classList.contains('card-title')) {
         openRecipe(e);
@@ -73,9 +78,9 @@ function getTags(recipeData) {
 function displayTags(uniqueTags) {
     uniqueTags.map(tag => {
         tagsContainer.insertAdjacentHTML('afterbegin', `
-        <li class="category-card" id="${tag}">
-          <img src="../img/${getTagImg(tag)}.png" class="category-img" alt="recipe picture" id="${tag}">
-          <p class="category-name">${tag}</p>
+        <li class="category-card category-tag" id="${tag}">
+          <img src="../img/${getTagImg(tag)}.png" class="category-img category-tag" alt="recipe picture" id="${tag}">
+          <p class="category-name category-tag">${tag}</p>
         </li>
         `)
     })
@@ -181,6 +186,48 @@ function returnToMainPage() {
     recipePage.classList.add('hidden');
     recipePage.innerHTML = ' ';
 }
+
+function filterByTag(e) {
+  let tagName = e.target.getAttribute('id');
+  let filteredRecipes = recipeData.filter(recipe => recipe.tags.includes(tagName));
+  recipeContainer.innerHTML = ' ';
+  displayFilteredRecipe(filteredRecipes);
+}
+
+function searchRecipes(e) {
+  let ingredientSearched = getIngredientId(searchInput.value)
+  let filteredRecipes = [];
+  recipeData.filter(recipe => {
+    recipe.ingredients.forEach(ingredient => {
+       if (ingredient.id === ingredientSearched) {
+         filteredRecipes.push(recipe)
+       }
+     })
+   });
+  recipeContainer.innerHTML = ' ';
+  displayFilteredRecipe(filteredRecipes);
+}
+
+function getIngredientId(searchInputName) {
+  let ingredientObject = ingredientsData.find(e => e.name === searchInputName)
+  return ingredientObject.id;
+}
+
+function displayFilteredRecipe(filteredRecipes) {
+    filteredRecipes.forEach(recipe => {
+    recipeContainer.insertAdjacentHTML('afterbegin', `
+        <li class="recipe-card" id="${recipe.id}">
+          <img src="${recipe.image}" class="card-img" alt="recipe picture" id="${recipe.id}">
+          <p class="card-title" id="${recipe.id}">${recipe.name}</p>
+          <div class="card-icons">
+            <ion-icon name="heart-outline" class="card-icon"></ion-icon>
+            <ion-icon name="checkmark-outline" class="card-icon"></ion-icon>
+          </div>
+        </li>
+    `);
+  });
+}
+
 
 //FOR RECIPES
 
