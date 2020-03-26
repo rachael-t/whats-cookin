@@ -27,7 +27,7 @@ function buttonClick(e) {
     };
     // Come back to main
     if (e.target.classList.contains('return-btn')) {
-      returnToMainPage();
+        returnToMainPage();
     }
     // Add to My Favourite (heart)
 
@@ -93,13 +93,13 @@ function openRecipe(e) {
 }
 
 function getRecipeInfo(e) {
-  let recipeId = parseInt(e.target.getAttribute('id'));
-  let fullRecipeInfo = recipeData.find(recipe => recipe.id === recipeId);
-  displayFullRecipe(fullRecipeInfo);
+    let recipeId = parseInt(e.target.getAttribute('id'));
+    let fullRecipeInfo = recipeData.find(recipe => recipe.id === recipeId);
+    displayFullRecipe(fullRecipeInfo);
 }
 
 function displayFullRecipe(fullRecipeInfo) {
-  recipePage.insertAdjacentHTML('beforeend', `
+    recipePage.insertAdjacentHTML('beforeend', `
     <button type="button" name="button" class="return-btn"><ion-icon name="close-outline" class="return-btn"></ion-icon></button>
     <h2 class="recipe-title">${fullRecipeInfo.name}</h2>
     <div class="recipe-icons">
@@ -109,41 +109,63 @@ function displayFullRecipe(fullRecipeInfo) {
     <h3>Ingredients:</h3>
     <ul class="ingredients">
     </ul>
+    <p class="recipe-cost">Total Recipe Cost:</p>
     <div class="instructions-list"></div>
     <img class="recipe-img" src="${fullRecipeInfo.image}" alt="recipe picture">
+    <button type="button" name="button" class="return-btn"><ion-icon name="close-outline" class="return-btn"></ion-icon></button>
   `);
-  displayRecipeIngredients(fullRecipeInfo);
-  displayRecipeInstructions(fullRecipeInfo);
+    displayRecipeIngredients(fullRecipeInfo);
+    displayRecipeInstructions(fullRecipeInfo);
 }
 
 function displayRecipeIngredients(fullRecipeInfo) {
-  let ingredientList = document.querySelector('.ingredients');
-  fullRecipeInfo.ingredients.forEach(ingredient => {
-    let ingredientName = getIngredientInfo(ingredient);
-    ingredientList.insertAdjacentHTML('afterbegin', `
-    <li class="ingredient">${ingredient.quantity.amount} ${ingredient.quantity.unit} ${ingredientName.name}</li>
+    let ingredientList = document.querySelector('.ingredients');
+    fullRecipeInfo.ingredients.forEach(ingredient => {
+        let ingredientName = getIngredientInfo(ingredient);
+        let ingredientAmount = getIngredientAmount(ingredient);
+        let ingredientPrice = getIngredientPrice(ingredientName);
+        let ingredientCost = getIngredientCost(ingredient, ingredientName);
+        ingredientList.insertAdjacentHTML('afterbegin', `
+    <li class="ingredient">
+        <p class="ingredient-name">${ingredientAmount} ${ingredient.quantity.unit}
+        <span class="ingredient-item">${ingredientName.name}</span></p>
+        <p class="ingredient-cost">${ingredientPrice}$/unit</p>
+        <p class="ingredient-cost">Total cost: ${ingredientCost}$</p>
+    </li>
     `)
-  })
+    })
 }
 
 function getIngredientInfo(ingredient) {
-  return ingredientsData.find(e => e.id === ingredient.id)
+    return ingredientsData.find(e => e.id === ingredient.id)
+}
+
+function getIngredientAmount(ingredient) {
+    return Math.round(ingredient.quantity.amount * 100) / 100;
+}
+
+function getIngredientPrice(ingredientName) {
+    return (ingredientName.estimatedCostInCents) / 100;
+}
+
+function getIngredientCost(ingredient, ingredientName) {
+    return ingredientName.estimatedCostInCents / 100 * ingredient.quantity.amount;
 }
 
 function displayRecipeInstructions(fullRecipeInfo) {
-  let instructionList = document.querySelector('.instructions-list');
-  fullRecipeInfo.instructions.forEach(instruction => {
-    instructionList.insertAdjacentHTML('beforeBegin', `
-    <p class="cooking-instructions">Step ${instruction.number}</p>
-    <p>${instruction.instruction}</p>
+    let instructionList = document.querySelector('.instructions-list');
+    fullRecipeInfo.instructions.forEach(instruction => {
+        instructionList.insertAdjacentHTML('beforeBegin', `
+    <p class="cooking-step">Step ${instruction.number}</p>
+    <p class="cooking-instruction">${instruction.instruction}</p>
     `)
-  })
+    })
 }
 
 function returnToMainPage() {
-  mainPage.classList.remove('hidden');
-  recipePage.classList.add('hidden');
-  recipePage.innerHTML = ' ';
+    mainPage.classList.remove('hidden');
+    recipePage.classList.add('hidden');
+    recipePage.innerHTML = ' ';
 }
 
 //FOR RECIPES
