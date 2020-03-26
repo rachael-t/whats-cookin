@@ -1,6 +1,6 @@
 class Pantry {
-  constructor (ingredientsData, amount) {
-    this.ingredient = ingredientsData.id;
+  constructor(ingredientsData, amount) {
+    this.ingredient = ingredientsData;
     this.amount = amount;
   }
   checkIngredients() {
