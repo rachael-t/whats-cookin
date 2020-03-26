@@ -24,9 +24,35 @@ describe('Users', () => {
 
     it('should be able to modify favoriteRecipes', () => {
         user.modifyFavoriteRecipes(recipe);
-        user.favoriteRecipes.push(recipe)
-        expect(user).to.be.an.instanceof(Users);
+        expect(user.favoriteRecipes.length).to.equal(1);
     });
+
+    it('check if recipe is in favoriteRecipes array', () => {
+        user.modifyFavoriteRecipes(recipe);
+        user.modifyFavoriteRecipes(recipe)
+        expect(user.favoriteRecipes.length).to.equal(0);
+    });
+
+    it('should be able to modify recipesToCook', () => {
+        user.modifyRecipesToCook(recipe);
+        expect(user.recipesToCook.length).to.equal(1);
+    });
+
+    it('check if recipe is in recipesToCook array', () => {
+        user.modifyRecipesToCook(recipe);
+        user.modifyRecipesToCook(recipe)
+        expect(user.recipesToCook.length).to.equal(0);
+    });
+
+    // it('filterRecipe', () => {
+    //     expect().to.equal();
+    // });
+
+    // it('searchRecipes', () => {
+    //     expect().to.equal();
+    // });
+
+
 
 
 })

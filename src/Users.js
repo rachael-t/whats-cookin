@@ -3,25 +3,34 @@ class Users {
     this.id = id;
     this.name = name;
     this.pantry = pantry || [];
-    this.favoriteRecipes = []; //save recipe id
+    this.favoriteRecipes = [];
     this.recipesToCook = [];
   }
   modifyFavoriteRecipes(recipe) {
-    // if this recipe id already exists in favoriteRecipes array- remove it(find index of)
+    if (!this.favoriteRecipes.includes(recipe)) {
+      this.favoriteRecipes.push(recipe);
+    } else {
+      const index = this.favoriteRecipes.indexOf(recipe);
+      this.favoriteRecipes.splice(index, 1);
+    }
+  }
 
-    // if  this recipe id diesn't exist in favoriteRecipes array- add it
+  modifyRecipesToCook(recipe) {
+    if (!this.recipesToCook.includes(recipe)) {
+      this.recipesToCook.push(recipe);
+    } else {
+      const index = this.recipesToCook.indexOf(recipe);
+      this.recipesToCook.splice(index, 1);
+    }
   }
-  addRecipeToCook() {
-    //add selected recipe to this.recipesToCook array
+  filterRecipes(recipesArray, tag) {
+    return recipesArray.filter(recipe => recipe === tag);
   }
-  filterRecipes() {
-    //take in two arguments - one for which list (this.favoriteRecipes or this.recipesToCook) and another for type.
-    //return results in selected array that match that type
+
+  searchRecipes(recipesArray, input) {
+    return recipesArray.filter(recipe => recipe.includes(input));
   }
-  searchRecipes() {
-    //take in two arguments - one for which list (this.favoriteRecipes or this.recipesToCook) and another for user input (name or ingredient).
-    //return results in selected array that match that user input
-  }
+
   cookRecipe() {
     //check if you have the ingredients in this.pantry
     //invoke pantry.checkIngredients()
