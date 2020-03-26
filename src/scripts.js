@@ -53,7 +53,7 @@ function displayRecipe(recipeCard) {
     recipeContainer.insertAdjacentHTML('afterbegin', `
         <li class="recipe-card" id="${recipeCard.id}">
           <img src="${recipeCard.image}" class="card-img" alt="recipe picture" id="${recipeCard.id}">
-          <p class="card-title" id="${recipeCard.id}">${recipeCard.name}</p>
+          <p class="card-title" id="${recipeCard.id}">${recipeCard.name}</divclass="card-title"<p>
           <div class="card-icons">
             <ion-icon name="heart-outline" class="card-icon"></ion-icon>
             <ion-icon name="checkmark-outline" class="card-icon"></ion-icon>
@@ -109,7 +109,7 @@ function displayFullRecipe(fullRecipeInfo) {
     <h3>Ingredients:</h3>
     <ul class="ingredients">
     </ul>
-    <p class="recipe-cost">Total Recipe Cost:</p>
+    <p class="recipe-cost"></p>
     <div class="instructions-list"></div>
     <img class="recipe-img" src="${fullRecipeInfo.image}" alt="recipe picture">
     <button type="button" name="button" class="return-btn"><ion-icon name="close-outline" class="return-btn"></ion-icon></button>
@@ -120,11 +120,13 @@ function displayFullRecipe(fullRecipeInfo) {
 
 function displayRecipeIngredients(fullRecipeInfo) {
     let ingredientList = document.querySelector('.ingredients');
+    let recipeCost = [];
     fullRecipeInfo.ingredients.forEach(ingredient => {
         let ingredientName = getIngredientInfo(ingredient);
         let ingredientAmount = getIngredientAmount(ingredient);
         let ingredientPrice = getIngredientPrice(ingredientName);
         let ingredientCost = getIngredientCost(ingredient, ingredientName);
+        recipeCost.push(ingredientCost);
         ingredientList.insertAdjacentHTML('afterbegin', `
     <li class="ingredient">
         <p class="ingredient-name">${ingredientAmount} ${ingredient.quantity.unit}
@@ -134,6 +136,7 @@ function displayRecipeIngredients(fullRecipeInfo) {
     </li>
     `)
     })
+    getRecipeCost(recipeCost);
 }
 
 function getIngredientInfo(ingredient) {
@@ -149,7 +152,18 @@ function getIngredientPrice(ingredientName) {
 }
 
 function getIngredientCost(ingredient, ingredientName) {
-    return ingredientName.estimatedCostInCents / 100 * ingredient.quantity.amount;
+    return (ingredientName.estimatedCostInCents * ingredient.quantity.amount) / 100;
+}
+
+function getRecipeCost(recipeCost) {
+    const totalRecipeCost = recipeCost.reduce((a, b) => a + b, 0);
+    const finalRecipeCost = Math.round(totalRecipeCost * 100) / 100;
+    displayRecipeCost(finalRecipeCost);
+}
+
+function displayRecipeCost(finalRecipeCost) {
+    const costContainer = document.querySelector('.recipe-cost');
+    costContainer.innerHTML = `Total Recipe Cost: ${finalRecipeCost} $`;
 }
 
 function displayRecipeInstructions(fullRecipeInfo) {
