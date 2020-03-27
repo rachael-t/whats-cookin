@@ -44,9 +44,9 @@ describe('Users', () => {
         expect(user.recipesToCook.length).to.equal(0);
     });
 
-    // it('filterRecipe', () => {
-    //     expect().to.equal();
-    // });
+    it('filterRecipe ', () => {
+        expect().to.equal();
+    });
 
     // it('searchRecipes', () => {
     //     expect().to.equal();
