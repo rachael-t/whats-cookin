@@ -28,8 +28,8 @@ describe('Users', () => {
     });
 
     it('check if recipe is in favoriteRecipes array', () => {
-        user.modifyFavoriteRecipes(605132);
-        user.modifyFavoriteRecipes(605132)
+        user.modifyFavoriteRecipes(recipe);
+        user.modifyFavoriteRecipes(recipe)
         expect(user.favoriteRecipes.length).to.equal(0);
     });
 
@@ -44,15 +44,8 @@ describe('Users', () => {
         expect(user.recipesToCook.length).to.equal(0);
     });
 
-    it('should display filtered saved recipes', () => {
-      user.modifyFavoriteRecipes(605132);
-      user.modifyFavoriteRecipes(226562);
-      user.modifyFavoriteRecipes(583738);
-      user.filterRecipes(user.favoriteRecipes, 'side dish')
-      expect(user.filterRecipes()).to.equal([605132, 226562]);
-      //2050 is vanilla
-      //both lentil and pastry cream are side dishes
-      //selected recipes are reese's cookies, lentil loaf and pastry cream
+    it('filterRecipe ', () => {
+        expect().to.equal();
     });
 
     // it('searchRecipes', () => {

@@ -7,20 +7,12 @@ class Users {
     this.recipesToCook = [];
   }
   modifyFavoriteRecipes(recipe) {
-    console.log(this.favoriteRecipes);
-    if (this.favoriteRecipes.length === 0) {
-      this.favoriteRecipes.push(recipe)
-    };
-    this.favoriteRecipes.forEach(element => {
-      if (!element.id === recipe.id) {
-        this.favoriteRecipes.push(recipe);
-      } else {
-        const index = this.favoriteRecipes.indexOf(recipe);
-        this.favoriteRecipes.splice(index, 1);
-      }
-    });
-
-    console.log(this.favoriteRecipes);
+    if (!this.favoriteRecipes.includes(recipe)) {
+      this.favoriteRecipes.push(recipe);
+    } else {
+      const index = this.favoriteRecipes.indexOf(recipe);
+      this.favoriteRecipes.splice(index, 1);
+    }
   }
 
   modifyRecipesToCook(recipe) {
@@ -32,8 +24,6 @@ class Users {
     }
   }
   filterRecipes(recipesArray, tag) {
-    //go to recipeData - search for recipe with matching ID in array
-
     return recipesArray.filter(recipe => recipe === tag);
   }
 
