@@ -31,7 +31,7 @@ class Users {
     return recipesArray.filter(recipe => recipe.includes(input));
   }
 
-  cookRecipe() {
+  cookRecipe(recipe) {
     //check if you have the ingredients in this.pantry
     //invoke pantry.checkIngredients()
     //if that returns true

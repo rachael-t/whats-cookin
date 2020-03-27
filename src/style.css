@@ -166,6 +166,7 @@ h2:after {
 
 .recipe-card {
     width: 100%;
+    max-width: 350px;
     height: auto;
     min-height: 300px;
     background-color: var(--background-white);
@@ -200,7 +201,8 @@ h2:after {
     transition: filter .3s;
 }
 
-.card-icon:hover {
+.card-icon-favorite:hover,
+.card-icon-cook:hover {
     color: var(--accent);
     transition: color .3s;
 }
@@ -271,11 +273,13 @@ h3 {
     justify-content: space-evenly;
 }
 
-.recipe-icon {
+.recipe-icon-favorite,
+.recipe-icon-cook {
     font-size: 300%;
 }
 
-.recipe-icon:hover {
+.recipe-icon-favorite:hover,
+.recipe-icon-cook:hover {
     color: var(--accent);
     transition: color .3s;
 }
@@ -298,6 +302,10 @@ footer {
 /* -------------------------------------------- */
 /* ----- DOM ----- */
 /* -------------------------------------------- */
+.selected {
+    color: var(--accent);
+}
+
 .hidden {
     display: none;
 }
