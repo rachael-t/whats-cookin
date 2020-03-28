@@ -20,7 +20,6 @@ body.addEventListener('click', buttonStatus);
 function buttonClick(e) {
   // Search all recipes
   if (e.target.closest('.search-all-btn')) {
-    debugger
     searchRecipes(e);
   }
   // Filter by tag, display recipes
@@ -55,7 +54,7 @@ function buttonClick(e) {
     modifyToCook(e);
     displayToCook(e);
   }
-  // Filter my Favourite Recipes
+  // Filter my Favourite 
   if (e.target.closest('.favorite-recipes-btn')) {
     removeReturnBtn()
     displayReturnBtn();
@@ -268,7 +267,6 @@ function filterByTag(e) {
 }
 
 function searchRecipes(e) {
-  debugger
   let ingredientSearched = getIngredientId(searchInput.value)
   let filteredRecipes = [];
   recipeData.filter(recipe => {
@@ -284,7 +282,6 @@ function searchRecipes(e) {
 
 function getIngredientId(searchInputName) {
   let ingredientObject = ingredientsData.find(e => e.name === searchInputName);
-  debugger
   return ingredientObject.id;
 }
 
@@ -300,7 +297,6 @@ function findUser() {
 }
 
 function modifyFavorite(e) {
-  //whatever e.target.getAttribute('id') is go get and instantiate that object then run the following code if user exists, pass that recipe object to the method
   const recipe = recipeData.find(recipe => recipe.id === parseInt(e.target.getAttribute('id')));
   const newRecipe = new Recipes(recipe.id, recipe.image, recipe.ingredients, recipe.instructions, recipe.name, recipe.tags);
   user ? user.modifyFavoriteRecipes(newRecipe) : alert('Please Log In!');
@@ -311,12 +307,14 @@ function displayFavorite(e) {
 }
 
 function modifyToCook(e) {
-  user ? user.modifyRecipesToCook(e.target.getAttribute('id')) : alert('Please Log In!');
+  const recipe = recipeData.find(recipe => recipe.id === parseInt(e.target.getAttribute('id')));
+  const newRecipe = new Recipes(recipe.id, recipe.image, recipe.ingredients, recipe.instructions, recipe.name, recipe.tags);
+  user ? user.modifyRecipesToCook(newRecipe) : alert('Please Log In!');
 }
 
 function displayToCook(e) {
   user && e.target.classList.toggle('selected');
-  console.log(user);
+
 }
 
 function filterSaved(type) {
