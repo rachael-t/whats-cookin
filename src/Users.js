@@ -1,3 +1,5 @@
+const ingredientsData = require('../data/ingredients');
+
 class Users {
   constructor(id, name, pantry) {
     this.id = id;
@@ -35,21 +37,56 @@ class Users {
     }
   }
 
-  filterRecipes(tag) {
-    //we are taking in two argumnets:
-    // one will tell us the recipeArray to loop over and filter: this.recipesArray which will either equal this.recipesToCook or this.favoriteRecipes
-    // the other will be the selected tag (category) this is what we are filtering by
-    return this.favoriteRecipes.reduce((acc, recipe) => {
+  filterRecipes(recipeArray, tag) {
+    let filteredRecipes = [];
+    this[recipeArray].forEach(recipe => {
       if (recipe.tags.includes(tag)) {
-
-        acc.push(recipe)
+        filteredRecipes.push(recipe)
       }
-      return acc;
-    }, [])
+    });
+    return filteredRecipes;
   }
 
-  searchRecipes(recipesArray, input) {
-    return recipesArray.filter(recipe => recipe.includes(input));
+  searchRecipes(input) {
+    let filteredRecipes = [];
+    const inputLowerCase = input.toLowerCase()
+    console.log(inputLowerCase)
+    //returns 'lettuce'
+    let ingredientID = [];
+    ingredientsData.forEach(ingredient => {
+      if (ingredient.name.indexOf(inputLowerCase) !== -1) {
+        ingredientID.push(ingredient.id);
+      }
+    });
+    console.log(ingredientID)
+    //for the test we are running, we are searching for lettuce, which TWO ingredients have in their name, neither of which have it as the first/only world in the string. this is why we do NOT want to use .find() in case a user is searching for an ingredient which could bring back a number of items
+    //this console log should return an array of two objects
+
+    this.favoriteRecipes.forEach(recipe => {
+      if (recipe.name.toLowerCase().includes(inputLowerCase)) {
+        filteredRecipes.push(recipe)
+      }
+    });
+    this.recipesToCook.forEach(recipe => {
+      if (recipe.name.toLowerCase().includes(inputLowerCase)) {
+        filteredRecipes.push(recipe)
+      }
+    });
+    this.favoriteRecipes.forEach(recipe => {
+      recipe.ingredients.forEach(ingredient => {
+        if (ingredient.id === ingredientID) {
+          filteredRecipes.push(recipe);
+        }
+      })
+    });
+    this.recipesToCook.forEach(recipe => {
+      recipe.ingredients.forEach(ingredient => {
+        if (ingredient.id === ingredientID) {
+          filteredRecipes.push(recipe);
+        }
+      })
+    })
+    return filteredRecipes;
   }
 
   cookRecipe(recipe) {

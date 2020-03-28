@@ -63,25 +63,25 @@ describe('Users', () => {
     recipe3 = new Recipes(611858,
       "google",
       [{
-          "id": 10011250,
+          "id": 16098,
           "quantity": {
             "amount": 4,
             "unit": ""
           }
         },
         {
-          "id": 11143,
+          "id": 18069,
           "quantity": {
             "amount": 2,
-            "unit": "rib"
+            "unit": "slice"
           }
         }
       ],
       [{
-        "instruction": "Serve over lettuce.",
+        "instruction": "Put ingredients together.",
         "number": 1
       }],
-      "Sandwich",
+      "Peanut Butter Sandwich",
       [
         "side dish"
       ]);
@@ -120,12 +120,25 @@ describe('Users', () => {
     expect(user.recipesToCook.length).to.equal(0);
   });
 
-  it.only('should display filtered saved recipes', () => {
+  it('should display recipes from the selected saved list that match a selected category tag', () => {
     user.modifyFavoriteRecipes(recipe1);
     user.modifyFavoriteRecipes(recipe2);
     user.modifyFavoriteRecipes(recipe3);
-    user.filterRecipes('salad')
-    expect(user.filterRecipes()).to.equal([recipe1, recipe2]);
+    expect(user.filterRecipes('favoriteRecipes', 'salad')).to.deep.equal([recipe1, recipe2]);
+    expect(user.filterRecipes('recipesToCook', 'salad')).to.deep.equal([]);
   });
 
+  it('should display any recipe from the user/`s saved lists that match a recipe name input into the search bar', () => {
+    user.modifyFavoriteRecipes(recipe1);
+    user.modifyRecipesToCook(recipe2);
+    user.modifyFavoriteRecipes(recipe3);
+    expect(user.searchRecipes('SaLaD')).to.deep.equal([recipe1, recipe2]);
+  });
+
+  it('should display any recipe from the user/`s saved lists that match an ingredient input into the search bar', () => {
+    user.modifyFavoriteRecipes(recipe1);
+    user.modifyRecipesToCook(recipe2);
+    user.modifyFavoriteRecipes(recipe3);
+    expect(user.searchRecipes('LeTTuce')).to.deep.equal([recipe1, recipe2]);
+  });
 })
