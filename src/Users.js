@@ -35,17 +35,14 @@ class Users {
     }
   }
 
-  filterRecipes(tag) {
-    //we are taking in two argumnets:
-    // one will tell us the recipeArray to loop over and filter: this.recipesArray which will either equal this.recipesToCook or this.favoriteRecipes
-    // the other will be the selected tag (category) this is what we are filtering by
-    return this.favoriteRecipes.reduce((acc, recipe) => {
+  filterRecipes(recipeArray, tag) {
+    let filteredRecipes = [];
+    this[recipeArray].forEach(recipe => {
       if (recipe.tags.includes(tag)) {
-
-        acc.push(recipe)
+        filteredRecipes.push(recipe)
       }
-      return acc;
-    }, [])
+    });
+    return filteredRecipes;
   }
 
   searchRecipes(recipesArray, input) {

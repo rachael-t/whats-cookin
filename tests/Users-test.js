@@ -120,12 +120,26 @@ describe('Users', () => {
     expect(user.recipesToCook.length).to.equal(0);
   });
 
-  it.only('should display filtered saved recipes', () => {
+  it('should display recipes from the selected saved list that match a selected category tag', () => {
     user.modifyFavoriteRecipes(recipe1);
     user.modifyFavoriteRecipes(recipe2);
     user.modifyFavoriteRecipes(recipe3);
-    user.filterRecipes('salad')
-    expect(user.filterRecipes()).to.equal([recipe1, recipe2]);
+    expect(user.filterRecipes('favoriteRecipes', 'salad')).to.deep.equal([recipe1, recipe2]);
+    expect(user.filterRecipes('recipesToCook', 'salad')).to.deep.equal([]);
+  });
+
+  it.skip('should display saved recipes that match an ingredient input into the search bar', () => {
+    user.modifyFavoriteRecipes(recipe1);
+    user.modifyFavoriteRecipes(recipe2);
+    user.modifyFavoriteRecipes(recipe3);
+    expect(user.searchRecipes('salad')).to.deep.equal([recipe1, recipe2]);
+  });
+
+  it.skip('should display saved recipes that match an recipe name input into the search bar', () => {
+    user.modifyFavoriteRecipes(recipe1);
+    user.modifyFavoriteRecipes(recipe2);
+    user.modifyFavoriteRecipes(recipe3);
+    expect(user.searchRecipes('salad')).to.deep.equal([recipe1, recipe2]);
   });
 
 })
