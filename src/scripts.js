@@ -239,7 +239,6 @@ function findUser() {
 }
 
 function modifyFavorite(e) {
-  //whatever e.target.getAttribute('id') is go get and instantiate that object then run the following code if user exists, pass that recipe object to the method
   const recipe = recipeData.find(recipe => recipe.id === parseInt(e.target.getAttribute('id')));
   const newRecipe = new Recipes(recipe.id, recipe.image, recipe.ingredients, recipe.instructions, recipe.name, recipe.tags);
   user ? user.modifyFavoriteRecipes(newRecipe) : alert('Please Log In!');
