@@ -3,13 +3,19 @@ const recipeContainer = document.querySelector('.recipe-container');
 const tagsContainer = document.querySelector('.category-container');
 const mainPage = document.querySelector('.main-page');
 const recipePage = document.querySelector('.recipe-page');
+const filterFavoriteBtn = document.querySelector('.favorite-recipes-btn');
+const filterToCookBtn = document.querySelector('.cook-recipes-btn');
 const searchInput = document.querySelector('.search-input');
 const loginInput = document.querySelector('.login-input');
+const welcomeMessage = document.querySelector('.welcome-message');
+const returnBtnContainer = document.querySelector('.return-btn-container');
+const returnBtnBottomContainer = document.querySelector('.return-btn-bottom-container');
 
 let user = null;
 
 window.addEventListener('load', pageLoad);
 body.addEventListener('click', buttonClick);
+body.addEventListener('click', buttonStatus);
 
 function buttonClick(e) {
   // Search all recipes
@@ -19,6 +25,8 @@ function buttonClick(e) {
   // Filter by tag, display recipes
   if (e.target.closest('.category-tag')) {
     filterByTag(e);
+    removeReturnBtn();
+    displayReturnBtn();
   }
   // Open one recipe
   if (e.target.closest('.card-img') || e.target.closest('.card-title')) {
@@ -27,10 +35,14 @@ function buttonClick(e) {
   // Come back to main
   if (e.target.closest('.return-btn')) {
     returnToMainPage();
+    removeReturnBtn()
+    getRecipe(recipeData);
+    displayMessage();
   }
   // Find User and display Greeting
   if (e.target.closest('.login-btn')) {
     findUser();
+    displayMessage()
   }
   // Add to My Favourite (heart)
   if (e.target.closest('.card-icon-favorite') || e.target.closest('.recipe-icon-favorite')) {
@@ -42,22 +54,53 @@ function buttonClick(e) {
     modifyToCook(e);
     displayToCook(e);
   }
-  // Filter my Favourite Recipes
+  // Filter my Favourite 
   if (e.target.closest('.favorite-recipes-btn')) {
+    removeReturnBtn()
+    displayReturnBtn();
+    displayMessage(e);
     filterSaved('favoriteRecipes');
   }
   // Filter My recipes to Cook
   if (e.target.closest('.cook-recipes-btn')) {
+    removeReturnBtn()
+    displayReturnBtn();
+    displayMessage(e);
     filterSaved('recipesToCook');
+  }
+}
+
+function buttonStatus() {
+  if (user) {
+    filterFavoriteBtn.removeAttribute('disabled', 'disabled');
+    filterToCookBtn.removeAttribute('disabled', 'disabled');
+  } else {
+    filterFavoriteBtn.setAttribute('disabled', 'disabled');
+    filterToCookBtn.setAttribute('disabled', 'disabled');
   }
 }
 
 function pageLoad() {
   recipePage.innerHTML = ' ';
+  buttonStatus();
+  displayMessage();
   getRecipe(recipeData);
-  // populate global users array
-  // populateUsers();
   getTags(recipeData);
+}
+
+function displayMessage(e) {
+  welcomeMessage.innerHTML = ' ';
+  user ? welcomeMessage.innerHTML = `Welcome Back ${user.name}! Select Your Favorite Recipe!` : welcomeMessage.innerHTML = `Log In and Select Your Favorite Recipe!`
+  e ? welcomeMessage.innerHTML = `${user.name} / ${checkFavoriteOrToCook(e)}` : null;
+}
+
+function checkFavoriteOrToCook(e) {
+  if (e.target.classList.contains('favorite-recipes-btn')) {
+    return 'My Favorite Recipes'
+  }
+  if (e.target.classList.contains('cook-recipes-btn')) {
+    return 'My Recipes To Cook'
+  }
 }
 
 function getRecipe(recipeData) {
@@ -200,11 +243,26 @@ function returnToMainPage() {
   recipePage.innerHTML = ' ';
 }
 
+function removeReturnBtn() {
+  returnBtnContainer.innerHTML = ' ';
+  returnBtnBottomContainer.innerHTML = ' ';
+}
+
+function displayReturnBtn() {
+  returnBtnContainer.insertAdjacentHTML('afterbegin', `
+  <button type="button" name="button" class="return-btn"><ion-icon name="close-outline" class="return-btn"></ion-icon></button>
+  `);
+  returnBtnBottomContainer.insertAdjacentHTML('afterbegin', `
+  <button type="button" name="button" class="return-btn"><ion-icon name="close-outline" class="return-btn"></ion-icon></button>
+  `);
+}
+
 function filterByTag(e) {
+
   let tagName = e.target.getAttribute('id');
   let filteredRecipes = recipeData.filter(recipe => recipe.tags.includes(tagName));
-  debugger
   recipeContainer.innerHTML = ' ';
+  welcomeMessage.innerHTML = `${tagName}`;
   displayFilteredRecipe(filteredRecipes);
 }
 
@@ -249,12 +307,14 @@ function displayFavorite(e) {
 }
 
 function modifyToCook(e) {
-  user ? user.modifyRecipesToCook(e.target.getAttribute('id')) : alert('Please Log In!');
+  const recipe = recipeData.find(recipe => recipe.id === parseInt(e.target.getAttribute('id')));
+  const newRecipe = new Recipes(recipe.id, recipe.image, recipe.ingredients, recipe.instructions, recipe.name, recipe.tags);
+  user ? user.modifyRecipesToCook(newRecipe) : alert('Please Log In!');
 }
 
 function displayToCook(e) {
   user && e.target.classList.toggle('selected');
-  console.log(user);
+
 }
 
 function filterSaved(type) {
