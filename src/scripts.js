@@ -281,7 +281,7 @@ function searchRecipes(e) {
 }
 
 function getIngredientId(searchInputName) {
-  let ingredientObject = ingredientsData.find(e => e.name === searchInputName);
+  let ingredientObject = ingredientsData.find(ingredient => ingredient.name.includes(searchInputName));
   return ingredientObject.id;
 }
 
