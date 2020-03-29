@@ -1,21 +1,21 @@
 const chai = require('chai');
 const expect = chai.expect;
 
-const Recipes = require('../src/Recipes');
+const Recipe = require('../src/Recipe');
 
-describe('Recipes', () => {
+describe('Recipe', () => {
 
     let recipe;
     beforeEach('recipe instance', () => {
-        recipe = new Recipes();
+        recipe = new Recipe();
     })
 
     it('should be a function', () => {
-        expect(Recipes).to.be.a('function');
+        expect(Recipe).to.be.a('function');
     });
 
     it('should be an instance of Pantry', () => {
-        expect(recipe).to.be.an.instanceof(Recipes);
+        expect(recipe).to.be.an.instanceof(Recipe);
     });
 
 })

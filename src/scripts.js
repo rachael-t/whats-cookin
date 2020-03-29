@@ -22,12 +22,13 @@ body.addEventListener('click', buttonStatus);
 function buttonClick(e) {
   // Search all recipes
   if (e.target.closest('.search-all-btn')) {
-    searchRecipes(e);
+    searchAllRecipes(e);
     clearInput(searchInput);
   }
   // Search User Recipes
   if (e.target.closest('.search-user-btn')) {
     // search user favorite or saved recipes
+    displaySearchedSavedRecipes(searchUserInput)
     clearInput(searchUserInput);
   }
   // Filter by tag, display recipes
@@ -63,7 +64,7 @@ function buttonClick(e) {
     modifyToCook(e);
     displayToCook(e);
   }
-  // Filter my Favourite 
+  // Filter my Favourite
   if (e.target.closest('.favorite-recipes-btn')) {
     removeReturnBtn()
     displayReturnBtn();
@@ -120,7 +121,7 @@ function checkFavoriteOrToCook(e) {
 
 function getRecipe(recipeData) {
   recipeData.map(recipe => {
-    let recipeCard = new Recipes(recipe.id, recipe.image, recipe.ingredients, recipe.intructions, recipe.name, recipe.tags)
+    let recipeCard = new Recipe(recipe.id, recipe.image, recipe.ingredients, recipe.intructions, recipe.name, recipe.tags)
     displayRecipe(recipeCard);
   })
 }
@@ -281,7 +282,6 @@ function displayReturnBtn() {
 }
 
 function filterByTag(e) {
-
   let tagName = e.target.getAttribute('id');
   let filteredRecipes = recipeData.filter(recipe => recipe.tags.includes(tagName));
   recipeContainer.innerHTML = ' ';
@@ -289,7 +289,7 @@ function filterByTag(e) {
   displayFilteredRecipe(filteredRecipes);
 }
 
-function searchRecipes(e) {
+function searchAllRecipes(e) {
   let ingredientSearched = getIngredientId(searchInput.value)
   console.log(ingredientSearched)
   let filteredRecipes = [];
@@ -311,6 +311,7 @@ function getIngredientId(searchInputName) {
 }
 
 function displayFilteredRecipe(filteredRecipes) {
+
   filteredRecipes.forEach(recipe => displayRecipe(recipe));
   removeReturnBtn();
   displayReturnBtn();
@@ -322,13 +323,13 @@ function displayIngredientMessage(ingredient) {
 
 function findUser() {
   const newUser = usersData.find(user => user.name.toLowerCase().includes(loginInput.value.toLowerCase()));
-  user = new Users(newUser.id, newUser.name, newUser.pantry);
+  user = new User(newUser.id, newUser.name, newUser.pantry);
   !user ? alert('user not found') : alert(`welcome back ${user.name}`);
 }
 
 function modifyFavorite(e) {
   const recipe = recipeData.find(recipe => recipe.id === parseInt(e.target.getAttribute('id')));
-  const newRecipe = new Recipes(recipe.id, recipe.image, recipe.ingredients, recipe.instructions, recipe.name, recipe.tags);
+  const newRecipe = new Recipe(recipe.id, recipe.image, recipe.ingredients, recipe.instructions, recipe.name, recipe.tags);
   user ? user.modifyFavoriteRecipes(newRecipe) : alert('Please Log In!');
 }
 
@@ -338,7 +339,7 @@ function displayFavorite(e) {
 
 function modifyToCook(e) {
   const recipe = recipeData.find(recipe => recipe.id === parseInt(e.target.getAttribute('id')));
-  const newRecipe = new Recipes(recipe.id, recipe.image, recipe.ingredients, recipe.instructions, recipe.name, recipe.tags);
+  const newRecipe = new Recipe(recipe.id, recipe.image, recipe.ingredients, recipe.instructions, recipe.name, recipe.tags);
   user ? user.modifyRecipesToCook(newRecipe) : alert('Please Log In!');
 }
 
@@ -354,4 +355,12 @@ function filterSaved(type) {
       recipe.id === recipeObj.id && displayRecipe(recipe);
     });
   })
+}
+
+function displaySearchedSavedRecipes(searchUserInput) {
+  return user.searchRecipes(searchUserInput.value)
+}
+
+if (typeof module !== 'undefined') {
+  var ingredientInfo = require('../data/ingredients');
 }

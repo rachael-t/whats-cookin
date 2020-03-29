@@ -1,12 +1,17 @@
+// if (typeof module !== 'undefined') {
+//   var ingredientInfo = require('../data/ingredients');
+// }
+
 class Pantry {
-  constructor(ingredientsData, amount) {
-    this.ingredient = ingredientsData;
+  constructor(ingredientInfo, amount) {
+    this.ingredient = ingredientInfo;
     this.amount = amount;
   }
   checkIngredients() {
-    //invoked under users.cookRecipe() to check if user has enought to cook meal
+    //invoked under user.cookRecipe() to check if user has enought to cook meal
     //return boolean
     //if false - invoke checkAmountNeeded()
+
   }
   checkAmountNeeded() {
     //loop through user.pantry and user.recipe(?) and return difference of what they have vs needed

@@ -1,4 +1,4 @@
-class Recipes {
+class Recipe {
   constructor(id, image, ingredients, instructions, name, tags) {
     this.id = id;
     this.image = image;
@@ -13,5 +13,5 @@ class Recipes {
 }
 
 if (typeof module !== 'undefined') {
-  module.exports = Recipes;
+  module.exports = Recipe;
 }

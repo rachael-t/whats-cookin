@@ -894,9 +894,9 @@ let ingredientsData = [
     "name": "white cheddar",
     "estimatedCostInCents": 709
   },
-  {
-    "estimatedCostInCents": 205
-  },
+  // {
+  //   "estimatedCostInCents": 205
+  // },
   {
     "id": 98998,
     "name": "balsamic glaze",

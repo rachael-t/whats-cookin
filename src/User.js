@@ -1,29 +1,8 @@
-// const data = require('../data/ingredients');
+if (typeof module !== 'undefined') {
+  var ingredientInfo = require('../data/ingredients');
+}
 
-
-let ingredientInfo = [{
-    "id": 20081,
-    "name": "wheat flour",
-    "estimatedCostInCents": 142
-  },
-  {
-    "id": 18372,
-    "name": "bicarbonate of soda",
-    "estimatedCostInCents": 582
-  },
-  {
-    "id": 10011250,
-    "name": "head of lettuce",
-    "estimatedCostInCents": 472
-  },
-  {
-    "id": 19335,
-    "name": "sucrose",
-    "estimatedCostInCents": 902
-  }
-];
-
-class Users {
+class User {
   constructor(id, name, pantry) {
     this.id = id;
     this.name = name;
@@ -72,12 +51,17 @@ class Users {
 
   searchRecipes(input) {
     let filteredRecipes = [];
-    const inputLowerCase = input.toLowerCase()
-    let ingredientID = [];
+    let inputLowerCase = input.toLowerCase();
+    console.log(inputLowerCase)
+    let ingredientIds = [];
+    console.log(ingredientInfo)
     ingredientInfo.forEach(ingredient => {
-      if (ingredient.name.includes(inputLowerCase)) {
-        ingredientID.push(ingredient.id);
-      }
+      let words = ingredient.name.split(' ');
+      words.forEach(word => {
+        if (word === inputLowerCase) {
+          ingredientIds.push(ingredient.id);
+        }
+      })
     });
 
     this.favoriteRecipes.forEach(recipe => {
@@ -94,14 +78,14 @@ class Users {
     });
     this.favoriteRecipes.forEach(recipe => {
       recipe.ingredients.forEach(ingredient => {
-        if (ingredientID.includes(ingredient.id)) {
+        if (ingredientIds.includes(ingredient.id)) {
           filteredRecipes.push(recipe);
         }
       })
     });
     this.recipesToCook.forEach(recipe => {
       recipe.ingredients.forEach(ingredient => {
-        if (ingredientID.includes(ingredient.id)) {
+        if (ingredientIds.includes(ingredient.id)) {
           filteredRecipes.push(recipe);
         }
       })
@@ -119,5 +103,5 @@ class Users {
 }
 
 if (typeof module !== 'undefined') {
-  module.exports = Users;
+  module.exports = User;
 }
