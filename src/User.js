@@ -2,7 +2,7 @@ if (typeof module !== 'undefined') {
   var ingredientInfo = require('../data/ingredients');
 }
 
-class Users {
+class User {
   constructor(id, name, pantry) {
     this.id = id;
     this.name = name;
@@ -52,7 +52,9 @@ class Users {
   searchRecipes(input) {
     let filteredRecipes = [];
     let inputLowerCase = input.toLowerCase();
+    console.log(inputLowerCase)
     let ingredientIds = [];
+    console.log(ingredientInfo)
     ingredientInfo.forEach(ingredient => {
       let words = ingredient.name.split(' ');
       words.forEach(word => {
@@ -101,5 +103,5 @@ class Users {
 }
 
 if (typeof module !== 'undefined') {
-  module.exports = Users;
+  module.exports = User;
 }

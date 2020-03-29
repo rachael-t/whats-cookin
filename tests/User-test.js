@@ -1,16 +1,16 @@
 const chai = require('chai');
 const expect = chai.expect;
 
-const Users = require('../src/Users');
-const Recipes = require('../src/Recipes');
+const User = require('../src/User');
+const Recipe = require('../src/Recipe');
 const Pantry = require('../src/Pantry');
 
-describe('Users', () => {
+describe('User', () => {
 
   let user, recipe, pantry;
   beforeEach('user instance', () => {
-    user = new Users();
-    recipe1 = new Recipes(799732,
+    user = new User();
+    recipe1 = new Recipe(799732,
       "google",
       [{
           "id": 10011250,
@@ -35,7 +35,7 @@ describe('Users', () => {
       [
         "salad"
       ]);
-    recipe2 = new Recipes(621213,
+    recipe2 = new Recipe(621213,
       "google",
       [{
           "id": 10011250,
@@ -60,7 +60,7 @@ describe('Users', () => {
       [
         "salad"
       ]);
-    recipe3 = new Recipes(611858,
+    recipe3 = new Recipe(611858,
       "google",
       [{
           "id": 16098,
@@ -89,11 +89,11 @@ describe('Users', () => {
   })
 
   it('should be a function', () => {
-    expect(Users).to.be.a('function');
+    expect(User).to.be.a('function');
   });
 
-  it('should be an instance of Users', () => {
-    expect(user).to.be.an.instanceof(Users);
+  it('should be an instance of User', () => {
+    expect(user).to.be.an.instanceof(User);
   });
 
   it('should be able to modify favoriteRecipes', () => {
