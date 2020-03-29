@@ -130,6 +130,7 @@ describe('Users', () => {
 
   it('should display any recipe from the user/`s saved lists that match a recipe name input into the search bar', () => {
     user.modifyFavoriteRecipes(recipe1);
+    user.modifyRecipesToCook(recipe1);
     user.modifyRecipesToCook(recipe2);
     user.modifyFavoriteRecipes(recipe3);
     expect(user.searchRecipes('SaLaD')).to.deep.equal([recipe1, recipe2]);

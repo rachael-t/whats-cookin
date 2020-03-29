@@ -1,4 +1,27 @@
-const ingredientsData = require('../data/ingredients');
+// const data = require('../data/ingredients');
+
+
+let ingredientInfo = [{
+    "id": 20081,
+    "name": "wheat flour",
+    "estimatedCostInCents": 142
+  },
+  {
+    "id": 18372,
+    "name": "bicarbonate of soda",
+    "estimatedCostInCents": 582
+  },
+  {
+    "id": 10011250,
+    "name": "head of lettuce",
+    "estimatedCostInCents": 472
+  },
+  {
+    "id": 19335,
+    "name": "sucrose",
+    "estimatedCostInCents": 902
+  }
+];
 
 class Users {
   constructor(id, name, pantry) {
@@ -10,17 +33,17 @@ class Users {
   }
 
   modifyFavoriteRecipes(recipe) {
-      if (this.favoriteRecipes.length === 0) {
+    if (this.favoriteRecipes.length === 0) {
+      this.favoriteRecipes.push(recipe);
+    } else if (this.favoriteRecipes.length > 0) {
+      let index = this.favoriteRecipes.findIndex(el => el.id == recipe.id);
+      if (index === -1) {
         this.favoriteRecipes.push(recipe);
-      } else if (this.favoriteRecipes.length > 0) {
-        let index = this.favoriteRecipes.findIndex(el => el.id == recipe.id);
-        if (index === -1) {
-          this.favoriteRecipes.push(recipe);
-        } else {
-          this.favoriteRecipes.splice(index, 1);
-        }
+      } else {
+        this.favoriteRecipes.splice(index, 1);
       }
     }
+  }
 
   modifyRecipesToCook(recipe) {
     if (this.recipesToCook.length === 0) {
@@ -50,38 +73,35 @@ class Users {
   searchRecipes(input) {
     let filteredRecipes = [];
     const inputLowerCase = input.toLowerCase()
-    console.log(inputLowerCase)
-    //returns 'lettuce'
     let ingredientID = [];
-    ingredientsData.forEach(ingredient => {
-      if (ingredient.name.indexOf(inputLowerCase) !== -1) {
+    ingredientInfo.forEach(ingredient => {
+      if (ingredient.name.includes(inputLowerCase)) {
         ingredientID.push(ingredient.id);
       }
     });
-    console.log(ingredientID)
-    //for the test we are running, we are searching for lettuce, which TWO ingredients have in their name, neither of which have it as the first/only world in the string. this is why we do NOT want to use .find() in case a user is searching for an ingredient which could bring back a number of items
-    //this console log should return an array of two objects
 
     this.favoriteRecipes.forEach(recipe => {
+      // also check if ifilteredRecipes  array already includes this recipe
       if (recipe.name.toLowerCase().includes(inputLowerCase)) {
         filteredRecipes.push(recipe)
       }
     });
     this.recipesToCook.forEach(recipe => {
+      // also check if ifilteredRecipes  array already includes this recipe
       if (recipe.name.toLowerCase().includes(inputLowerCase)) {
         filteredRecipes.push(recipe)
       }
     });
     this.favoriteRecipes.forEach(recipe => {
       recipe.ingredients.forEach(ingredient => {
-        if (ingredient.id === ingredientID) {
+        if (ingredientID.includes(ingredient.id)) {
           filteredRecipes.push(recipe);
         }
       })
     });
     this.recipesToCook.forEach(recipe => {
       recipe.ingredients.forEach(ingredient => {
-        if (ingredient.id === ingredientID) {
+        if (ingredientID.includes(ingredient.id)) {
           filteredRecipes.push(recipe);
         }
       })
