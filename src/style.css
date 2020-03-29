@@ -69,8 +69,8 @@ header {
 button,
 input {
     border: 0px;
-    padding: 10px 20px;
-    font-size: 140%;
+    padding: 10px 15px;
+    font-size: 120%;
     font-weight: 300;
     outline: none;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.05);
@@ -91,6 +91,7 @@ input {
 }
 
 .search-all-btn,
+.search-user-btn,
 .login-btn {
     border-radius: 5px 0 0 5px;
     background-color: var(--background-light);

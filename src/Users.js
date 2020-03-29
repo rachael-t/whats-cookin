@@ -50,7 +50,7 @@ class Users {
       this.recipesToCook.push(recipe)
     } else {
       this.recipesToCook.forEach(element => {
-        if (!element.id === recipe.id) {
+        if (element.id !== recipe.id) {
           this.recipesToCook.push(recipe);
         } else if (element.id === recipe.id) {
           const index = this.recipesToCook.indexOf(recipe);
