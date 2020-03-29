@@ -22,7 +22,7 @@ body.addEventListener('click', buttonStatus);
 function buttonClick(e) {
   // Search all recipes
   if (e.target.closest('.search-all-btn')) {
-    searchRecipes(e);
+    searchAllRecipes(e);
     clearInput(searchInput);
   }
   // Search User Recipes
@@ -63,7 +63,7 @@ function buttonClick(e) {
     modifyToCook(e);
     displayToCook(e);
   }
-  // Filter my Favourite 
+  // Filter my Favourite
   if (e.target.closest('.favorite-recipes-btn')) {
     removeReturnBtn()
     displayReturnBtn();
@@ -289,7 +289,7 @@ function filterByTag(e) {
   displayFilteredRecipe(filteredRecipes);
 }
 
-function searchRecipes(e) {
+function searchAllRecipes(e) {
   let ingredientSearched = getIngredientId(searchInput.value)
   console.log(ingredientSearched)
   let filteredRecipes = [];
