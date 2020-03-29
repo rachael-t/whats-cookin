@@ -5,7 +5,9 @@ const mainPage = document.querySelector('.main-page');
 const recipePage = document.querySelector('.recipe-page');
 const filterFavoriteBtn = document.querySelector('.favorite-recipes-btn');
 const filterToCookBtn = document.querySelector('.cook-recipes-btn');
+const searchUserBtn = document.querySelector('.search-user-btn');
 const searchInput = document.querySelector('.search-input');
+const searchUserInput = document.querySelector('.search-user-input');
 const loginInput = document.querySelector('.login-input');
 const welcomeMessage = document.querySelector('.welcome-message');
 const returnBtnContainer = document.querySelector('.return-btn-container');
@@ -21,6 +23,12 @@ function buttonClick(e) {
   // Search all recipes
   if (e.target.closest('.search-all-btn')) {
     searchRecipes(e);
+    clearInput(searchInput);
+  }
+  // Search User Recipes
+  if (e.target.closest('.search-user-btn')) {
+    // search user favorite or saved recipes
+    clearInput(searchUserInput);
   }
   // Filter by tag, display recipes
   if (e.target.closest('.category-tag')) {
@@ -42,7 +50,8 @@ function buttonClick(e) {
   // Find User and display Greeting
   if (e.target.closest('.login-btn')) {
     findUser();
-    displayMessage()
+    displayMessage();
+    clearInput(loginInput);
   }
   // Add to My Favourite (heart)
   if (e.target.closest('.card-icon-favorite') || e.target.closest('.recipe-icon-favorite')) {
@@ -74,11 +83,17 @@ function buttonStatus() {
   if (user) {
     filterFavoriteBtn.removeAttribute('disabled', 'disabled');
     filterToCookBtn.removeAttribute('disabled', 'disabled');
+    searchUserBtn.removeAttribute('disabled', 'disabled');
   } else {
     filterFavoriteBtn.setAttribute('disabled', 'disabled');
     filterToCookBtn.setAttribute('disabled', 'disabled');
+    searchUserBtn.setAttribute('disabled', 'disabled');
   }
 }
+
+function clearInput(input) {
+  input.value = '';
+};
 
 function pageLoad() {
   recipePage.innerHTML = ' ';
@@ -111,16 +126,22 @@ function getRecipe(recipeData) {
 }
 
 function displayRecipe(recipeCard) {
+  let favorite = checkSelected(recipeCard, 'favoriteRecipes');
+  let toCook = checkSelected(recipeCard, 'recipesToCook');
   recipeContainer.insertAdjacentHTML('afterbegin', `
         <li class="recipe-card" id="${recipeCard.id}">
           <img src="${recipeCard.image}" class="card-img" alt="recipe picture" id="${recipeCard.id}">
           <p class="card-title" id="${recipeCard.id}">${recipeCard.name}</divclass="card-title"<p>
           <div class="card-icons">
-            <ion-icon name="heart-outline" class="card-icon-favorite" id="${recipeCard.id}"></ion-icon>
-            <ion-icon name="checkmark-outline" class="card-icon-cook" id="${recipeCard.id}"></ion-icon>
+            <ion-icon name="heart-outline" class="card-icon-favorite ${favorite}" id="${recipeCard.id}"></ion-icon>
+            <ion-icon name="checkmark-outline" class="card-icon-cook ${toCook}" id="${recipeCard.id}"></ion-icon>
           </div>
         </li>
     `);
+}
+
+function checkSelected(recipe, type) {
+  return (user && (user[type].find(favorite => favorite.id === recipe.id) && 'selected'));
 }
 
 function getTags(recipeData) {
@@ -160,12 +181,14 @@ function getRecipeInfo(e) {
 }
 
 function displayFullRecipe(fullRecipeInfo) {
+  let favorite = checkSelected(fullRecipeInfo, 'favoriteRecipes');
+  let toCook = checkSelected(fullRecipeInfo, 'recipesToCook');
   recipePage.insertAdjacentHTML('beforeend', `
     <button type="button" name="button" class="return-btn"><ion-icon name="close-outline" class="return-btn"></ion-icon></button>
     <h2 class="recipe-title">${fullRecipeInfo.name}</h2>
     <div class="recipe-icons">
-      <ion-icon name="heart-outline" class="recipe-icon-favorite" id="${fullRecipeInfo.id}"></ion-icon>
-      <ion-icon name="checkmark-outline" class="recipe-icon-cook" id="${fullRecipeInfo.id}"></ion-icon>
+      <ion-icon name="heart-outline" class="recipe-icon-favorite ${favorite}" id="${fullRecipeInfo.id}"></ion-icon>
+      <ion-icon name="checkmark-outline" class="recipe-icon-cook ${toCook}" id="${fullRecipeInfo.id}"></ion-icon>
     </div>
     <h3>Ingredients:</h3>
     <ul class="ingredients">
@@ -268,6 +291,7 @@ function filterByTag(e) {
 
 function searchRecipes(e) {
   let ingredientSearched = getIngredientId(searchInput.value)
+  console.log(ingredientSearched)
   let filteredRecipes = [];
   recipeData.filter(recipe => {
     recipe.ingredients.forEach(ingredient => {
@@ -282,13 +306,19 @@ function searchRecipes(e) {
 
 function getIngredientId(searchInputName) {
   let ingredientObject = ingredientsData.find(ingredient => ingredient.name.includes(searchInputName));
+  displayIngredientMessage(ingredientObject);
   return ingredientObject.id;
 }
 
 function displayFilteredRecipe(filteredRecipes) {
   filteredRecipes.forEach(recipe => displayRecipe(recipe));
+  removeReturnBtn();
+  displayReturnBtn();
 }
 
+function displayIngredientMessage(ingredient) {
+  ingredient && (welcomeMessage.innerHTML = `Searched by Ingredient: ${ingredient.name}`);
+}
 
 function findUser() {
   const newUser = usersData.find(user => user.name.toLowerCase().includes(loginInput.value.toLowerCase()));
@@ -319,20 +349,9 @@ function displayToCook(e) {
 
 function filterSaved(type) {
   recipeContainer.innerHTML = ' ';
-  user && user[type].forEach(recipeId => {
-    let foundRecipe = recipeData.find(recipe => {
-      recipe.id == recipeId && displayRecipe(recipe);
+  user && user[type].forEach(recipeObj => {
+    recipeData.find(recipe => {
+      recipe.id === recipeObj.id && displayRecipe(recipe);
     });
   })
 }
-
-
-
-
-
-// function checkIfFavorite(recipe) {
-//   // get current user data ( global)
-//   // check it this recipe is
-//   // if it's favorite - return 'favorite'
-//   // if it's not - return
-// }
