@@ -187,6 +187,7 @@ function displayFullRecipe(fullRecipeInfo) {
   recipePage.insertAdjacentHTML('beforeend', `
     <button type="button" name="button" class="return-btn"><ion-icon name="close-outline" class="return-btn"></ion-icon></button>
     <h2 class="recipe-title">${fullRecipeInfo.name}</h2>
+    <button type="button" name="button" class="cook-now-btn">Cook Now!</button>
     <div class="recipe-icons">
       <ion-icon name="heart-outline" class="recipe-icon-favorite ${favorite}" id="${fullRecipeInfo.id}"></ion-icon>
       <ion-icon name="checkmark-outline" class="recipe-icon-cook ${toCook}" id="${fullRecipeInfo.id}"></ion-icon>
@@ -330,7 +331,7 @@ function findUser() {
 function modifyFavorite(e) {
   const recipe = recipeData.find(recipe => recipe.id === parseInt(e.target.getAttribute('id')));
   const newRecipe = new Recipe(recipe.id, recipe.image, recipe.ingredients, recipe.instructions, recipe.name, recipe.tags);
-  user ? user.modifyFavoriteRecipes(newRecipe) : alert('Please Log In!');
+  user ? user.modifyRecipes(newRecipe, 'favoriteRecipes') : alert('Please Log In!');
 }
 
 function displayFavorite(e) {
@@ -340,7 +341,7 @@ function displayFavorite(e) {
 function modifyToCook(e) {
   const recipe = recipeData.find(recipe => recipe.id === parseInt(e.target.getAttribute('id')));
   const newRecipe = new Recipe(recipe.id, recipe.image, recipe.ingredients, recipe.instructions, recipe.name, recipe.tags);
-  user ? user.modifyRecipesToCook(newRecipe) : alert('Please Log In!');
+  user ? user.modifyRecipes(newRecipe, 'recipesToCook') : alert('Please Log In!');
 }
 
 function displayToCook(e) {

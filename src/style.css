@@ -211,10 +211,19 @@ h2:after {
 /* -------------------------------------------- */
 /* ----- Recipe Page ----- */
 /* -------------------------------------------- */
-.return-btn {
+.return-btn,
+.cook-now-btn {
     display: block;
     margin: 0 auto;
     font-size: 200%;
+}
+
+.cook-now-btn {
+    margin-bottom: 30px;
+}
+
+.cook-now-btn {
+    background-color: var(--accent);
 }
 
 .recipe-page {
