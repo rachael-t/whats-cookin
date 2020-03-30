@@ -84,12 +84,13 @@ describe('Pantry', () => {
       }]);
   });
 
+  //for the test I gave the user not enough ingredients to cook the recipe that I also created as a test recipe
+  //we will want to create possibly another recipe in which the user does have enough pantry ingredients to test both a true and false path
+  
   it('should be able to check ingredients in pantry against a recipe', () => {
     pantry.checkIngredients(recipe)
     expect(pantry.checkIngredients()).to.equal(false);
   });
-
-
 
 
 
