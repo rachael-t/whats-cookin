@@ -1,7 +1,6 @@
 if (typeof module !== 'undefined') {
-  var ingredientInfo = require('../data/ingredients');
+  ingredientsData = require('../data/ingredients');
 }
-
 class User {
   constructor(id, name, pantry) {
     this.id = id;
@@ -11,31 +10,16 @@ class User {
     this.recipesToCook = [];
   }
 
-  modifyFavoriteRecipes(recipe) {
-    if (this.favoriteRecipes.length === 0) {
-      this.favoriteRecipes.push(recipe);
-    } else if (this.favoriteRecipes.length > 0) {
-      let index = this.favoriteRecipes.findIndex(el => el.id == recipe.id);
+  modifyRecipes(recipe, category) {
+    if (this[category].length === 0) {
+      this[category].push(recipe);
+    } else if (this[category].length > 0) {
+      let index = this[category].findIndex(el => el.id === recipe.id);
       if (index === -1) {
-        this.favoriteRecipes.push(recipe);
+        this[category].push(recipe);
       } else {
-        this.favoriteRecipes.splice(index, 1);
+        this[category].splice(index, 1);
       }
-    }
-  }
-
-  modifyRecipesToCook(recipe) {
-    if (this.recipesToCook.length === 0) {
-      this.recipesToCook.push(recipe)
-    } else {
-      this.recipesToCook.forEach(element => {
-        if (element.id !== recipe.id) {
-          this.recipesToCook.push(recipe);
-        } else if (element.id === recipe.id) {
-          const index = this.recipesToCook.indexOf(recipe);
-          this.recipesToCook.splice(index, 1);
-        }
-      })
     }
   }
 
@@ -52,10 +36,8 @@ class User {
   searchRecipes(input) {
     let filteredRecipes = [];
     let inputLowerCase = input.toLowerCase();
-    console.log(inputLowerCase)
     let ingredientIds = [];
-    console.log(ingredientInfo)
-    ingredientInfo.forEach(ingredient => {
+    ingredientsData.forEach(ingredient => {
       let words = ingredient.name.split(' ');
       words.forEach(word => {
         if (word === inputLowerCase) {
