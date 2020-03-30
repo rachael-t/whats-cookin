@@ -1,23 +1,24 @@
-// if (typeof module !== 'undefined') {
-//   var ingredientInfo = require('../data/ingredients');
-// }
+if (typeof module !== 'undefined') {
+  var ingredientInfo = require('../data/ingredients');
+}
 
 class Pantry {
-  constructor(ingredientInfo, amount) {
-    this.ingredient = ingredientInfo;
-    this.amount = amount;
+  constructor(userPantry) {
+    this.ingredientsStocked = userPantry;
+    //so when we instantiate a user we should instantiate their pantry new Pantry(user.pantry)
   }
   checkIngredients() {
     //invoked under user.cookRecipe() to check if user has enought to cook meal
     //return boolean
     //if false - invoke checkAmountNeeded()
 
+    //checkIngredients should take an argument of recipe, which will be whatever recipe the user has clicked the 'cook now' button on. that ID will be passed to the user.cookRecipe and cookRecipe will pull it's corresponding recipe object to pass through pantry.checkIngredients({recipe})
   }
   checkAmountNeeded() {
-    //loop through user.pantry and user.recipe(?) and return difference of what they have vs needed
+    //loop through pantry and recipe and return difference of what they have vs needed
   }
   removeIngredients() {
-    //removes ingredient and amount from recipe cooked
+    //removes ingredient and amount from the user's pantry based on the recipe cooked
   }
 }
 
