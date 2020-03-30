@@ -1,4 +1,3 @@
-/* eslint-disable indent */
 const chai = require('chai');
 const expect = chai.expect;
 const recipeDataTest = require('../tests/recipe-data-test');
@@ -27,8 +26,38 @@ describe('Recipe', () => {
         expect(recipe2.id).to.equal(678353);
     });
 
-    it('should return the total cost of ingredients needed', () => {
+    it('should have an image', () => {
+        expect(recipe1.image).to.equal('https://images.unsplash.com/');
+    });
+
+    it('should have list of ingredients', () => {
+        expect(recipe1.ingredients[0]).to.deep.equal({
+            "id": 20081,
+            "quantity": {
+                "amount": 1.5,
+                "unit": "c"
+            }
+        });
+    });
+
+    it('should have list of instructions', () => {
+        expect(recipe1.instructions[0]).to.deep.equal({
+            "instruction": "In a large mixing bowl, whisk together the dry ingredients (flour, pudding mix, soda and salt). Set aside.In a large mixing bowl of a stand mixer, cream butter for 30 seconds. Gradually add granulated sugar and brown sugar and cream until light and fluffy.",
+            "number": 1
+        });
+    });
+
+    it('should have a name', () => {
+        expect(recipe1.name).to.equal('Loaded Chocolate Chip Pudding Cookie Cups');
+    });
+
+    it('should have tags', () => {
+        expect(recipe1.tags[1]).to.equal('starter');
+    });
+
+    it('should calculate total recipe price', () => {
         expect(recipe1.calculateCost()).to.equal(177.76);
+        expect(recipe2.calculateCost()).to.equal(272.97);
     });
 
 })
