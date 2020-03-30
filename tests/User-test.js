@@ -7,7 +7,7 @@ const Pantry = require('../src/Pantry');
 
 describe('User', () => {
 
-  let user, recipe, pantry;
+  let user, recipe1, recipe2, recipe3, pantry;
   beforeEach('user instance', () => {
     user = new User();
     recipe1 = new Recipe(799732,
@@ -97,48 +97,48 @@ describe('User', () => {
   });
 
   it('should be able to modify favoriteRecipes', () => {
-    user.modifyFavoriteRecipes(recipe1);
-    user.modifyFavoriteRecipes(recipe2);
-    user.modifyFavoriteRecipes(recipe3);
+    user.modifyRecipes(recipe1, 'favoriteRecipes');
+    user.modifyRecipes(recipe2, 'favoriteRecipes');
+    user.modifyRecipes(recipe3, 'favoriteRecipes');
     expect(user.favoriteRecipes).to.deep.equal([recipe1, recipe2, recipe3])
   });
 
   it('check if recipe is in favoriteRecipes array', () => {
-    user.modifyFavoriteRecipes(recipe1);
-    user.modifyFavoriteRecipes(recipe1)
+    user.modifyRecipes(recipe1, 'favoriteRecipes');
+    user.modifyRecipes(recipe1, 'favoriteRecipes')
     expect(user.favoriteRecipes.length).to.equal(0);
   });
 
   it('should be able to modify recipesToCook', () => {
-    user.modifyRecipesToCook(recipe1);
+    user.modifyRecipes(recipe1, 'recipesToCook');
     expect(user.recipesToCook.length).to.equal(1);
   });
 
   it('check if recipe is in recipesToCook array', () => {
-    user.modifyRecipesToCook(recipe1);
-    user.modifyRecipesToCook(recipe1)
+    user.modifyRecipes(recipe1, 'recipesToCook');
+    user.modifyRecipes(recipe1, 'recipesToCook')
     expect(user.recipesToCook.length).to.equal(0);
   });
 
   it('should display recipes from the selected saved list that match a selected category tag', () => {
-    user.modifyFavoriteRecipes(recipe1);
-    user.modifyFavoriteRecipes(recipe2);
-    user.modifyFavoriteRecipes(recipe3);
+    user.modifyRecipes(recipe1, 'favoriteRecipes');
+    user.modifyRecipes(recipe2, 'favoriteRecipes');
+    user.modifyRecipes(recipe3, 'favoriteRecipes');
     expect(user.filterRecipes('favoriteRecipes', 'salad')).to.deep.equal([recipe1, recipe2]);
     expect(user.filterRecipes('recipesToCook', 'salad')).to.deep.equal([]);
   });
 
   it('should display any recipe from the user/`s saved lists that match a recipe name input into the search bar', () => {
-    user.modifyFavoriteRecipes(recipe1);
-    user.modifyRecipesToCook(recipe2);
-    user.modifyFavoriteRecipes(recipe3);
+    user.modifyRecipes(recipe1, 'favoriteRecipes');
+    user.modifyRecipes(recipe2, 'recipesToCook');
+    user.modifyRecipes(recipe3, 'favoriteRecipes');
     expect(user.searchRecipes('SaLaD')).to.deep.equal([recipe1, recipe2]);
   });
 
   it('should display any recipe from the user/`s saved lists that match an ingredient input into the search bar', () => {
-    user.modifyFavoriteRecipes(recipe1);
-    user.modifyRecipesToCook(recipe2);
-    user.modifyFavoriteRecipes(recipe3);
+    user.modifyRecipes(recipe1, 'favoriteRecipes');
+    user.modifyRecipes(recipe2, 'recipesToCook');
+    user.modifyRecipes(recipe3, 'favoriteRecipes');
     expect(user.searchRecipes('LeTTuce')).to.deep.equal([recipe1, recipe2]);
   });
 })

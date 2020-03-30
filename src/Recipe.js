@@ -1,3 +1,7 @@
+if (typeof module !== 'undefined') {
+  ingredientsData = require('../data/ingredients');
+}
+
 class Recipe {
   constructor(id, image, ingredients, instructions, name, tags) {
     this.id = id;
@@ -8,7 +12,15 @@ class Recipe {
     this.tags = tags;
   }
   calculateCost() {
-    //access and calculate cost of all ingredients in this.ingredients array
+    let price = this.ingredients.reduce((totalPrice, ingredient) => {
+      ingredientsData.forEach(data => {
+        if (data['id'] === ingredient['id']) {
+          totalPrice += (data['estimatedCostInCents'] * ingredient['quantity']['amount']) / 100;
+        }
+      })
+      return totalPrice;
+    }, 0)
+    return Math.round(price * 100) / 100
   }
 }
 

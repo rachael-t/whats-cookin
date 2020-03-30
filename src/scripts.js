@@ -20,60 +20,59 @@ body.addEventListener('click', buttonClick);
 body.addEventListener('click', buttonStatus);
 
 function buttonClick(e) {
-  // Search all recipes
   if (e.target.closest('.search-all-btn')) {
     searchAllRecipes(e);
     clearInput(searchInput);
   }
-  // Search User Recipes
+
   if (e.target.closest('.search-user-btn')) {
-    // search user favorite or saved recipes
+
     displaySearchedSavedRecipes(searchUserInput)
     clearInput(searchUserInput);
   }
-  // Filter by tag, display recipes
+
   if (e.target.closest('.category-tag')) {
     filterByTag(e);
     removeReturnBtn();
     displayReturnBtn();
   }
-  // Open one recipe
+
   if (e.target.closest('.card-img') || e.target.closest('.card-title')) {
     openRecipe(e);
-  };
-  // Come back to main
+  }
+
   if (e.target.closest('.return-btn')) {
     returnToMainPage();
-    removeReturnBtn()
+    removeReturnBtn();
     getRecipe(recipeData);
     displayMessage();
   }
-  // Find User and display Greeting
+
   if (e.target.closest('.login-btn')) {
     findUser();
     displayMessage();
     clearInput(loginInput);
   }
-  // Add to My Favourite (heart)
+
   if (e.target.closest('.card-icon-favorite') || e.target.closest('.recipe-icon-favorite')) {
-    modifyFavorite(e);
-    displayFavorite(e);
+    modifyRecipes(e, 'favoriteRecipes');
+    selectRecipe(e);
   }
-  // Add to cook (checkmark)
+
   if (e.target.closest('.card-icon-cook') || e.target.closest('.recipe-icon-cook')) {
-    modifyToCook(e);
-    displayToCook(e);
+    modifyRecipes(e, 'recipesToCook');
+    selectRecipe(e);
   }
-  // Filter my Favourite
+
   if (e.target.closest('.favorite-recipes-btn')) {
-    removeReturnBtn()
+    removeReturnBtn();
     displayReturnBtn();
     displayMessage(e);
     filterSaved('favoriteRecipes');
   }
-  // Filter My recipes to Cook
+
   if (e.target.closest('.cook-recipes-btn')) {
-    removeReturnBtn()
+    removeReturnBtn();
     displayReturnBtn();
     displayMessage(e);
     filterSaved('recipesToCook');
@@ -106,36 +105,36 @@ function pageLoad() {
 
 function displayMessage(e) {
   welcomeMessage.innerHTML = ' ';
-  user ? welcomeMessage.innerHTML = `Welcome Back ${user.name}! Select Your Favorite Recipe!` : welcomeMessage.innerHTML = `Log In and Select Your Favorite Recipe!`
-  e ? welcomeMessage.innerHTML = `${user.name} / ${checkFavoriteOrToCook(e)}` : null;
+  user ? welcomeMessage.innerHTML = `Welcome Back ${user.name}! Select Your Favorite Recipe!` : welcomeMessage.innerHTML = `Log In and Select Your Favorite Recipe!`;
+  e && (welcomeMessage.innerHTML = `${user.name} / ${checkFavoriteOrToCook(e)}`);
 }
 
 function checkFavoriteOrToCook(e) {
   if (e.target.classList.contains('favorite-recipes-btn')) {
-    return 'My Favorite Recipes'
+    return 'My Favorite Recipes';
   }
   if (e.target.classList.contains('cook-recipes-btn')) {
-    return 'My Recipes To Cook'
+    return 'My Recipes To Cook';
   }
 }
 
 function getRecipe(recipeData) {
-  recipeData.map(recipe => {
-    let recipeCard = new Recipe(recipe.id, recipe.image, recipe.ingredients, recipe.intructions, recipe.name, recipe.tags)
-    displayRecipe(recipeCard);
+  recipeData.map(r => {
+    let recipe = new Recipe(r.id, r.image, r.ingredients, r.intructions, r.name, r.tags)
+    displayRecipe(recipe);
   })
 }
 
-function displayRecipe(recipeCard) {
-  let favorite = checkSelected(recipeCard, 'favoriteRecipes');
-  let toCook = checkSelected(recipeCard, 'recipesToCook');
+function displayRecipe(recipe) {
+  let favorite = checkSelected(recipe, 'favoriteRecipes');
+  let toCook = checkSelected(recipe, 'recipesToCook');
   recipeContainer.insertAdjacentHTML('afterbegin', `
-        <li class="recipe-card" id="${recipeCard.id}">
-          <img src="${recipeCard.image}" class="card-img" alt="recipe picture" id="${recipeCard.id}">
-          <p class="card-title" id="${recipeCard.id}">${recipeCard.name}</divclass="card-title"<p>
+        <li class="recipe-card" id="${recipe.id}">
+          <img src="${recipe.image}" class="card-img" alt="recipe picture" id="${recipe.id}">
+          <p class="card-title" id="${recipe.id}">${recipe.name}</divclass="card-title"<p>
           <div class="card-icons">
-            <ion-icon name="heart-outline" class="card-icon-favorite ${favorite}" id="${recipeCard.id}"></ion-icon>
-            <ion-icon name="checkmark-outline" class="card-icon-cook ${toCook}" id="${recipeCard.id}"></ion-icon>
+            <ion-icon name="heart-outline" class="card-icon-favorite ${favorite}" id="${recipe.id}"></ion-icon>
+            <ion-icon name="checkmark-outline" class="card-icon-cook ${toCook}" id="${recipe.id}"></ion-icon>
           </div>
         </li>
     `);
@@ -146,15 +145,15 @@ function checkSelected(recipe, type) {
 }
 
 function getTags(recipeData) {
-  let uniqueTags = [];
+  let tags = [];
   recipeData.map(recipe => {
-    recipe.tags.map(tag => !uniqueTags.includes(tag) && uniqueTags.push(tag));
+    recipe.tags.map(tag => !tags.includes(tag) && tags.push(tag));
   })
-  displayTags(uniqueTags);
+  displayTags(tags);
 }
 
-function displayTags(uniqueTags) {
-  uniqueTags.map(tag => {
+function displayTags(tags) {
+  tags.map(tag => {
     tagsContainer.insertAdjacentHTML('afterbegin', `
         <li class="category-card category-tag" id="${tag}">
           <img src="../img/${getTagImg(tag)}.png" class="category-img category-tag" alt="recipe picture" id="${tag}">
@@ -172,46 +171,50 @@ function getTagImg(tag) {
 function openRecipe(e) {
   mainPage.classList.add('hidden');
   recipePage.classList.remove('hidden');
-  getRecipeInfo(e);
+  findRecipe(e);
 }
 
-function getRecipeInfo(e) {
+function findRecipe(e) {
   let recipeId = parseInt(e.target.getAttribute('id'));
-  let fullRecipeInfo = recipeData.find(recipe => recipe.id === recipeId);
-  displayFullRecipe(fullRecipeInfo);
+  let recipe = recipeData.find(recipe => recipe.id === recipeId);
+  displayFullRecipe(recipe);
+}
+/// heeeeeeelllloooooo
+function displayFullRecipe(recipe) {
+  displayRecipeInfo(recipe);
+  displayRecipeIngredients(recipe);
+  displayRecipeInstructions(recipe);
+  displayRecipeCost(recipe);
 }
 
-function displayFullRecipe(fullRecipeInfo) {
-  let favorite = checkSelected(fullRecipeInfo, 'favoriteRecipes');
-  let toCook = checkSelected(fullRecipeInfo, 'recipesToCook');
+function displayRecipeInfo(recipe) {
+  let favorite = checkSelected(recipe, 'favoriteRecipes');
+  let toCook = checkSelected(recipe, 'recipesToCook');
   recipePage.insertAdjacentHTML('beforeend', `
     <button type="button" name="button" class="return-btn"><ion-icon name="close-outline" class="return-btn"></ion-icon></button>
-    <h2 class="recipe-title">${fullRecipeInfo.name}</h2>
+    <h2 class="recipe-title">${recipe.name}</h2>
+    <button type="button" name="button" class="cook-now-btn">Cook Now!</button>
     <div class="recipe-icons">
-      <ion-icon name="heart-outline" class="recipe-icon-favorite ${favorite}" id="${fullRecipeInfo.id}"></ion-icon>
-      <ion-icon name="checkmark-outline" class="recipe-icon-cook ${toCook}" id="${fullRecipeInfo.id}"></ion-icon>
+      <ion-icon name="heart-outline" class="recipe-icon-favorite ${favorite}" id="${recipe.id}"></ion-icon>
+      <ion-icon name="checkmark-outline" class="recipe-icon-cook ${toCook}" id="${recipe.id}"></ion-icon>
     </div>
     <h3>Ingredients:</h3>
     <ul class="ingredients">
     </ul>
     <p class="recipe-cost"></p>
     <div class="instructions-list"></div>
-    <img class="recipe-img" src="${fullRecipeInfo.image}" alt="recipe picture">
+    <img class="recipe-img" src="${recipe.image}" alt="recipe picture">
     <button type="button" name="button" class="return-btn"><ion-icon name="close-outline" class="return-btn"></ion-icon></button>
   `);
-  displayRecipeIngredients(fullRecipeInfo);
-  displayRecipeInstructions(fullRecipeInfo);
 }
 
-function displayRecipeIngredients(fullRecipeInfo) {
-  let ingredientList = document.querySelector('.ingredients');
-  let recipeCost = [];
-  fullRecipeInfo.ingredients.forEach(ingredient => {
+function displayRecipeIngredients(recipe) {
+  recipe.ingredients.forEach(ingredient => {
     let ingredientName = getIngredientInfo(ingredient);
     let ingredientAmount = getIngredientAmount(ingredient);
     let ingredientPrice = getIngredientPrice(ingredientName);
     let ingredientCost = getIngredientCost(ingredient, ingredientName);
-    recipeCost.push(ingredientCost);
+    let ingredientList = document.querySelector('.ingredients');
     ingredientList.insertAdjacentHTML('afterbegin', `
     <li class="ingredient">
         <p class="ingredient-name">${ingredientAmount} ${ingredient.quantity.unit}
@@ -221,7 +224,6 @@ function displayRecipeIngredients(fullRecipeInfo) {
     </li>
     `)
   })
-  getRecipeCost(recipeCost);
 }
 
 function getIngredientInfo(ingredient) {
@@ -240,20 +242,20 @@ function getIngredientCost(ingredient, ingredientName) {
   return (ingredientName.estimatedCostInCents * ingredient.quantity.amount) / 100;
 }
 
-function getRecipeCost(recipeCost) {
-  const totalRecipeCost = recipeCost.reduce((a, b) => a + b, 0);
-  const finalRecipeCost = Math.round(totalRecipeCost * 100) / 100;
-  displayRecipeCost(finalRecipeCost);
-}
-
-function displayRecipeCost(finalRecipeCost) {
+function displayRecipeCost(recipe) {
+  let cost = getRecipeCost(recipe)
   const costContainer = document.querySelector('.recipe-cost');
-  costContainer.innerHTML = `Total Recipe Cost: ${finalRecipeCost} $`;
+  costContainer.innerHTML = `Total Recipe Cost: ${cost} $`;
 }
 
-function displayRecipeInstructions(fullRecipeInfo) {
+function getRecipeCost(r) {
+  let recipe = new Recipe(r.id, r.image, r.ingredients, r.instructions, r.name, r.tags);
+  return recipe.calculateCost();
+}
+
+function displayRecipeInstructions(recipe) {
   let instructionList = document.querySelector('.instructions-list');
-  fullRecipeInfo.instructions.forEach(instruction => {
+  recipe.instructions.forEach(instruction => {
     instructionList.insertAdjacentHTML('beforeBegin', `
     <p class="cooking-step">Step ${instruction.number}</p>
     <p class="cooking-instruction">${instruction.instruction}</p>
@@ -291,7 +293,6 @@ function filterByTag(e) {
 
 function searchAllRecipes(e) {
   let ingredientSearched = getIngredientId(searchInput.value)
-  console.log(ingredientSearched)
   let filteredRecipes = [];
   recipeData.filter(recipe => {
     recipe.ingredients.forEach(ingredient => {
@@ -311,7 +312,6 @@ function getIngredientId(searchInputName) {
 }
 
 function displayFilteredRecipe(filteredRecipes) {
-
   filteredRecipes.forEach(recipe => displayRecipe(recipe));
   removeReturnBtn();
   displayReturnBtn();
@@ -322,30 +322,20 @@ function displayIngredientMessage(ingredient) {
 }
 
 function findUser() {
-  const newUser = usersData.find(user => user.name.toLowerCase().includes(loginInput.value.toLowerCase()));
-  user = new User(newUser.id, newUser.name, newUser.pantry);
+  const u = usersData.find(user => user.name.toLowerCase().includes(loginInput.value.toLowerCase()));
+  debugger
+  u && (user = new User(u.id, u.name, u.pantry));
   !user ? alert('user not found') : alert(`welcome back ${user.name}`);
 }
 
-function modifyFavorite(e) {
-  const recipe = recipeData.find(recipe => recipe.id === parseInt(e.target.getAttribute('id')));
-  const newRecipe = new Recipe(recipe.id, recipe.image, recipe.ingredients, recipe.instructions, recipe.name, recipe.tags);
-  user ? user.modifyFavoriteRecipes(newRecipe) : alert('Please Log In!');
+function modifyRecipes(e, category) {
+  const r = recipeData.find(recipe => recipe.id === parseInt(e.target.getAttribute('id')));
+  const recipe = new Recipe(r.id, r.image, r.ingredients, r.instructions, r.name, r.tags);
+  user ? user.modifyRecipes(recipe, category) : alert('Please Log In!');
 }
 
-function displayFavorite(e) {
+function selectRecipe(e) {
   user && e.target.classList.toggle('selected');
-}
-
-function modifyToCook(e) {
-  const recipe = recipeData.find(recipe => recipe.id === parseInt(e.target.getAttribute('id')));
-  const newRecipe = new Recipe(recipe.id, recipe.image, recipe.ingredients, recipe.instructions, recipe.name, recipe.tags);
-  user ? user.modifyRecipesToCook(newRecipe) : alert('Please Log In!');
-}
-
-function displayToCook(e) {
-  user && e.target.classList.toggle('selected');
-
 }
 
 function filterSaved(type) {
@@ -359,8 +349,4 @@ function filterSaved(type) {
 
 function displaySearchedSavedRecipes(searchUserInput) {
   return user.searchRecipes(searchUserInput.value)
-}
-
-if (typeof module !== 'undefined') {
-  var ingredientInfo = require('../data/ingredients');
 }
