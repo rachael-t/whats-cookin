@@ -27,7 +27,6 @@ function buttonClick(e) {
   }
 
   if (e.target.closest('.search-user-btn')) {
-
     displaySearchedSavedRecipes(searchUserInput)
     clearInput(searchUserInput);
   }
@@ -80,10 +79,7 @@ function buttonClick(e) {
   }
 
   if (e.target.closest('.cook-now-btn')) {
-    let recipeId = parseInt(e.target.getAttribute('id'));
-    // check if this recipe is in recipes to cook array, and if ti's not  - alert
-    user && console.log(user.checkRecipeToCook(recipeId)); // return if ready to cook!
-    // Add message if ready too cook or ingredients missing
+    checkAbleToCook(e);
   }
 }
 
@@ -187,7 +183,7 @@ function findRecipe(e) {
   let recipe = recipeData.find(recipe => recipe.id === recipeId);
   displayFullRecipe(recipe);
 }
-/// heeeeeeelllloooooo
+
 function displayFullRecipe(recipe) {
   displayRecipeInfo(recipe);
   displayRecipeIngredients(recipe);
@@ -202,6 +198,7 @@ function displayRecipeInfo(recipe) {
     <button type="button" name="button" class="return-btn"><ion-icon name="close-outline" class="return-btn"></ion-icon></button>
     <h2 class="recipe-title">${recipe.name}</h2>
     <button type="button" name="button" class="cook-now-btn" id="${recipe.id}">Cook Now!</button>
+    <div class="cook-message"></div>
     <div class="recipe-icons">
       <ion-icon name="heart-outline" class="recipe-icon-favorite ${favorite}" id="${recipe.id}"></ion-icon>
       <ion-icon name="checkmark-outline" class="recipe-icon-cook ${toCook}" id="${recipe.id}"></ion-icon>
@@ -358,4 +355,51 @@ function filterSaved(type) {
 
 function displaySearchedSavedRecipes(searchUserInput) {
   return user.searchRecipes(searchUserInput.value)
+}
+
+function checkAbleToCook(e) {
+  if (user) {
+    let recipeId = parseInt(e.target.getAttribute('id'));
+    let status = checkToCookStatus(recipeId);
+    status ? getCookInfo(recipeId) : alert('Add to Cook List First');
+  } else {
+    alert('Please Log In!')
+  }
+}
+
+function checkToCookStatus(recipeId) {
+  return user.recipesToCook.some(recipe => recipe.id === recipeId);
+}
+
+function getCookInfo(recipeId) {
+  let isReady = user.checkRecipeToCook(recipeId);
+  isReady ? displayMissing() : displayReady()
+}
+
+function displayReady() {
+  document.querySelector('.cook-now-btn').classList.add('hidden');
+  document.querySelector('.recipe-icon-cook').classList.remove('selected');
+  document.querySelector('.cook-message').innerHTML = 'You have all ingredients needed! Bon Appétit!';
+};
+
+function displayMissing() {
+  document.querySelector('.cook-now-btn').classList.add('hidden');
+  let messageContainer = document.querySelector('.cook-message');
+  messageContainer.insertAdjacentHTML('afterbegin', `
+    List of missing ingredients: 
+    <ul class="missing-ingredients">
+    </ul>
+  `);
+  displayMissingIngredient();
+}
+
+function displayMissingIngredient() {
+  let ingredientsContainer = document.querySelector('.missing-ingredients');
+  ingredientsContainer.insertAdjacentHTML('afterbegin', `
+  <li class="ingredient">
+        <p class="ingredient-name">amount quantity<span class="ingredient-item">name</span></p>
+        <p class="ingredient-cost">price$/unit</p>
+        <p class="ingredient-cost">Total cost: total price$</p>
+    </li>
+  `);
 }
