@@ -14,6 +14,7 @@ const returnBtnContainer = document.querySelector('.return-btn-container');
 const returnBtnBottomContainer = document.querySelector('.return-btn-bottom-container');
 
 let user = null;
+let pantry = null;
 
 window.addEventListener('load', pageLoad);
 body.addEventListener('click', buttonClick);
@@ -76,6 +77,13 @@ function buttonClick(e) {
     displayReturnBtn();
     displayMessage(e);
     filterSaved('recipesToCook');
+  }
+
+  if (e.target.closest('.cook-now-btn')) {
+    let recipeId = parseInt(e.target.getAttribute('id'));
+    // check if this recipe is in recipes to cook array, and if ti's not  - alert
+    user && console.log(user.checkRecipeToCook(recipeId)); // return if ready to cook!
+    // Add message if ready too cook or ingredients missing
   }
 }
 
@@ -193,7 +201,7 @@ function displayRecipeInfo(recipe) {
   recipePage.insertAdjacentHTML('beforeend', `
     <button type="button" name="button" class="return-btn"><ion-icon name="close-outline" class="return-btn"></ion-icon></button>
     <h2 class="recipe-title">${recipe.name}</h2>
-    <button type="button" name="button" class="cook-now-btn">Cook Now!</button>
+    <button type="button" name="button" class="cook-now-btn" id="${recipe.id}">Cook Now!</button>
     <div class="recipe-icons">
       <ion-icon name="heart-outline" class="recipe-icon-favorite ${favorite}" id="${recipe.id}"></ion-icon>
       <ion-icon name="checkmark-outline" class="recipe-icon-cook ${toCook}" id="${recipe.id}"></ion-icon>
@@ -323,8 +331,9 @@ function displayIngredientMessage(ingredient) {
 
 function findUser() {
   const u = usersData.find(user => user.name.toLowerCase().includes(loginInput.value.toLowerCase()));
-  debugger
   u && (user = new User(u.id, u.name, u.pantry));
+  debugger;
+  u && (pantry = new Pantry(user.pantry));
   !user ? alert('user not found') : alert(`welcome back ${user.name}`);
 }
 

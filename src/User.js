@@ -1,5 +1,6 @@
 if (typeof module !== 'undefined') {
   ingredientsData = require('../data/ingredients');
+  Pantry = require('../src/Pantry');
 }
 class User {
   constructor(id, name, pantry) {
@@ -75,12 +76,22 @@ class User {
     return filteredRecipes;
   }
 
+  checkRecipeToCook(recipeId) {
+    let recipe = this.recipesToCook.find(recipe => recipe.id === recipeId);
+    return recipe && this.cookRecipe(recipe);
+  }
+
   cookRecipe(recipe) {
-    //check if you have the ingredients in this.pantry
-    //invoke pantry.checkIngredients()
-    //if that returns true
-    //then pantry.removeIngredients()
-    //if that returns false, show list of what you need to buy (invoke pantry.checkAmountNeeded())
+    //check if you have the ingredients in this.pantry : 
+    //  //2.then pantry.removeIngredients()
+    let status = pantry.checkIngredients(recipe);
+    if (status) {
+      let index = this.recipesToCook.findIndex(el => el.id === recipe.id);
+      this.recipesToCook.splice(index, 1);
+      return true;
+    }
+    // else is false:
+    //1. give a list of ingredients missing(difference) and price... 
   }
 }
 
