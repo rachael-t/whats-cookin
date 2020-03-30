@@ -19,11 +19,11 @@ describe('Pantry', () => {
       },
       {
         "ingredient": 11297,
-        "amount": 4
+        "amount": 1
       },
       {
         "ingredient": 1082047,
-        "amount": 10
+        "amount": 8
       }]);
     pantry = new Pantry(user.pantry);
     recipe = new Recipe(799732,
@@ -45,7 +45,7 @@ describe('Pantry', () => {
         {
           "id": 1082047,
           "quantity": {
-            "amount": 8,
+            "amount": 10,
             "unit": "tsp"
           }
         }
@@ -76,11 +76,11 @@ describe('Pantry', () => {
       },
       {
         "ingredient": 11297,
-        "amount": 4
+        "amount": 1
       },
       {
         "ingredient": 1082047,
-        "amount": 10
+        "amount": 8
       }]);
   });
 
@@ -88,10 +88,13 @@ describe('Pantry', () => {
   //we will want to create possibly another recipe in which the user does have enough pantry ingredients to test both a true and false path
 
   it('should be able to check ingredients in pantry against a recipe', () => {
-    // pantry.checkIngredients(recipe)
     expect(pantry.checkIngredients(recipe)).to.equal(false);
   });
 
+  it('should be return ingredients needed if user does not have enough to cook recipe', () => {
+    pantry.checkIngredients(recipe);
+    expect(pantry.checkAmountNeeded()).to.deep.equal([{id: 11297, amount: 1}, {id: 1082047, amount: 2}]);
+  });
 
 
 })
