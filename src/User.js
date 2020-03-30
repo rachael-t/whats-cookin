@@ -1,7 +1,6 @@
 if (typeof module !== 'undefined') {
-  var ingredientInfo = require('../data/ingredients');
+  ingredientsData = require('../data/ingredients');
 }
-
 class User {
   constructor(id, name, pantry) {
     this.id = id;
@@ -37,10 +36,8 @@ class User {
   searchRecipes(input) {
     let filteredRecipes = [];
     let inputLowerCase = input.toLowerCase();
-    // console.log(inputLowerCase)
     let ingredientIds = [];
-    // console.log(ingredientInfo)
-    ingredientInfo.forEach(ingredient => {
+    ingredientsData.forEach(ingredient => {
       let words = ingredient.name.split(' ');
       words.forEach(word => {
         if (word === inputLowerCase) {

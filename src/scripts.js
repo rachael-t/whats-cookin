@@ -293,7 +293,6 @@ function filterByTag(e) {
 
 function searchAllRecipes(e) {
   let ingredientSearched = getIngredientId(searchInput.value)
-  console.log(ingredientSearched)
   let filteredRecipes = [];
   recipeData.filter(recipe => {
     recipe.ingredients.forEach(ingredient => {
@@ -324,7 +323,8 @@ function displayIngredientMessage(ingredient) {
 
 function findUser() {
   const u = usersData.find(user => user.name.toLowerCase().includes(loginInput.value.toLowerCase()));
-  user = new User(u.id, u.name, u.pantry);
+  debugger
+  u && (user = new User(u.id, u.name, u.pantry));
   !user ? alert('user not found') : alert(`welcome back ${user.name}`);
 }
 
