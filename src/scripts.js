@@ -46,6 +46,8 @@ function buttonClick(e) {
     removeReturnBtn();
     getRecipe(recipeData);
     displayMessage();
+    removeTags();
+    getTags(recipeData);
   }
 
   if (e.target.closest('.login-btn')) {
@@ -69,6 +71,8 @@ function buttonClick(e) {
     displayReturnBtn();
     displayMessage(e);
     filterSaved('favoriteRecipes');
+    removeTags();
+    getTags(user.favoriteRecipes, 'filter-fav');
   }
 
   if (e.target.closest('.cook-recipes-btn')) {
@@ -76,10 +80,26 @@ function buttonClick(e) {
     displayReturnBtn();
     displayMessage(e);
     filterSaved('recipesToCook');
+    removeTags();
+    getTags(user.recipesToCook, 'filter-cook');
   }
 
   if (e.target.closest('.cook-now-btn')) {
     checkAbleToCook(e);
+  }
+
+  if (e.target.classList.contains('filter-fav')) {
+    removeRecipes();
+    filterByTag(e, user.favoriteRecipes);
+    removeReturnBtn();
+    displayReturnBtn();
+  }
+
+  if (e.target.classList.contains('filter-cook')) {
+    removeRecipes();
+    filterByTag(e, user.recipesToCook);
+    removeReturnBtn();
+    displayReturnBtn();
   }
 }
 
@@ -105,6 +125,14 @@ function pageLoad() {
   displayMessage();
   getRecipe(recipeData);
   getTags(recipeData);
+}
+
+function removeTags() {
+  tagsContainer.innerHTML = '';
+}
+
+function removeRecipes() {
+  recipeContainer.innerHTML = ' ';
 }
 
 function displayMessage(e) {
@@ -148,20 +176,20 @@ function checkSelected(recipe, type) {
   return (user && (user[type].find(favorite => favorite.id === recipe.id) && 'selected'));
 }
 
-function getTags(recipeData) {
+function getTags(recipeData, type) {
   let tags = [];
   recipeData.map(recipe => {
     recipe.tags.map(tag => !tags.includes(tag) && tags.push(tag));
   })
-  displayTags(tags);
+  displayTags(tags, type);
 }
 
-function displayTags(tags) {
+function displayTags(tags, type) {
   tags.map(tag => {
     tagsContainer.insertAdjacentHTML('afterbegin', `
         <li class="category-card category-tag" id="${tag}">
-          <img src="../img/${getTagImg(tag)}.png" class="category-img category-tag" alt="recipe picture" id="${tag}">
-          <p class="category-name category-tag" id="${tag}">${tag}</p>
+          <img src="../img/${getTagImg(tag)}.png" class="category-img category-tag ${type}" alt="recipe picture" id="${tag}">
+          <p class="category-name category-tag ${type}" id="${tag}">${tag}</p>
         </li>
         `)
   })
@@ -291,7 +319,7 @@ function displayReturnBtn() {
 function filterByTag(e, recipes) {
   let tagName = e.target.getAttribute('id');
   let filteredRecipes = recipes.filter(recipe => recipe.tags.includes(tagName));
-  recipeContainer.innerHTML = ' ';
+  removeRecipes();
   welcomeMessage.innerHTML = `${tagName}`;
   displayFilteredRecipe(filteredRecipes);
 }
@@ -306,7 +334,7 @@ function searchAllRecipes(e) {
       }
     })
   });
-  recipeContainer.innerHTML = ' ';
+  removeRecipes();
   displayFilteredRecipe(filteredRecipes);
 }
 
@@ -345,7 +373,7 @@ function selectRecipe(e) {
 }
 
 function filterSaved(type) {
-  recipeContainer.innerHTML = ' ';
+  removeRecipes();
   user && user[type].forEach(recipeObj => {
     recipeData.find(recipe => {
       recipe.id === recipeObj.id && displayRecipe(recipe);
