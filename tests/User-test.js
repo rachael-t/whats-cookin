@@ -4,87 +4,16 @@ const expect = chai.expect;
 const User = require('../src/User');
 const Recipe = require('../src/Recipe');
 const Pantry = require('../src/Pantry');
+const userDataTest = require('../tests/user-data-test');
 
 describe('User', () => {
 
   let user, recipe1, recipe2, recipe3, pantry;
   beforeEach('user instance', () => {
     user = new User();
-    recipe1 = new Recipe(799732,
-      "google",
-      [{
-          "id": 10011250,
-          "quantity": {
-            "amount": 4,
-            "unit": ""
-          }
-        },
-        {
-          "id": 11143,
-          "quantity": {
-            "amount": 2,
-            "unit": "rib"
-          }
-        }
-      ],
-      [{
-        "instruction": "Serve over lettuce.",
-        "number": 1
-      }],
-      "Curried Strawberry Chicken Salad",
-      [
-        "salad"
-      ]);
-    recipe2 = new Recipe(621213,
-      "google",
-      [{
-          "id": 10011250,
-          "quantity": {
-            "amount": 4,
-            "unit": ""
-          }
-        },
-        {
-          "id": 11143,
-          "quantity": {
-            "amount": 2,
-            "unit": "rib"
-          }
-        }
-      ],
-      [{
-        "instruction": "Serve over lettuce.",
-        "number": 1
-      }],
-      "Chicken Salad",
-      [
-        "salad"
-      ]);
-    recipe3 = new Recipe(611858,
-      "google",
-      [{
-          "id": 16098,
-          "quantity": {
-            "amount": 4,
-            "unit": ""
-          }
-        },
-        {
-          "id": 18069,
-          "quantity": {
-            "amount": 2,
-            "unit": "slice"
-          }
-        }
-      ],
-      [{
-        "instruction": "Put ingredients together.",
-        "number": 1
-      }],
-      "Peanut Butter Sandwich",
-      [
-        "side dish"
-      ]);
+    recipe1 = new Recipe(userDataTest[0].id, userDataTest[0].image, userDataTest[0].ingredients, userDataTest[0].instructions, userDataTest[0].name, userDataTest[0].tags);
+    recipe2 = new Recipe(userDataTest[1].id, userDataTest[1].image, userDataTest[1].ingredients, userDataTest[1].instructions, userDataTest[1].name, userDataTest[1].tags);
+    recipe3 = new Recipe(userDataTest[2].id, userDataTest[2].image, userDataTest[2].ingredients, userDataTest[2].instructions, userDataTest[2].name, userDataTest[2].tags);
     pantry = new Pantry();
   })
 

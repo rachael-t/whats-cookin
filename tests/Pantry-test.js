@@ -4,85 +4,17 @@ const expect = chai.expect;
 const Pantry = require('../src/Pantry');
 const User = require('../src/User');
 const Recipe = require('../src/Recipe');
-
+const userDataTest = require('../tests/user-data-test');
+const pantryDataTest = require('../tests/pantry-data-test');
 
 describe('Pantry', () => {
 
   let pantry;
   beforeEach('pantry instance', () => {
-    user = new User("Saige O'Kon",
-      1,
-      [{
-          "ingredient": 11477,
-          "amount": 4
-        },
-        {
-          "ingredient": 11297,
-          "amount": 1
-        },
-        {
-          "ingredient": 1082047,
-          "amount": 8
-        }
-      ]);
+    user = new User(pantryDataTest[0].id, pantryDataTest[0].name, pantryDataTest[0].pantry);
     pantry = new Pantry(user.pantry);
-    recipe1 = new Recipe(799732,
-      "google",
-      [{
-          "id": 11477,
-          "quantity": {
-            "amount": 4,
-            "unit": "cup"
-          }
-        },
-        {
-          "id": 11297,
-          "quantity": {
-            "amount": 2,
-            "unit": "cups"
-          }
-        },
-        {
-          "id": 1082047,
-          "quantity": {
-            "amount": 10,
-            "unit": "tsp"
-          }
-        }
-      ],
-      [{
-        "instruction": "Mix & serve.",
-        "number": 1
-      }],
-      "Zucchini Salad",
-      [
-        "salad"
-      ]);
-    recipe2 = new Recipe(799732,
-      "google",
-      [{
-          "id": 11477,
-          "quantity": {
-            "amount": 4,
-            "unit": "cup"
-          }
-        },
-        {
-          "id": 1082047,
-          "quantity": {
-            "amount": 8,
-            "unit": "tsp"
-          }
-        }
-      ],
-      [{
-        "instruction": "Mix & serve.",
-        "number": 1
-      }],
-      "Zucchini Salad",
-      [
-        "salad"
-      ]);
+    recipe1 = new Recipe(userDataTest[3].id, userDataTest[3].image, userDataTest[3].ingredients, userDataTest[3].instructions, userDataTest[3].name, userDataTest[3].tags);
+    recipe2 = new Recipe(userDataTest[4].id, userDataTest[4].image, userDataTest[4].ingredients, userDataTest[4].instructions, userDataTest[4].name, userDataTest[4].tags);
   })
 
   it('should be a function', () => {
