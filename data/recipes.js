@@ -909,24 +909,10 @@ const recipeData = [{
         }
       },
       {
-        "id": 19334,
-        "quantity": {
-          "amount": 3,
-          "unit": "tablespoons"
-        }
-      },
-      {
         "id": 4582,
         "quantity": {
           "amount": 1,
           "unit": "tablespoon"
-        }
-      },
-      {
-        "id": 4582,
-        "quantity": {
-          "amount": 2,
-          "unit": "tablespoons"
         }
       },
       {
@@ -992,13 +978,6 @@ const recipeData = [{
           "unit": "tablespoon"
         }
       },
-      {
-        "id": 1016168,
-        "quantity": {
-          "amount": 1,
-          "unit": "tablespoon"
-        }
-      }
     ],
     "instructions": [{
         "instruction": "Prepare the chicken: In a large bowl, whisk together the brown sugar, ginger, oil, soy sauce, Sriracha and peanut butter.",

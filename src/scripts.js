@@ -27,13 +27,12 @@ function buttonClick(e) {
   }
 
   if (e.target.closest('.search-user-btn')) {
-
     displaySearchedSavedRecipes(searchUserInput)
     clearInput(searchUserInput);
   }
 
   if (e.target.closest('.category-tag')) {
-    filterByTag(e);
+    filterByTag(e, recipeData);
     removeReturnBtn();
     displayReturnBtn();
   }
@@ -80,10 +79,7 @@ function buttonClick(e) {
   }
 
   if (e.target.closest('.cook-now-btn')) {
-    let recipeId = parseInt(e.target.getAttribute('id'));
-    // check if this recipe is in recipes to cook array, and if ti's not  - alert
-    user && console.log(user.checkRecipeToCook(recipeId)); // return if ready to cook!
-    // Add message if ready too cook or ingredients missing
+    checkAbleToCook(e);
   }
 }
 
@@ -187,7 +183,7 @@ function findRecipe(e) {
   let recipe = recipeData.find(recipe => recipe.id === recipeId);
   displayFullRecipe(recipe);
 }
-/// heeeeeeelllloooooo
+
 function displayFullRecipe(recipe) {
   displayRecipeInfo(recipe);
   displayRecipeIngredients(recipe);
@@ -202,6 +198,7 @@ function displayRecipeInfo(recipe) {
     <button type="button" name="button" class="return-btn"><ion-icon name="close-outline" class="return-btn"></ion-icon></button>
     <h2 class="recipe-title">${recipe.name}</h2>
     <button type="button" name="button" class="cook-now-btn" id="${recipe.id}">Cook Now!</button>
+    <div class="cook-status"></div>
     <div class="recipe-icons">
       <ion-icon name="heart-outline" class="recipe-icon-favorite ${favorite}" id="${recipe.id}"></ion-icon>
       <ion-icon name="checkmark-outline" class="recipe-icon-cook ${toCook}" id="${recipe.id}"></ion-icon>
@@ -227,8 +224,8 @@ function displayRecipeIngredients(recipe) {
     <li class="ingredient">
         <p class="ingredient-name">${ingredientAmount} ${ingredient.quantity.unit}
         <span class="ingredient-item">${ingredientName.name}</span></p>
-        <p class="ingredient-cost">${ingredientPrice}$/unit</p>
-        <p class="ingredient-cost">Total cost: ${ingredientCost}$</p>
+        <p class="ingredient-cost">$ ${ingredientPrice} / unit</p>
+        <p class="ingredient-cost">Total cost: $ ${ingredientCost}</p>
     </li>
     `)
   })
@@ -243,17 +240,17 @@ function getIngredientAmount(ingredient) {
 }
 
 function getIngredientPrice(ingredientName) {
-  return (ingredientName.estimatedCostInCents) / 100;
+  return ((ingredientName.estimatedCostInCents) / 100).toFixed(2);
 }
 
 function getIngredientCost(ingredient, ingredientName) {
-  return (ingredientName.estimatedCostInCents * ingredient.quantity.amount) / 100;
+  return ((ingredientName.estimatedCostInCents * ingredient.quantity.amount) / 100).toFixed(2);
 }
 
 function displayRecipeCost(recipe) {
   let cost = getRecipeCost(recipe)
   const costContainer = document.querySelector('.recipe-cost');
-  costContainer.innerHTML = `Total Recipe Cost: ${cost} $`;
+  costContainer.innerHTML = `Total Recipe Cost: $ ${cost}`;
 }
 
 function getRecipeCost(r) {
@@ -291,9 +288,9 @@ function displayReturnBtn() {
   `);
 }
 
-function filterByTag(e) {
+function filterByTag(e, recipes) {
   let tagName = e.target.getAttribute('id');
-  let filteredRecipes = recipeData.filter(recipe => recipe.tags.includes(tagName));
+  let filteredRecipes = recipes.filter(recipe => recipe.tags.includes(tagName));
   recipeContainer.innerHTML = ' ';
   welcomeMessage.innerHTML = `${tagName}`;
   displayFilteredRecipe(filteredRecipes);
@@ -358,4 +355,64 @@ function filterSaved(type) {
 
 function displaySearchedSavedRecipes(searchUserInput) {
   return user.searchRecipes(searchUserInput.value)
+}
+
+function checkAbleToCook(e) {
+  if (user) {
+    let recipeId = parseInt(e.target.getAttribute('id'));
+    let status = checkToCookStatus(recipeId);
+    status ? getCookInfo(recipeId) : alert('Add to Cook List First');
+  } else {
+    alert('Please Log In!')
+  }
+}
+
+function checkToCookStatus(recipeId) {
+  return user.recipesToCook.some(recipe => recipe.id === recipeId);
+}
+
+function getCookInfo(recipeId) {
+  let ingredients = user.checkRecipeToCook(recipeId);
+  ingredients === 'cook' ? displayReady() : getMissing(ingredients);
+}
+
+function displayReady() {
+  document.querySelector('.cook-now-btn').classList.add('hidden');
+  document.querySelector('.recipe-icon-cook').classList.remove('selected');
+  document.querySelector('.cook-status').innerHTML = `<p class="cook-message">You have all ingredients needed! Bon Appétit!</p>`;
+};
+
+function getMissing(ingredients) {
+  displayMissing()
+  getMissingIngredient(ingredients);
+}
+
+function displayMissing() {
+  document.querySelector('.cook-now-btn').classList.add('hidden');
+  let statusContainer = document.querySelector('.cook-status');
+  statusContainer.insertAdjacentHTML('afterbegin', `
+    <p class="cook-message">List of missing ingredients:</p>
+    <ul class="missing-ingredients">
+    </ul>
+  `);
+}
+
+function getMissingIngredient(ingredients) {
+  ingredients.forEach(ingredient => {
+    ingredientsData.find(data => {
+      if (data.id === ingredient.id) {
+        ingredient.name = data.name;
+        displayMissingIngredient(ingredient)
+      }
+    })
+  })
+}
+
+function displayMissingIngredient(ingredient) {
+  let ingredientsContainer = document.querySelector('.missing-ingredients');
+  ingredientsContainer.insertAdjacentHTML('afterbegin', `
+  <li class="ingredient">
+        <p class="ingredient-name">${ingredient.amount} ${ingredient.unit} <span class="ingredient-item"> ${ingredient.name}</span></p>
+    </li>
+  `);
 }

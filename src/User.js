@@ -82,18 +82,14 @@ class User {
   }
 
   cookRecipe(recipe) {
-    //check if you have the ingredients in this.pantry :
-    //  //2.then pantry.removeIngredients()
     let status = pantry.checkIngredients(recipe);
     if (status) {
       let index = this.recipesToCook.findIndex(el => el.id === recipe.id);
       this.recipesToCook.splice(index, 1);
-      return true;
+      return 'cook';
     } else {
       return pantry.checkAmountNeeded();
     }
-    // else is false:
-    //1. give a list of ingredients missing(difference) and price...
   }
 }
 
