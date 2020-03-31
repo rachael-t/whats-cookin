@@ -41,7 +41,7 @@ class User {
     ingredientsData.forEach(ingredient => {
       let words = ingredient.name.split(' ');
       words.forEach(word => {
-        if (word === inputLowerCase) {
+        if (word.includes(inputLowerCase)) {
           ingredientIds.push(ingredient.id);
         }
       })

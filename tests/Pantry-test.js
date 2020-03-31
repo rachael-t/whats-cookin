@@ -1,6 +1,5 @@
 const chai = require('chai');
 const expect = chai.expect;
-
 const Pantry = require('../src/Pantry');
 const User = require('../src/User');
 const Recipe = require('../src/Recipe');
@@ -40,9 +39,6 @@ describe('Pantry', () => {
       }
     ]);
   });
-
-  //for the test I gave the user not enough ingredients to cook the recipe that I also created as a test recipe
-  //we will want to create possibly another recipe in which the user does have enough pantry ingredients to test both a true and false path
 
   it('should be able to check ingredients in pantry against a recipe', () => {
     expect(pantry.checkIngredients(recipe1)).to.equal(false);
