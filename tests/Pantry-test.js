@@ -11,20 +11,20 @@ describe('Pantry', () => {
   let pantry;
   beforeEach('pantry instance', () => {
     user = new User("Saige O'Kon",
-    1,
-    [
-      {
-        "ingredient": 11477,
-        "amount": 4
-      },
-      {
-        "ingredient": 11297,
-        "amount": 1
-      },
-      {
-        "ingredient": 1082047,
-        "amount": 8
-      }]);
+      1,
+      [{
+          "ingredient": 11477,
+          "amount": 4
+        },
+        {
+          "ingredient": 11297,
+          "amount": 1
+        },
+        {
+          "ingredient": 1082047,
+          "amount": 8
+        }
+      ]);
     pantry = new Pantry(user.pantry);
     recipe1 = new Recipe(799732,
       "google",
@@ -94,8 +94,7 @@ describe('Pantry', () => {
   });
 
   it('should be able to store a user\'s list of ingredients', () => {
-    expect(pantry.ingredientsStocked).to.deep.equal([
-      {
+    expect(pantry.ingredientsStocked).to.deep.equal([{
         "ingredient": 11477,
         "amount": 4
       },
@@ -106,7 +105,8 @@ describe('Pantry', () => {
       {
         "ingredient": 1082047,
         "amount": 8
-      }]);
+      }
+    ]);
   });
 
   //for the test I gave the user not enough ingredients to cook the recipe that I also created as a test recipe
@@ -118,7 +118,15 @@ describe('Pantry', () => {
 
   it('should be return ingredients needed if user does not have enough to cook recipe', () => {
     pantry.checkIngredients(recipe1);
-    expect(pantry.checkAmountNeeded()).to.deep.equal([{id: 11297, amount: 1}, {id: 1082047, amount: 2}]);
+    expect(pantry.checkAmountNeeded()).to.deep.equal([{
+      id: 11297,
+      amount: 1,
+      unit: "cups"
+    }, {
+      id: 1082047,
+      amount: 2,
+      unit: "tsp"
+    }]);
   });
 
   it('should let the user know if they have enough ingredients to cook a recipe', () => {
@@ -133,6 +141,4 @@ describe('Pantry', () => {
       "amount": 1
     }]);
   });
-
-
 })

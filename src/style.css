@@ -297,7 +297,7 @@ h3 {
 
 /* ----- Recipe Page Messages ----- */
 .cook-message {
-    padding-bottom: 30px;
+    padding-bottom: 20px;
     font-size: 300%;
     font-weight: 300;
     color: var(--accent);

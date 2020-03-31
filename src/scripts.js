@@ -198,7 +198,7 @@ function displayRecipeInfo(recipe) {
     <button type="button" name="button" class="return-btn"><ion-icon name="close-outline" class="return-btn"></ion-icon></button>
     <h2 class="recipe-title">${recipe.name}</h2>
     <button type="button" name="button" class="cook-now-btn" id="${recipe.id}">Cook Now!</button>
-    <div class="cook-message"></div>
+    <div class="cook-status"></div>
     <div class="recipe-icons">
       <ion-icon name="heart-outline" class="recipe-icon-favorite ${favorite}" id="${recipe.id}"></ion-icon>
       <ion-icon name="checkmark-outline" class="recipe-icon-cook ${toCook}" id="${recipe.id}"></ion-icon>
@@ -224,8 +224,8 @@ function displayRecipeIngredients(recipe) {
     <li class="ingredient">
         <p class="ingredient-name">${ingredientAmount} ${ingredient.quantity.unit}
         <span class="ingredient-item">${ingredientName.name}</span></p>
-        <p class="ingredient-cost">${ingredientPrice}$/unit</p>
-        <p class="ingredient-cost">Total cost: ${ingredientCost}$</p>
+        <p class="ingredient-cost">$ ${ingredientPrice} / unit</p>
+        <p class="ingredient-cost">Total cost: $ ${ingredientCost}</p>
     </li>
     `)
   })
@@ -240,17 +240,17 @@ function getIngredientAmount(ingredient) {
 }
 
 function getIngredientPrice(ingredientName) {
-  return (ingredientName.estimatedCostInCents) / 100;
+  return ((ingredientName.estimatedCostInCents) / 100).toFixed(2);
 }
 
 function getIngredientCost(ingredient, ingredientName) {
-  return (ingredientName.estimatedCostInCents * ingredient.quantity.amount) / 100;
+  return ((ingredientName.estimatedCostInCents * ingredient.quantity.amount) / 100).toFixed(2);
 }
 
 function displayRecipeCost(recipe) {
   let cost = getRecipeCost(recipe)
   const costContainer = document.querySelector('.recipe-cost');
-  costContainer.innerHTML = `Total Recipe Cost: ${cost} $`;
+  costContainer.innerHTML = `Total Recipe Cost: $ ${cost}`;
 }
 
 function getRecipeCost(r) {
@@ -372,34 +372,47 @@ function checkToCookStatus(recipeId) {
 }
 
 function getCookInfo(recipeId) {
-  let isReady = user.checkRecipeToCook(recipeId);
-  isReady ? displayMissing() : displayReady()
+  let ingredients = user.checkRecipeToCook(recipeId);
+  ingredients === 'cook' ? displayReady() : getMissing(ingredients);
 }
 
 function displayReady() {
   document.querySelector('.cook-now-btn').classList.add('hidden');
   document.querySelector('.recipe-icon-cook').classList.remove('selected');
-  document.querySelector('.cook-message').innerHTML = 'You have all ingredients needed! Bon Appétit!';
+  document.querySelector('.cook-status').innerHTML = `<p class="cook-message">You have all ingredients needed! Bon Appétit!</p>`;
 };
+
+function getMissing(ingredients) {
+  displayMissing()
+  getMissingIngredient(ingredients);
+}
 
 function displayMissing() {
   document.querySelector('.cook-now-btn').classList.add('hidden');
-  let messageContainer = document.querySelector('.cook-message');
-  messageContainer.insertAdjacentHTML('afterbegin', `
-    List of missing ingredients: 
+  let statusContainer = document.querySelector('.cook-status');
+  statusContainer.insertAdjacentHTML('afterbegin', `
+    <p class="cook-message">List of missing ingredients:</p>
     <ul class="missing-ingredients">
     </ul>
   `);
-  displayMissingIngredient();
 }
 
-function displayMissingIngredient() {
+function getMissingIngredient(ingredients) {
+  ingredients.forEach(ingredient => {
+    ingredientsData.find(data => {
+      if (data.id === ingredient.id) {
+        ingredient.name = data.name;
+        displayMissingIngredient(ingredient)
+      }
+    })
+  })
+}
+
+function displayMissingIngredient(ingredient) {
   let ingredientsContainer = document.querySelector('.missing-ingredients');
   ingredientsContainer.insertAdjacentHTML('afterbegin', `
   <li class="ingredient">
-        <p class="ingredient-name">amount quantity<span class="ingredient-item">name</span></p>
-        <p class="ingredient-cost">price$/unit</p>
-        <p class="ingredient-cost">Total cost: total price$</p>
+        <p class="ingredient-name">${ingredient.amount} ${ingredient.unit} <span class="ingredient-item"> ${ingredient.name}</span></p>
     </li>
   `);
 }

@@ -14,6 +14,7 @@ class Pantry {
       const ingredientInfo = {};
       ingredientInfo.id = ingredient.id;
       ingredientInfo.amount = ingredient.quantity.amount;
+      ingredientInfo.unit = ingredient.quantity.unit;
       return ingredientInfo;
     });
     let result;
@@ -30,7 +31,7 @@ class Pantry {
     });
     return result;
   }
-  
+
   checkAmountNeeded() {
     const ingredientsToBuy = [];
     const needed = this.recipeIngredientsNeeded;
@@ -41,6 +42,7 @@ class Pantry {
           const ingredientInfo = {};
           ingredientInfo.id = ingredient.id;
           ingredientInfo.amount = ingredient.amount - item.amount;
+          ingredientInfo.unit = ingredient.unit;
           ingredientsToBuy.push(ingredientInfo);
         }
       })
