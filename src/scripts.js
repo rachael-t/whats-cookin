@@ -382,7 +382,9 @@ function filterSaved(type) {
 }
 
 function displaySearchedSavedRecipes(searchUserInput) {
-  return user.searchRecipes(searchUserInput.value)
+  let recipes = user.searchRecipes(searchUserInput.value);
+  removeRecipes();
+  getRecipe(recipes);
 }
 
 function checkAbleToCook(e) {
