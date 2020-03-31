@@ -32,7 +32,7 @@ function buttonClick(e) {
   }
 
   if (e.target.closest('.category-tag')) {
-    filterByTag(e);
+    filterByTag(e, recipeData);
     removeReturnBtn();
     displayReturnBtn();
   }
@@ -288,9 +288,9 @@ function displayReturnBtn() {
   `);
 }
 
-function filterByTag(e) {
+function filterByTag(e, recipes) {
   let tagName = e.target.getAttribute('id');
-  let filteredRecipes = recipeData.filter(recipe => recipe.tags.includes(tagName));
+  let filteredRecipes = recipes.filter(recipe => recipe.tags.includes(tagName));
   recipeContainer.innerHTML = ' ';
   welcomeMessage.innerHTML = `${tagName}`;
   displayFilteredRecipe(filteredRecipes);
