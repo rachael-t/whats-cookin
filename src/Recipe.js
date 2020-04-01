@@ -20,7 +20,7 @@ class Recipe {
       })
       return totalPrice;
     }, 0)
-    return Math.round(price * 100) / 100
+    return Math.round(price * 100) / 100;
   }
 }
 

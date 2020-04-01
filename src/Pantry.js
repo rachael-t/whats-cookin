@@ -56,10 +56,10 @@ class Pantry {
     pantry.forEach(item =>
       used.forEach(ingredient => {
         if (ingredient.id === item.ingredient) {
-          item.amount -= ingredient.amount
+          item.amount -= ingredient.amount;
           if (item.amount === 0) {
-            let index = pantry.indexOf(item)
-            pantry.splice(index, 1)
+            let index = pantry.indexOf(item);
+            pantry.splice(index, 1);
           }
         }
       }))

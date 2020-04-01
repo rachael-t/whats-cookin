@@ -28,7 +28,7 @@ class User {
     let filteredRecipes = [];
     this[recipeArray].forEach(recipe => {
       if (recipe.tags.includes(tag)) {
-        filteredRecipes.push(recipe)
+        filteredRecipes.push(recipe);
       }
     });
     return filteredRecipes;
@@ -48,15 +48,13 @@ class User {
     });
 
     this.favoriteRecipes.forEach(recipe => {
-      // also check if ifilteredRecipes  array already includes this recipe
       if (recipe.name.toLowerCase().includes(inputLowerCase)) {
-        filteredRecipes.push(recipe)
+        filteredRecipes.push(recipe);
       }
     });
     this.recipesToCook.forEach(recipe => {
-      // also check if ifilteredRecipes  array already includes this recipe
       if (recipe.name.toLowerCase().includes(inputLowerCase)) {
-        filteredRecipes.push(recipe)
+        filteredRecipes.push(recipe);
       }
     });
     this.favoriteRecipes.forEach(recipe => {
