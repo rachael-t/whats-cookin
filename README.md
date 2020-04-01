@@ -1,51 +1,58 @@
-# What's Cookin'? Starter Kit 
-
-The details of this project are outlined in the <a href="https://frontend.turing.io/projects/whats-cookin.html" target="\__blank">project spec</a>.
-
-## Set Up 
-
-1. Within your group, decide on one person to have the project repository on their Github account. This person will *fork* this repository - on the top right corner of the page, click the fork button. 
-2. Both group members should then clone down the forked repository (make sure that everyone is added as a collaborator as well). Since you don't want your project to be named "whats-cookin-starter-kit", add an optional argument after the repo url when cloning. The command should look like this: `git clone [remote-address] [what you want to name the repo]`.
-3. Once you have cloned the repo, change into the directory and install the project dependencies. Run npm install to install project dependencies.
-4. Run open src/index.html in the terminal to see the HTML page (you should see some boilerplate HTML displayed on the page)
-5. Make sure both members of your team are collaborators on the forked repo.
-
-## Testing 
-
-There is no boilerplate for testing in this starter-kit repo. You will need to set this up yourself. However, if you ran npm install, then the tooling you need to start testing is already installed (mocha and chai).
-
-## Linting Your Code 
-
-Run the command in your terminal npm run lint to run the linter on your JavaScript code. There will be errors and warnings right from the start in this starter kit, but that's ok - the linter is still running successfully.
-
-Your linter will look only at the JavaScript files you have within the src and the test directories.
+# What's Cookin'?
 
 
-## Data Model
-### Users
-```js
-{
-  "id": [number],
-  "name": [string],
-  "pantry": [array of objects with amount and ingredient id properties]
-},
-```
+## Abstract
 
-### Recipes
-```js
-{
-  "ingredients" [array of objects with ingredients ids(connection to ingredients), ingredient names, and quantity data],
-  "instructions": [array of objects with instructions properties and numbered steps],
-  "name": [string],
-  "tags": [array of strings representing info about the recipes]
-}
-```
+ This project was a paired project during Module 2 at [Turing School of Software & Design](https://turing.io/).
 
-### Ingredients
-```js
-{
-  "estimatedCostInCents": [number],
-  "id": [number -- connection to users and recipes],
-  "name": [string]
-}
-```
+ "What's Cookin'?" is a recipe tracking and meal planning application that allows users to search and save recipes. The application also keeps track of a user's pantry, and can let the user know if they want to cook a recipe, whether or not the have enough ingredients available to do so. If not, they will be informed as to which ingredients they need, so that they may add them to their shopping list.
+
+
+## Setup
+
+1. Fork this repository.
+
+2. Clone your forked repository.
+
+3. Change into the directory and install the project dependencies by running `npm install`
+
+3. Check that it is setup correctly by entering `run npm test` in your terminal. All tests should be passing.
+
+
+## Technologies Used
+
+* JavaScript
+* Mocha
+* Chai
+
+
+## Project Images
+
+_INSERT PROJECT IMAGES/GIFS_
+
+## Deployment
+
+[What's Cookin'?](https://rachael-t.github.io/whats-cookin/)
+
+
+## Learning Goals
+
+In addition to building a functional application, we worked on the following objectives during development:
+
+* Implement ES6 classes that communicate to each other as needed
+
+* Write modular, reusable code that follows SRP (Single Responsibility Principle)
+
+* Implement a robust testing suite using TDD
+
+* Use object and array prototype methods to perform data manipulation
+
+* Display information on the page while maintaining ability to test class properties and methods
+
+* Create a user interface that is easy to use and displays information in a clear way
+
+
+## Contributors
+
+* [Rachael Thomas](https://github.com/rachael-t)
+* [Edita Ignot](https://github.com/edignot)
