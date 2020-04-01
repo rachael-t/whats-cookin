@@ -28,8 +28,13 @@
 
 ## Project Images / Gifs
 
-![2](https://user-images.githubusercontent.com/57964291/78178996-bb17e380-741d-11ea-84fb-7041b7735372.gif)
+![1](https://user-images.githubusercontent.com/57964291/78178996-bb17e380-741d-11ea-84fb-7041b7735372.gif)
+
+
 ![2](https://user-images.githubusercontent.com/57964291/78179825-10a0c000-741f-11ea-9045-f543ead0d569.gif)
+
+
+![3](https://user-images.githubusercontent.com/57964291/78180313-d71c8480-741f-11ea-8c88-131052153835.gif)
 
 ## Deployment
 
