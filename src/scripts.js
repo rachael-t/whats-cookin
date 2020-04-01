@@ -350,8 +350,6 @@ function findIngredients(input) {
 
 function filterUniqueRecipes(recipes) {
   let uniqueRecipes = new Set(recipes);
-  console.log(recipes);
-  console.log(uniqueRecipes);
   removeRecipes();
   displayFilteredRecipe(uniqueRecipes);
 }
