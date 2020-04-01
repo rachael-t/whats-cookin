@@ -36,9 +36,6 @@
 
 ![3](https://user-images.githubusercontent.com/57964291/78180313-d71c8480-741f-11ea-8c88-131052153835.gif)
 
-## Deployment
-
-[What's Cookin'?](https://rachael-t.github.io/whats-cookin/)
 
 
 ## Learning Goals
