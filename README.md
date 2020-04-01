@@ -26,9 +26,9 @@
 * Chai
 
 
-## Project Images
+## Project Images / Gifs
 
-_INSERT PROJECT IMAGES/GIFS_
+![2](https://user-images.githubusercontent.com/57964291/78178996-bb17e380-741d-11ea-84fb-7041b7735372.gif)
 
 ## Deployment
 
