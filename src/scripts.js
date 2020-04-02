@@ -155,8 +155,9 @@ function removeRecipes() {
 function displayMessage(e) {
   welcomeMessage.innerHTML = " ";
   user
-    ? (welcomeMessage.innerHTML = `Welcome Back ${user.name}! Select Your Favorite Recipe!`)
-    : (welcomeMessage.innerHTML = `Log In and Select Your Favorite Recipe!`);
+    ?
+    (welcomeMessage.innerHTML = `Welcome Back ${user.name}! Select Your Favorite Recipe!`) :
+    (welcomeMessage.innerHTML = `Log In and Select Your Favorite Recipe!`);
   e &&
     (welcomeMessage.innerHTML = `${user.name} / ${checkFavoriteOrToCook(e)}`);
 }
@@ -223,8 +224,8 @@ function displayTags(tags, type) {
       `
         <li class="category-card category-tag" id="${tag}">
           <img src="../img/${getTagImg(
-            tag
-          )}.png" class="category-img category-tag ${type}" alt="recipe picture" id="${tag}">
+    tag
+  )}.png" class="category-img category-tag ${type}" alt="recipe picture" id="${tag}">
           <p class="category-name category-tag ${type}" id="${tag}">${tag}</p>
         </li>
         `

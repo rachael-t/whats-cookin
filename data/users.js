@@ -1,9 +1,7 @@
-let usersData = [
-  {
+let usersData = [{
     "name": "Saige O'Kon",
     "id": 1,
-    "pantry": [
-      {
+    "pantry": [{
         "ingredient": 11477,
         "amount": 4
       },
@@ -152,8 +150,7 @@ let usersData = [
   {
     "name": "Ephraim Goyette",
     "id": 2,
-    "pantry": [
-      {
+    "pantry": [{
         "ingredient": 6150,
         "amount": 3
       },
@@ -390,8 +387,7 @@ let usersData = [
   {
     "name": "Nelda Bosco",
     "id": 3,
-    "pantry": [
-      {
+    "pantry": [{
         "ingredient": 1009159,
         "amount": 3
       },
@@ -596,8 +592,7 @@ let usersData = [
   {
     "name": "Clinton Goodwin",
     "id": 4,
-    "pantry": [
-      {
+    "pantry": [{
         "ingredient": 9152,
         "amount": 8
       },
@@ -818,8 +813,7 @@ let usersData = [
   {
     "name": "Buford DuBuque",
     "id": 5,
-    "pantry": [
-      {
+    "pantry": [{
         "ingredient": 1077,
         "amount": 4
       },
@@ -1076,8 +1070,7 @@ let usersData = [
   {
     "name": "Myrl Crooks",
     "id": 6,
-    "pantry": [
-      {
+    "pantry": [{
         "ingredient": 18371,
         "amount": 12
       },
@@ -1338,8 +1331,7 @@ let usersData = [
   {
     "name": "Alberto White",
     "id": 7,
-    "pantry": [
-      {
+    "pantry": [{
         "ingredient": 2025,
         "amount": 4
       },
@@ -1492,8 +1484,7 @@ let usersData = [
   {
     "name": "Bennett Schroeder",
     "id": 8,
-    "pantry": [
-      {
+    "pantry": [{
         "ingredient": 6194,
         "amount": 4
       },
@@ -1682,8 +1673,7 @@ let usersData = [
   {
     "name": "Cullen Nicolas",
     "id": 9,
-    "pantry": [
-      {
+    "pantry": [{
         "ingredient": 2047,
         "amount": 22
       },
@@ -1944,8 +1934,7 @@ let usersData = [
   {
     "name": "Retta Douglas",
     "id": 10,
-    "pantry": [
-      {
+    "pantry": [{
         "ingredient": 11206,
         "amount": 2
       },
@@ -2206,8 +2195,7 @@ let usersData = [
   {
     "name": "Jarrod Senger",
     "id": 11,
-    "pantry": [
-      {
+    "pantry": [{
         "ingredient": 10511282,
         "amount": 2
       },
@@ -2256,8 +2244,7 @@ let usersData = [
   {
     "name": "Caitlyn Schroeder",
     "id": 12,
-    "pantry": [
-      {
+    "pantry": [{
         "ingredient": 19335,
         "amount": 2
       },
@@ -2306,8 +2293,7 @@ let usersData = [
   {
     "name": "Valerie Grant",
     "id": 13,
-    "pantry": [
-      {
+    "pantry": [{
         "ingredient": 1102047,
         "amount": 2
       },
@@ -2384,8 +2370,7 @@ let usersData = [
   {
     "name": "Stanford Doyle",
     "id": 14,
-    "pantry": [
-      {
+    "pantry": [{
         "ingredient": 18372,
         "amount": 2
       },
@@ -2454,8 +2439,7 @@ let usersData = [
   {
     "name": "Santina Deckow",
     "id": 15,
-    "pantry": [
-      {
+    "pantry": [{
         "ingredient": 11282,
         "amount": 2
       },
@@ -2532,8 +2516,7 @@ let usersData = [
   {
     "name": "Trevor Robel",
     "id": 16,
-    "pantry": [
-      {
+    "pantry": [{
         "ingredient": 9316,
         "amount": 2
       },
@@ -2686,8 +2669,7 @@ let usersData = [
   {
     "name": "Hardy Sipes",
     "id": 17,
-    "pantry": [
-      {
+    "pantry": [{
         "ingredient": 20081,
         "amount": 2
       },
@@ -2728,8 +2710,7 @@ let usersData = [
   {
     "name": "Missouri Runolfsdottir",
     "id": 18,
-    "pantry": [
-      {
+    "pantry": [{
         "ingredient": 11282,
         "amount": 2
       },
@@ -2742,8 +2723,7 @@ let usersData = [
   {
     "name": "Dusty Hauck",
     "id": 19,
-    "pantry": [
-      {
+    "pantry": [{
         "ingredient": 1123,
         "amount": 14
       },
@@ -3000,8 +2980,7 @@ let usersData = [
   {
     "name": "Jaden Kuhlman",
     "id": 20,
-    "pantry": [
-      {
+    "pantry": [{
         "ingredient": 11297,
         "amount": 3
       },
@@ -3118,8 +3097,7 @@ let usersData = [
   {
     "name": "Franz Batz",
     "id": 21,
-    "pantry": [
-      {
+    "pantry": [{
         "ingredient": 19336,
         "amount": 3
       },
@@ -3361,8 +3339,7 @@ let usersData = [
   {
     "name": "Earline Von",
     "id": 23,
-    "pantry": [
-      {
+    "pantry": [{
         "ingredient": 18371,
         "amount": 9
       },
@@ -3623,8 +3600,7 @@ let usersData = [
   {
     "name": "Blanche Price",
     "id": 24,
-    "pantry": [
-      {
+    "pantry": [{
         "ingredient": 19335,
         "amount": 7
       },
@@ -3733,8 +3709,7 @@ let usersData = [
   {
     "name": "Charlene Kuvalis",
     "id": 25,
-    "pantry": [
-      {
+    "pantry": [{
         "ingredient": 14106,
         "amount": 5
       },
@@ -3951,8 +3926,7 @@ let usersData = [
   {
     "name": "Yazmin Lubowitz",
     "id": 26,
-    "pantry": [
-      {
+    "pantry": [{
         "ingredient": 2047,
         "amount": 9
       },
@@ -4093,8 +4067,7 @@ let usersData = [
   {
     "name": "Domenick Russel",
     "id": 27,
-    "pantry": [
-      {
+    "pantry": [{
         "ingredient": 11282,
         "amount": 16
       },
@@ -4331,8 +4304,7 @@ let usersData = [
   {
     "name": "Arvid Greenholt",
     "id": 28,
-    "pantry": [
-      {
+    "pantry": [{
         "ingredient": 2047,
         "amount": 4
       },
@@ -4389,8 +4361,7 @@ let usersData = [
   {
     "name": "Peyton Little",
     "id": 29,
-    "pantry": [
-      {
+    "pantry": [{
         "ingredient": 1011256,
         "amount": 5
       },
@@ -4623,8 +4594,7 @@ let usersData = [
   {
     "name": "Rosetta Roob",
     "id": 30,
-    "pantry": [
-      {
+    "pantry": [{
         "ingredient": 1082047,
         "amount": 6
       },
@@ -4761,8 +4731,7 @@ let usersData = [
   {
     "name": "Dandre Gibson",
     "id": 31,
-    "pantry": [
-      {
+    "pantry": [{
         "ingredient": 4053,
         "amount": 19
       },
@@ -4999,8 +4968,7 @@ let usersData = [
   {
     "name": "Meaghan Padberg",
     "id": 32,
-    "pantry": [
-      {
+    "pantry": [{
         "ingredient": 2047,
         "amount": 10
       },
@@ -5209,8 +5177,7 @@ let usersData = [
   {
     "name": "Dawn Paucek",
     "id": 33,
-    "pantry": [
-      {
+    "pantry": [{
         "ingredient": 9152,
         "amount": 2
       },
@@ -5275,8 +5242,7 @@ let usersData = [
   {
     "name": "Moshe O'Reilly",
     "id": 34,
-    "pantry": [
-      {
+    "pantry": [{
         "ingredient": 1082047,
         "amount": 6
       },
@@ -5473,8 +5439,7 @@ let usersData = [
   {
     "name": "Gladys Rohan",
     "id": 35,
-    "pantry": [
-      {
+    "pantry": [{
         "ingredient": 20081,
         "amount": 2
       },
@@ -5503,8 +5468,7 @@ let usersData = [
   {
     "name": "Jaydon Rosenbaum",
     "id": 36,
-    "pantry": [
-      {
+    "pantry": [{
         "ingredient": 19177,
         "amount": 2
       },
@@ -5673,8 +5637,7 @@ let usersData = [
   {
     "name": "Bryon Baumbach",
     "id": 37,
-    "pantry": [
-      {
+    "pantry": [{
         "ingredient": 4025,
         "amount": 2
       },
@@ -5747,8 +5710,7 @@ let usersData = [
   {
     "name": "Lamar Brown",
     "id": 38,
-    "pantry": [
-      {
+    "pantry": [{
         "ingredient": 18372,
         "amount": 3
       },
@@ -5901,8 +5863,7 @@ let usersData = [
   {
     "name": "Christophe Deckow",
     "id": 39,
-    "pantry": [
-      {
+    "pantry": [{
         "ingredient": 4053,
         "amount": 9
       },
@@ -6135,8 +6096,7 @@ let usersData = [
   {
     "name": "Noe Conroy",
     "id": 40,
-    "pantry": [
-      {
+    "pantry": [{
         "ingredient": 4053,
         "amount": 4
       },
@@ -6301,8 +6261,7 @@ let usersData = [
   {
     "name": "Demarcus Gusikowski",
     "id": 41,
-    "pantry": [
-      {
+    "pantry": [{
         "ingredient": 2009,
         "amount": 2
       },
@@ -6375,8 +6334,7 @@ let usersData = [
   {
     "name": "Taya Bartell",
     "id": 42,
-    "pantry": [
-      {
+    "pantry": [{
         "ingredient": 1082047,
         "amount": 2
       },
@@ -6473,8 +6431,7 @@ let usersData = [
   {
     "name": "Edward Ankunding",
     "id": 43,
-    "pantry": [
-      {
+    "pantry": [{
         "ingredient": 11282,
         "amount": 8
       },
@@ -6615,8 +6572,7 @@ let usersData = [
   {
     "name": "Madaline Boyer",
     "id": 44,
-    "pantry": [
-      {
+    "pantry": [{
         "ingredient": 4053,
         "amount": 11
       },
@@ -6805,8 +6761,7 @@ let usersData = [
   {
     "name": "Noemi Raynor",
     "id": 45,
-    "pantry": [
-      {
+    "pantry": [{
         "ingredient": 2047,
         "amount": 12
       },
@@ -6927,8 +6882,7 @@ let usersData = [
   {
     "name": "Zetta Bogisich",
     "id": 46,
-    "pantry": [
-      {
+    "pantry": [{
         "ingredient": 2050,
         "amount": 3
       },
@@ -7005,8 +6959,7 @@ let usersData = [
   {
     "name": "Virginie Little",
     "id": 47,
-    "pantry": [
-      {
+    "pantry": [{
         "ingredient": 16124,
         "amount": 5
       },
@@ -7263,8 +7216,7 @@ let usersData = [
   {
     "name": "Flossie Schamberger",
     "id": 48,
-    "pantry": [
-      {
+    "pantry": [{
         "ingredient": 11297,
         "amount": 3
       },
@@ -7377,8 +7329,7 @@ let usersData = [
   {
     "name": "Rocky Padberg",
     "id": 49,
-    "pantry": [
-      {
+    "pantry": [{
         "ingredient": 18371,
         "amount": 10
       },
