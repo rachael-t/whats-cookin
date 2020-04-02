@@ -26,17 +26,17 @@ describe('Pantry', () => {
 
   it('should be able to store a user\'s list of ingredients', () => {
     expect(pantry.ingredientsStocked).to.deep.equal([{
-        "ingredient": 11477,
-        "amount": 4
-      },
-      {
-        "ingredient": 11297,
-        "amount": 1
-      },
-      {
-        "ingredient": 1082047,
-        "amount": 8
-      }
+      "ingredient": 11477,
+      "amount": 4
+    },
+    {
+      "ingredient": 11297,
+      "amount": 1
+    },
+    {
+      "ingredient": 1082047,
+      "amount": 8
+    }
     ]);
   });
 

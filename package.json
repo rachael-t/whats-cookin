@@ -10,7 +10,7 @@
   },
   "scripts": {
     "test": "./node_modules/.bin/mocha",
-    "lint": "./node_modules/.bin/eslint 'src/**.js' 'test/**.js'"
+    "lint": "./node_modules/.bin/eslint 'src/**.js' 'tests/**.js'"
   },
   "author": "Turing School of Software and Design",
   "license": "MIT"
