@@ -25,7 +25,6 @@
 
 body,
 html {
-  /* height: 100%; */
   background-color: var(--background-light);
   outline: none;
   cursor: default;
@@ -39,19 +38,18 @@ ul {
 /* ----- Header ----- */
 /* -------------------------------------------- */
 h1 {
-  position: relative;
-  top: 25%;
+  padding: 50px;
   font-weight: 100;
   text-transform: uppercase;
   text-align: center;
-  font-size: 600%;
+  font-size: 250%;
   word-spacing: 10px;
   color: var(--font-light);
 }
 
 header {
   background-image: linear-gradient(rgba(22, 22, 22, .8), rgba(0, 0, 0, .3)), url(../img/background.jpg);
-  height: 50vh;
+  height: auto;
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
@@ -60,10 +58,16 @@ header {
 /* ----- Navigation ----- */
 .nav {
   display: flex;
-  flex-wrap: wrap;
-  flex: 1;
+  flex-direction: column;
   justify-content: space-evenly;
   padding-top: 20px;
+  margin: 0 20px
+}
+
+.nav-item {
+  margin: 5px;
+  width: 80%;
+  align-self: center;
 }
 
 button,
@@ -85,7 +89,7 @@ button {
 
 input {
   cursor: text;
-  width: 80%;
+  width: 100%;
   border-radius: 0 5px 5px 0;
 }
 
@@ -106,6 +110,11 @@ input:hover,
 button:hover {
   opacity: 1;
   transition: opacity, 1s;
+}
+
+.favorite-recipes-btn,
+.cook-recipes-btn {
+  width: 100%;
 }
 
 /* -------------------------------------------- */
@@ -224,7 +233,7 @@ h2:after {
 
 .recipe-page {
   margin: 0 auto;
-  width: 50%;
+  width: 90%;
   text-align: center;
 }
 
@@ -237,7 +246,7 @@ h3 {
   text-align: center;
   font-weight: 700;
   color: var(--accent);
-  margin: 30px;
+  margin: 30px auto;
 }
 
 .ingredients,
@@ -329,4 +338,54 @@ footer {
 
 .hidden {
   display: none;
+}
+
+/* -------------------------------------------- */
+/* ----- Media Queries ----- */
+/* -------------------------------------------- */
+
+@media (min-width: 640px) {
+  .nav-item {
+    width: 70%;
+  }
+  h1 {
+    font-size: 300%;
+  }
+  .recipe-page {
+    width: 80%;
+  }
+}
+
+@media (min-width: 768px) {
+  .nav-item {
+    width: 60%;
+  }
+  h1 {
+    font-size: 400%;
+  }
+  .recipe-page {
+    width: 70%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .nav-item {
+    width: 50%;
+  }
+  .recipe-page {
+    width: 60%;
+  }
+}
+
+@media (min-width: 1280px) {
+  h1 {
+    font-size: 600%;
+    padding: 100px;
+  }
+  .nav {
+    flex-direction: row;
+  }
+  .recipe-page {
+    width: 50%;
+  }
 }
