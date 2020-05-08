@@ -168,8 +168,7 @@ h2:after {
   margin: 50px;
   grid-gap: 50px;
   justify-content: space-around;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-auto-rows: auto;
+  grid-template: auto / repeat(1, 1fr);
   list-style: none;
 }
 
@@ -366,6 +365,9 @@ footer {
   .recipe-page {
     width: 70%;
   }
+  .recipe-container {
+    grid-template: auto / repeat(2, 1fr);
+  }
 }
 
 @media (min-width: 1024px) {
@@ -374,6 +376,9 @@ footer {
   }
   .recipe-page {
     width: 60%;
+  }
+  .recipe-container {
+    grid-template: auto / repeat(3, 1fr);
   }
 }
 
@@ -387,5 +392,8 @@ footer {
   }
   .recipe-page {
     width: 50%;
+  }
+  .recipe-container {
+    grid-template: auto / repeat(4, 1fr);
   }
 }
