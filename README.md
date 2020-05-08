@@ -15,13 +15,13 @@
 
 ---
 ### User Story : 
-#### 1. Existing User should be able to Login
+#### 1. Existing User should be able to Login :
 ![1](/readme-img/1.png)
 ---
-#### 2.
+#### 2. User should be able to search all recipes by title or description and see filtered recipes and matching categoried
 ![2](/readme-img/2.png)
 ---
-#### 3.
+#### 3. User should be able to 'Love' or 'Add To Cooking List' a recipe 
 ![3](/readme-img/3.png)
 ---
 #### 4.
