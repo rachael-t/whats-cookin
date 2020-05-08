@@ -265,6 +265,7 @@ function displayRecipeInfo(recipe) {
     `
     <button type="button" name="button" class="return-btn"><ion-icon name="close-outline" class="return-btn"></ion-icon></button>
     <h2 class="recipe-title">${recipe.name}</h2>
+    <img class="recipe-img" src="${recipe.image}" alt="recipe picture">
     <button type="button" name="button" class="cook-now-btn" id="${recipe.id}">Cook Now!</button>
     <div class="cook-status"></div>
     <div class="recipe-icons">
@@ -275,8 +276,8 @@ function displayRecipeInfo(recipe) {
     <ul class="ingredients">
     </ul>
     <p class="recipe-cost"></p>
+    <h3>Cooking Instructions:</h3>
     <div class="instructions-list"></div>
-    <img class="recipe-img" src="${recipe.image}" alt="recipe picture">
     <button type="button" name="button" class="return-btn"><ion-icon name="close-outline" class="return-btn"></ion-icon></button>
   `
   );

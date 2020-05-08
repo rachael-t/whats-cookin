@@ -166,6 +166,7 @@ h2:after {
 
 .recipe-card {
   width: 100%;
+  justify-self: center;
   max-width: 350px;
   height: auto;
   min-height: 300px;
@@ -212,15 +213,12 @@ h2:after {
 .return-btn,
 .cook-now-btn {
   display: block;
-  margin: 0 auto;
+  margin: auto;
   font-size: 200%;
 }
 
 .cook-now-btn {
-  margin-bottom: 30px;
-}
-
-.cook-now-btn {
+  margin: 30px auto;
   background-color: var(--accent);
 }
 
@@ -237,8 +235,9 @@ h2:after {
 h3 {
   font-size: 300%;
   text-align: center;
-  font-weight: 300;
+  font-weight: 700;
   color: var(--accent);
+  margin: 30px;
 }
 
 .ingredients,
@@ -251,8 +250,8 @@ h3 {
 .recipe-cost,
 .cooking-step {
   padding-top: 20px;
-  font-weight: 300;
-  font-size: 150%;
+  font-weight: 700;
+  font-size: 170%;
 }
 
 .recipe-cost {
@@ -262,15 +261,16 @@ h3 {
 .ingredient-item {
   color: var(--accent);
   font-weight: 400;
+  font-weight: 900;
 }
 
 .ingredient-cost,
 .cooking-instruction {
-  font-size: 120%;
+  font-size: 170%;
+  font-weight: 300;
 }
 
 .recipe-img {
-  padding: 50px 0;
   width: 100%;
   display: block;
 }
@@ -291,6 +291,10 @@ h3 {
 .recipe-icon-cook:hover {
   color: var(--accent);
   transition: color .3s;
+}
+
+.instructions-list {
+  margin-bottom: 50px;
 }
 
 /* ----- Recipe Page Messages ----- */
