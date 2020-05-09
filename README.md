@@ -18,38 +18,23 @@
 #### 1. Existing User should be able to Login :
 ![1](/readme-img/1.png)
 ---
-#### 2. User should be able to search all recipes by title or description and see filtered recipes and matching categoried
+#### 2. User should be able to search all recipes by title or description and see filtered recipes and matching categories
 ![2](/readme-img/2.png)
 ---
-#### 3. User should be able to 'Love' or 'Add To Cooking List' a recipe 
+#### 3. User should be able to 'Favorite' or 'Add To Cooking List' a recipe 
 ![3](/readme-img/3.png)
 ---
-#### 4.
+#### 4. User should be able to filter 'Favorite' or 'Cooking List' recipes and see matchin categories
 ![4](/readme-img/4.png)
 ---
-#### 5.
+#### 5. User Should be able to open each recipe and scroll down to see ingredients needed, prices and cooking instructions
 ![5](/readme-img/5.png)
 ---
-#### 6.
+#### 6. After clicking 'Cook Now' button user should be able to see missing ingredients list or info message if she/he has all enough ingredients
 ![6](/readme-img/6.png)
 ---
-#### 7.
+#### 7. User should be able to filter recipes by cattegory. One recipe can match more than one category
 ![7](/readme-img/7.png)
----
-#### 8.
-![8](/readme-img/8.png)
----
-#### 9.
-![9](/readme-img/9.png)
----
-#### 10.
-![10](/readme-img/10.png)
----
-#### 11.
-![11](/readme-img/11.png)
----
-#### 12.
-![12](/readme-img/12.png)
 ---
 ### Technologies Used
 
